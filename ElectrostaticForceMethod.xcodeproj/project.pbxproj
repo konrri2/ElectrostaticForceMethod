@@ -1,0 +1,603 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7637F3E62316D4E800D8B5F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F3E52316D4E800D8B5F1 /* AppDelegate.swift */; };
+		7637F3E82316D4E800D8B5F1 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7637F3E72316D4E800D8B5F1 /* GameScene.sks */; };
+		7637F3EA2316D4E800D8B5F1 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7637F3E92316D4E800D8B5F1 /* Actions.sks */; };
+		7637F3EC2316D4E800D8B5F1 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F3EB2316D4E800D8B5F1 /* GameScene.swift */; };
+		7637F3EE2316D4E800D8B5F1 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F3ED2316D4E800D8B5F1 /* GameViewController.swift */; };
+		7637F3F12316D4E800D8B5F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637F3EF2316D4E800D8B5F1 /* Main.storyboard */; };
+		7637F3F32316D4EE00D8B5F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7637F3F22316D4EE00D8B5F1 /* Assets.xcassets */; };
+		7637F3F62316D4EE00D8B5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637F3F42316D4EE00D8B5F1 /* LaunchScreen.storyboard */; };
+		7637F4012316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F4002316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.swift */; };
+		7637F40C2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F40B2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7637F3FD2316D4EE00D8B5F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7637F3DA2316D4E800D8B5F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7637F3E12316D4E800D8B5F1;
+			remoteInfo = ElectrostaticForceMethod;
+		};
+		7637F4082316D4EE00D8B5F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7637F3DA2316D4E800D8B5F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7637F3E12316D4E800D8B5F1;
+			remoteInfo = ElectrostaticForceMethod;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7637F3E22316D4E800D8B5F1 /* ElectrostaticForceMethod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElectrostaticForceMethod.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7637F3E52316D4E800D8B5F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7637F3E72316D4E800D8B5F1 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		7637F3E92316D4E800D8B5F1 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		7637F3EB2316D4E800D8B5F1 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		7637F3ED2316D4E800D8B5F1 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		7637F3F02316D4E800D8B5F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7637F3F22316D4EE00D8B5F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7637F3F52316D4EE00D8B5F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7637F3F72316D4EE00D8B5F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7637F3FC2316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElectrostaticForceMethodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7637F4002316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrostaticForceMethodTests.swift; sourceTree = "<group>"; };
+		7637F4022316D4EE00D8B5F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7637F4072316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElectrostaticForceMethodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7637F40B2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrostaticForceMethodUITests.swift; sourceTree = "<group>"; };
+		7637F40D2316D4EE00D8B5F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7637F3DF2316D4E800D8B5F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7637F3F92316D4EE00D8B5F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7637F4042316D4EE00D8B5F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7637F3D92316D4E800D8B5F1 = {
+			isa = PBXGroup;
+			children = (
+				7637F3E42316D4E800D8B5F1 /* ElectrostaticForceMethod */,
+				7637F3FF2316D4EE00D8B5F1 /* ElectrostaticForceMethodTests */,
+				7637F40A2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests */,
+				7637F3E32316D4E800D8B5F1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7637F3E32316D4E800D8B5F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7637F3E22316D4E800D8B5F1 /* ElectrostaticForceMethod.app */,
+				7637F3FC2316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.xctest */,
+				7637F4072316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7637F3E42316D4E800D8B5F1 /* ElectrostaticForceMethod */ = {
+			isa = PBXGroup;
+			children = (
+				7637F3E52316D4E800D8B5F1 /* AppDelegate.swift */,
+				7637F3E72316D4E800D8B5F1 /* GameScene.sks */,
+				7637F3E92316D4E800D8B5F1 /* Actions.sks */,
+				7637F3EB2316D4E800D8B5F1 /* GameScene.swift */,
+				7637F3ED2316D4E800D8B5F1 /* GameViewController.swift */,
+				7637F3EF2316D4E800D8B5F1 /* Main.storyboard */,
+				7637F3F22316D4EE00D8B5F1 /* Assets.xcassets */,
+				7637F3F42316D4EE00D8B5F1 /* LaunchScreen.storyboard */,
+				7637F3F72316D4EE00D8B5F1 /* Info.plist */,
+			);
+			path = ElectrostaticForceMethod;
+			sourceTree = "<group>";
+		};
+		7637F3FF2316D4EE00D8B5F1 /* ElectrostaticForceMethodTests */ = {
+			isa = PBXGroup;
+			children = (
+				7637F4002316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.swift */,
+				7637F4022316D4EE00D8B5F1 /* Info.plist */,
+			);
+			path = ElectrostaticForceMethodTests;
+			sourceTree = "<group>";
+		};
+		7637F40A2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7637F40B2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.swift */,
+				7637F40D2316D4EE00D8B5F1 /* Info.plist */,
+			);
+			path = ElectrostaticForceMethodUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7637F3E12316D4E800D8B5F1 /* ElectrostaticForceMethod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7637F4102316D4EE00D8B5F1 /* Build configuration list for PBXNativeTarget "ElectrostaticForceMethod" */;
+			buildPhases = (
+				7637F3DE2316D4E800D8B5F1 /* Sources */,
+				7637F3DF2316D4E800D8B5F1 /* Frameworks */,
+				7637F3E02316D4E800D8B5F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ElectrostaticForceMethod;
+			productName = ElectrostaticForceMethod;
+			productReference = 7637F3E22316D4E800D8B5F1 /* ElectrostaticForceMethod.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7637F3FB2316D4EE00D8B5F1 /* ElectrostaticForceMethodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7637F4132316D4EE00D8B5F1 /* Build configuration list for PBXNativeTarget "ElectrostaticForceMethodTests" */;
+			buildPhases = (
+				7637F3F82316D4EE00D8B5F1 /* Sources */,
+				7637F3F92316D4EE00D8B5F1 /* Frameworks */,
+				7637F3FA2316D4EE00D8B5F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7637F3FE2316D4EE00D8B5F1 /* PBXTargetDependency */,
+			);
+			name = ElectrostaticForceMethodTests;
+			productName = ElectrostaticForceMethodTests;
+			productReference = 7637F3FC2316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7637F4062316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7637F4162316D4EE00D8B5F1 /* Build configuration list for PBXNativeTarget "ElectrostaticForceMethodUITests" */;
+			buildPhases = (
+				7637F4032316D4EE00D8B5F1 /* Sources */,
+				7637F4042316D4EE00D8B5F1 /* Frameworks */,
+				7637F4052316D4EE00D8B5F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7637F4092316D4EE00D8B5F1 /* PBXTargetDependency */,
+			);
+			name = ElectrostaticForceMethodUITests;
+			productName = ElectrostaticForceMethodUITests;
+			productReference = 7637F4072316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7637F3DA2316D4E800D8B5F1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = konrri;
+				TargetAttributes = {
+					7637F3E12316D4E800D8B5F1 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					7637F3FB2316D4EE00D8B5F1 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 7637F3E12316D4E800D8B5F1;
+					};
+					7637F4062316D4EE00D8B5F1 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 7637F3E12316D4E800D8B5F1;
+					};
+				};
+			};
+			buildConfigurationList = 7637F3DD2316D4E800D8B5F1 /* Build configuration list for PBXProject "ElectrostaticForceMethod" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7637F3D92316D4E800D8B5F1;
+			productRefGroup = 7637F3E32316D4E800D8B5F1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7637F3E12316D4E800D8B5F1 /* ElectrostaticForceMethod */,
+				7637F3FB2316D4EE00D8B5F1 /* ElectrostaticForceMethodTests */,
+				7637F4062316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7637F3E02316D4E800D8B5F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7637F3F12316D4E800D8B5F1 /* Main.storyboard in Resources */,
+				7637F3E82316D4E800D8B5F1 /* GameScene.sks in Resources */,
+				7637F3F32316D4EE00D8B5F1 /* Assets.xcassets in Resources */,
+				7637F3F62316D4EE00D8B5F1 /* LaunchScreen.storyboard in Resources */,
+				7637F3EA2316D4E800D8B5F1 /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7637F3FA2316D4EE00D8B5F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7637F4052316D4EE00D8B5F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7637F3DE2316D4E800D8B5F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7637F3EC2316D4E800D8B5F1 /* GameScene.swift in Sources */,
+				7637F3EE2316D4E800D8B5F1 /* GameViewController.swift in Sources */,
+				7637F3E62316D4E800D8B5F1 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7637F3F82316D4EE00D8B5F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7637F4012316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7637F4032316D4EE00D8B5F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7637F40C2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7637F3FE2316D4EE00D8B5F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7637F3E12316D4E800D8B5F1 /* ElectrostaticForceMethod */;
+			targetProxy = 7637F3FD2316D4EE00D8B5F1 /* PBXContainerItemProxy */;
+		};
+		7637F4092316D4EE00D8B5F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7637F3E12316D4E800D8B5F1 /* ElectrostaticForceMethod */;
+			targetProxy = 7637F4082316D4EE00D8B5F1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7637F3EF2316D4E800D8B5F1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7637F3F02316D4E800D8B5F1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7637F3F42316D4EE00D8B5F1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7637F3F52316D4EE00D8B5F1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7637F40E2316D4EE00D8B5F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7637F40F2316D4EE00D8B5F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7637F4112316D4EE00D8B5F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UVJCW2277W;
+				INFOPLIST_FILE = ElectrostaticForceMethod/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.leszczynski.ElectrostaticForceMethod;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7637F4122316D4EE00D8B5F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UVJCW2277W;
+				INFOPLIST_FILE = ElectrostaticForceMethod/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.leszczynski.ElectrostaticForceMethod;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7637F4142316D4EE00D8B5F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UVJCW2277W;
+				INFOPLIST_FILE = ElectrostaticForceMethodTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.leszczynski.ElectrostaticForceMethodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElectrostaticForceMethod.app/ElectrostaticForceMethod";
+			};
+			name = Debug;
+		};
+		7637F4152316D4EE00D8B5F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UVJCW2277W;
+				INFOPLIST_FILE = ElectrostaticForceMethodTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.leszczynski.ElectrostaticForceMethodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElectrostaticForceMethod.app/ElectrostaticForceMethod";
+			};
+			name = Release;
+		};
+		7637F4172316D4EE00D8B5F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UVJCW2277W;
+				INFOPLIST_FILE = ElectrostaticForceMethodUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.leszczynski.ElectrostaticForceMethodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ElectrostaticForceMethod;
+			};
+			name = Debug;
+		};
+		7637F4182316D4EE00D8B5F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UVJCW2277W;
+				INFOPLIST_FILE = ElectrostaticForceMethodUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.leszczynski.ElectrostaticForceMethodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ElectrostaticForceMethod;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7637F3DD2316D4E800D8B5F1 /* Build configuration list for PBXProject "ElectrostaticForceMethod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7637F40E2316D4EE00D8B5F1 /* Debug */,
+				7637F40F2316D4EE00D8B5F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7637F4102316D4EE00D8B5F1 /* Build configuration list for PBXNativeTarget "ElectrostaticForceMethod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7637F4112316D4EE00D8B5F1 /* Debug */,
+				7637F4122316D4EE00D8B5F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7637F4132316D4EE00D8B5F1 /* Build configuration list for PBXNativeTarget "ElectrostaticForceMethodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7637F4142316D4EE00D8B5F1 /* Debug */,
+				7637F4152316D4EE00D8B5F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7637F4162316D4EE00D8B5F1 /* Build configuration list for PBXNativeTarget "ElectrostaticForceMethodUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7637F4172316D4EE00D8B5F1 /* Debug */,
+				7637F4182316D4EE00D8B5F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7637F3DA2316D4E800D8B5F1 /* Project object */;
+}

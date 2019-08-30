@@ -17,6 +17,13 @@
 		7637F3F62316D4EE00D8B5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637F3F42316D4EE00D8B5F1 /* LaunchScreen.storyboard */; };
 		7637F4012316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F4002316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.swift */; };
 		7637F40C2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F40B2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.swift */; };
+		765A372F2319214C006A9C94 /* u3_fullData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A372C2319214C006A9C94 /* u3_fullData.csv */; };
+		765A37302319214C006A9C94 /* u1_fullData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A372D2319214C006A9C94 /* u1_fullData.csv */; };
+		765A37312319214C006A9C94 /* u2_fullData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A372E2319214C006A9C94 /* u2_fullData.csv */; };
+		765A373523192770006A9C94 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373423192770006A9C94 /* Feedback.swift */; };
+		765A373723192797006A9C94 /* FeedbacksHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373623192797006A9C94 /* FeedbacksHistory.swift */; };
+		765A373923193ED5006A9C94 /* u1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A373823193ED5006A9C94 /* u1.csv */; };
+		765A373C23195112006A9C94 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373B23195112006A9C94 /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,13 @@
 		7637F4072316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElectrostaticForceMethodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7637F40B2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrostaticForceMethodUITests.swift; sourceTree = "<group>"; };
 		7637F40D2316D4EE00D8B5F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		765A372C2319214C006A9C94 /* u3_fullData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u3_fullData.csv; sourceTree = "<group>"; };
+		765A372D2319214C006A9C94 /* u1_fullData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u1_fullData.csv; sourceTree = "<group>"; };
+		765A372E2319214C006A9C94 /* u2_fullData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u2_fullData.csv; sourceTree = "<group>"; };
+		765A373423192770006A9C94 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		765A373623192797006A9C94 /* FeedbacksHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbacksHistory.swift; sourceTree = "<group>"; };
+		765A373823193ED5006A9C94 /* u1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u1.csv; sourceTree = "<group>"; };
+		765A373B23195112006A9C94 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +117,9 @@
 		7637F3E42316D4E800D8B5F1 /* ElectrostaticForceMethod */ = {
 			isa = PBXGroup;
 			children = (
+				765A373A231950C4006A9C94 /* Common */,
+				765A373323192753006A9C94 /* Models */,
+				765A372B231920E7006A9C94 /* TestData */,
 				7637F3E52316D4E800D8B5F1 /* AppDelegate.swift */,
 				7637F3E72316D4E800D8B5F1 /* GameScene.sks */,
 				7637F3E92316D4E800D8B5F1 /* Actions.sks */,
@@ -132,6 +149,34 @@
 				7637F40D2316D4EE00D8B5F1 /* Info.plist */,
 			);
 			path = ElectrostaticForceMethodUITests;
+			sourceTree = "<group>";
+		};
+		765A372B231920E7006A9C94 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				765A373823193ED5006A9C94 /* u1.csv */,
+				765A372D2319214C006A9C94 /* u1_fullData.csv */,
+				765A372E2319214C006A9C94 /* u2_fullData.csv */,
+				765A372C2319214C006A9C94 /* u3_fullData.csv */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
+		765A373323192753006A9C94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				765A373423192770006A9C94 /* Feedback.swift */,
+				765A373623192797006A9C94 /* FeedbacksHistory.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		765A373A231950C4006A9C94 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				765A373B23195112006A9C94 /* Logger.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,8 +286,12 @@
 				7637F3F12316D4E800D8B5F1 /* Main.storyboard in Resources */,
 				7637F3E82316D4E800D8B5F1 /* GameScene.sks in Resources */,
 				7637F3F32316D4EE00D8B5F1 /* Assets.xcassets in Resources */,
+				765A373923193ED5006A9C94 /* u1.csv in Resources */,
 				7637F3F62316D4EE00D8B5F1 /* LaunchScreen.storyboard in Resources */,
+				765A37302319214C006A9C94 /* u1_fullData.csv in Resources */,
+				765A372F2319214C006A9C94 /* u3_fullData.csv in Resources */,
 				7637F3EA2316D4E800D8B5F1 /* Actions.sks in Resources */,
+				765A37312319214C006A9C94 /* u2_fullData.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +317,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7637F3EC2316D4E800D8B5F1 /* GameScene.swift in Sources */,
+				765A373C23195112006A9C94 /* Logger.swift in Sources */,
 				7637F3EE2316D4E800D8B5F1 /* GameViewController.swift in Sources */,
+				765A373523192770006A9C94 /* Feedback.swift in Sources */,
+				765A373723192797006A9C94 /* FeedbacksHistory.swift in Sources */,
 				7637F3E62316D4E800D8B5F1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

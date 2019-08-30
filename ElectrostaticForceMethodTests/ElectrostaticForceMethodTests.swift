@@ -19,9 +19,15 @@ class ElectrostaticForceMethodTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCsvReader() {
+        let feedbacksHistory  = FeedbacksHistory()
+        let res = feedbacksHistory.readHistoryRows(forUser: "u1")
+        XCTAssertEqual(res.count, 167, "number of rows in user 1 history")
+        
+        let feeds = feedbacksHistory.readFeedabcksHistory(for: "u1")
+        XCTAssertEqual(feeds.count, 166, "number of rows in user 1 history") //minus header row
+        XCTAssertEqual(feeds[0].price, 48900, "first feedback price")
+        XCTAssertEqual(feeds[0].category, "komputery", "first feedback category")
     }
 
     func testPerformanceExample() {

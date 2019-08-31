@@ -17,6 +17,7 @@
 		7637F3F62316D4EE00D8B5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637F3F42316D4EE00D8B5F1 /* LaunchScreen.storyboard */; };
 		7637F4012316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F4002316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.swift */; };
 		7637F40C2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F40B2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.swift */; };
+		7637F42C231AC27400D8B5F1 /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F42B231AC27400D8B5F1 /* GridViewModel.swift */; };
 		765A372F2319214C006A9C94 /* u3_fullData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A372C2319214C006A9C94 /* u3_fullData.csv */; };
 		765A37302319214C006A9C94 /* u1_fullData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A372D2319214C006A9C94 /* u1_fullData.csv */; };
 		765A37312319214C006A9C94 /* u2_fullData.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A372E2319214C006A9C94 /* u2_fullData.csv */; };
@@ -60,6 +61,7 @@
 		7637F4072316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElectrostaticForceMethodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7637F40B2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrostaticForceMethodUITests.swift; sourceTree = "<group>"; };
 		7637F40D2316D4EE00D8B5F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7637F42B231AC27400D8B5F1 /* GridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
 		765A372C2319214C006A9C94 /* u3_fullData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u3_fullData.csv; sourceTree = "<group>"; };
 		765A372D2319214C006A9C94 /* u1_fullData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u1_fullData.csv; sourceTree = "<group>"; };
 		765A372E2319214C006A9C94 /* u2_fullData.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u2_fullData.csv; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				7637F429231ABA8F00D8B5F1 /* GameScene */,
 				765A373323192753006A9C94 /* Models */,
 				765A372B231920E7006A9C94 /* TestData */,
+				7637F42A231AC24C00D8B5F1 /* ViewModels */,
 				7637F3E52316D4E800D8B5F1 /* AppDelegate.swift */,
 				7637F3EF2316D4E800D8B5F1 /* Main.storyboard */,
 				7637F3F22316D4EE00D8B5F1 /* Assets.xcassets */,
@@ -165,6 +168,14 @@
 				7637F3EB2316D4E800D8B5F1 /* GameScene.swift */,
 			);
 			path = GameScene;
+			sourceTree = "<group>";
+		};
+		7637F42A231AC24C00D8B5F1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7637F42B231AC27400D8B5F1 /* GridViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		765A372B231920E7006A9C94 /* TestData */ = {
@@ -334,6 +345,7 @@
 			files = (
 				7637F3EC2316D4E800D8B5F1 /* GameScene.swift in Sources */,
 				765A373C23195112006A9C94 /* Logger.swift in Sources */,
+				7637F42C231AC27400D8B5F1 /* GridViewModel.swift in Sources */,
 				7637F3EE2316D4E800D8B5F1 /* GameViewController.swift in Sources */,
 				765A373523192770006A9C94 /* Feedback.swift in Sources */,
 				765A373723192797006A9C94 /* FeedbacksHistory.swift in Sources */,

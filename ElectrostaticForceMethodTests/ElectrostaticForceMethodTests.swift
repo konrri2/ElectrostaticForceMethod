@@ -30,6 +30,11 @@ class ElectrostaticForceMethodTests: XCTestCase {
         XCTAssertEqual(feeds[0].category, "komputery", "first feedback category")
     }
 
+    func testGridViewModel() {
+        let gvm = GridViewModel()
+        XCTAssertEqual(gvm.pricesText[4], "16 PLN", "prices text on grid")
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

@@ -31,11 +31,13 @@ class ElectrostaticForceMethodTests: XCTestCase {
         
         let calendar = Calendar.current
         let year = calendar.component(.year, from: feeds[0].timestamp)
-        calendar.component(.month, from: feeds[0].timestamp)
-        calendar.component(.day, from: feeds[0].timestamp)
+        let month = calendar.component(.month, from: feeds[0].timestamp)
+        let day = calendar.component(.day, from: feeds[0].timestamp)
         
         XCTAssertEqual(year, 2011, "first feedback year")
-        
+        XCTAssertEqual(month, 2011, "first feedback month")
+        XCTAssertEqual(day, 2011, "first feedback day")
+        //TODO test also last element
     }
 
     func testGridViewModel() {

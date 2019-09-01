@@ -21,10 +21,16 @@ class GridViewModel {
     var pricesText = [String]()
     var pricesLabels = [SKLabelNode]()
     
+    let zeroPoint = CGPoint(x: 0, y: 0)
+    
     init() {
         for i in 0...12 {
             let text = "\(1 << i) PLN"  //1,2,4,8.....
             pricesText.append(text)
         }
+    }
+    
+    private func setupLabels() {
+        
     }
 }

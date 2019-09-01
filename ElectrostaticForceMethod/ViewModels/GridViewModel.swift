@@ -31,6 +31,8 @@ class GridViewModel {
     }
     
     private func setupLabels() {
-        
+        for t in pricesText {
+            
+        }
     }
 }

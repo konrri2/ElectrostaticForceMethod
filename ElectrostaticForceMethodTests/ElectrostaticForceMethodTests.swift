@@ -28,6 +28,14 @@ class ElectrostaticForceMethodTests: XCTestCase {
         XCTAssertEqual(feeds.count, 166, "number of rows in user 1 history") //minus header row
         XCTAssertEqual(feeds[0].price, 48900, "first feedback price")
         XCTAssertEqual(feeds[0].category, "komputery", "first feedback category")
+        
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: feeds[0].timestamp)
+        calendar.component(.month, from: feeds[0].timestamp)
+        calendar.component(.day, from: feeds[0].timestamp)
+        
+        XCTAssertEqual(year, 2011, "first feedback year")
+        
     }
 
     func testGridViewModel() {

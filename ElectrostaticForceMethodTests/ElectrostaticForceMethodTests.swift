@@ -35,7 +35,8 @@ class ElectrostaticForceMethodTests: XCTestCase {
         calendar.component(.day, from: feeds[0].timestamp)
         
         XCTAssertEqual(year, 2011, "first feedback year")
-        
+     
+        //TODO test also last element
     }
 
     func testGridViewModel() {

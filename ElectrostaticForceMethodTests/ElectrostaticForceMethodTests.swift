@@ -35,8 +35,8 @@ class ElectrostaticForceMethodTests: XCTestCase {
         let day = calendar.component(.day, from: feeds[0].timestamp)
         
         XCTAssertEqual(year, 2011, "first feedback year")
-        XCTAssertEqual(month, 2011, "first feedback month")
-        XCTAssertEqual(day, 2011, "first feedback day")
+        XCTAssertEqual(month, 3, "first feedback month")
+        XCTAssertEqual(day, 1, "first feedback day")
         //TODO test also last element
     }
 

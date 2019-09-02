@@ -14,6 +14,8 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
+    private var grid = GridViewModel()
+    
     override func didMove(to view: SKView) {
         
         // Get label node from scene and store it for use later
@@ -35,6 +37,12 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
+        
+        
+        for l in grid.pricesLabels {
+            self.addChild(l)
+        }
+        
     }
     
     

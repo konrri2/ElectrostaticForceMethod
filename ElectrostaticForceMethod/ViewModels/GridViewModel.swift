@@ -10,10 +10,6 @@ import Foundation
 import SpriteKit
 
 
-infix operator **
-func ** (_ base: Double, _ exp: Double) -> Double {
-    return pow(base, exp)
-}
 
 
 ///draw grid and cordinates
@@ -22,17 +18,27 @@ class GridViewModel {
     var pricesLabels = [SKLabelNode]()
     
     let zeroPoint = CGPoint(x: 0, y: 0)
+    let distanceBetweenPriceLabels = CGFloat(40.0)
     
     init() {
         for i in 0...12 {
             let text = "\(1 << i) PLN"  //1,2,4,8.....
             pricesText.append(text)
         }
+        
+        setupLabels()
     }
     
     private func setupLabels() {
+        var yPosition = zeroPoint.y
+        let xPosition = zeroPoint.x
         for t in pricesText {
+            let labelNode = SKLabelNode(text: t)
+            labelNode.position.x = xPosition
+            labelNode.position.y = yPosition
+            pricesLabels.append(labelNode)
             
+            yPosition += distanceBetweenPriceLabels
         }
     }
 }

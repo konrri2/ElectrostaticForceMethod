@@ -35,11 +35,17 @@ class GameScene: SKScene {
             self.addChild(l)
         }
         
+        
+        addChild(cameraNode)
+        self.camera = cameraNode
+        
         let pinchGesture = UIPinchGestureRecognizer()
         pinchGesture.addTarget(self, action: #selector(pinchGestureAction(_:)))
         view.addGestureRecognizer(pinchGesture)
-        
-        self.camera = cameraNode
+
+//        let swipeGesture = UISwipeGestureRecognizer()
+//        swipeGesture.addTarget(self, action: #selector(swipeGestureAction(_:)))
+//        view.addGestureRecognizer(swipeGesture)
     }
     
     
@@ -87,6 +93,17 @@ class GameScene: SKScene {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+        
+        
+        guard let touch = touches.first else {
+            return
+        }
+        
+        let location = touch.location(in: self)
+        let previousLocation = touch.previousLocation(in: self)
+        
+        camera?.position.x += previousLocation.x - location.x
+        camera?.position.y += previousLocation.y - location.y
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

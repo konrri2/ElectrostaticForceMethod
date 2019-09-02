@@ -10,19 +10,13 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    //
-    private var label : SKLabelNode?
+ 
     private var spinnyNode : SKShapeNode?
+    var previousCameraScale = CGFloat()
+    private var grid = GridViewModel()
+    let cameraNode = SKCameraNode()
     
     override func didMove(to view: SKView) {
-        
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-        
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
         self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
@@ -35,6 +29,36 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
+        
+        
+        for l in grid.pricesLabels {
+            self.addChild(l)
+        }
+        
+        
+        addChild(cameraNode)
+        self.camera = cameraNode
+        
+        let pinchGesture = UIPinchGestureRecognizer()
+        pinchGesture.addTarget(self, action: #selector(pinchGestureAction(_:)))
+        view.addGestureRecognizer(pinchGesture)
+
+//        let swipeGesture = UISwipeGestureRecognizer()
+//        swipeGesture.addTarget(self, action: #selector(swipeGestureAction(_:)))
+//        view.addGestureRecognizer(swipeGesture)
+    }
+    
+    
+    
+    
+    @objc func pinchGestureAction(_ sender: UIPinchGestureRecognizer) {
+        guard let camera = self.camera else {
+            return
+        }
+        if sender.state == .began {
+            previousCameraScale = camera.xScale
+        }
+        camera.setScale(previousCameraScale * 1 / sender.scale)
     }
     
     
@@ -63,15 +87,23 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
         
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+        
+        
+        guard let touch = touches.first else {
+            return
+        }
+        
+        let location = touch.location(in: self)
+        let previousLocation = touch.previousLocation(in: self)
+        
+        camera?.position.x += previousLocation.x - location.x
+        camera?.position.y += previousLocation.y - location.y
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

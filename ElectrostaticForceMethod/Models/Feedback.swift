@@ -21,6 +21,11 @@ struct Feedback: CustomStringConvertible {
         return Double(price) / 100.0
     }
     
+    ///Creates default feedback
+    init() {
+        
+    }
+    
     /**
      Please don't confuse with fullData csv format
      

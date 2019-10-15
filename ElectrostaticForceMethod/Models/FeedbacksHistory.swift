@@ -14,7 +14,8 @@ class FeedbacksHistory {
     
     var feedbacks: [Feedback]
     var userName: String
-    let feedbacksRelay: BehaviorRelay<[Feedback]> = BehaviorRelay(value: [])
+    let feedbackRelay: BehaviorRelay<Feedback> = BehaviorRelay(value: Feedback())
+
     
     init(for user: String) {
         userName = user
@@ -22,15 +23,20 @@ class FeedbacksHistory {
     }
     
 
-    public func downloadFeedbacks()  {
+    public func downloadFeedbacks1by1()  {
         logVerbose("downloading feedbacks //TODO: from interent")
-        self.feedbacks = readFeedabcksHistory()
-        
 
-        
-        
-
-
+        DispatchQueue.global(qos: .background).async {
+             
+             let rowsAsStrings = self.readHistoryRows()
+             for r in rowsAsStrings {
+                 if let t = Feedback(fromCsvRowString: r) {  //first row is a header, last is an empty line - so better check
+                    logVerbose("downloaded \(t)")
+                    sleep(1)  //!!! debug test
+                    self.feedbackRelay.accept(t)
+                 }
+             }
+         }
     }
 
     

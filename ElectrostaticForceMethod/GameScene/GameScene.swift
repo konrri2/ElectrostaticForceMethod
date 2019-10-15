@@ -25,35 +25,26 @@ class GameScene: SKScene {
         prepareCamera()
         setupGestures()
         
-        getFeetbacks()
+        getFeetbacksRx()
+    }
+    
+    func getFeetbacksRx() {
+        let feedHistory = FeedbacksHistory(for: "u2")
+        feedHistory.feedbackRelay
+            .subscribe { event in
+                log("event = \(event)")
+                if let f = event.element {
+                    self.drawFeedback(f)
+                }
+        }
+        
+        feedHistory.downloadFeedbacks1by1()
     }
     
     func getFeetbacks() {
         let feedHistory = FeedbacksHistory(for: "u2")
-////        feedHistory.downloadFeedbacks()
-////            .subscribe(
-////                onNext: {
-////                    feedback in
-////                    DispatchQueue.main.async {
-////                        print(feedback)
-////                    }
-////                })
-////            .disposed(by: disposeBag)
-//
-//        feedHistory.feedbacksRelay
-//        //.enumerated()
-////        .map() { item in
-////           // print(item)
-////            logVerbose("maping \(item)")
-////            return item
-////        }
-//        .subscribe(onNext: {
-//            print($0)
-//            self.drawFeedback($0)
-//        })
-//        .disposed(by: disposeBag)
-        
         let feeds = feedHistory.readFeedabcksHistory()
+        
         for f in feeds {
             drawFeedback(f)
         }

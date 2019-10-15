@@ -29,19 +29,19 @@ class GameScene: SKScene {
     }
     
     func getFeetbacksRx() {
-        let feedHistory = FeedbacksHistory(for: "u2")
+        let feedHistory = FeedbacksHistory(for: "u1")
         feedHistory.feedbackRelay
             .subscribe { event in
                 log("event = \(event)")
                 if let f = event.element {
                     self.drawFeedback(f)
                 }
-        }
+        }.disposed(by: disposeBag)
         
         feedHistory.downloadFeedbacks1by1()
     }
     
-    func getFeetbacks() {
+    func getFeetbacks_normalMEthods() {
         let feedHistory = FeedbacksHistory(for: "u2")
         let feeds = feedHistory.readFeedabcksHistory()
         

@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_ElectrostaticForceMethod_ElectrostaticForceMethodUITests : NSObject
+@end
+@implementation PodsDummy_Pods_ElectrostaticForceMethod_ElectrostaticForceMethodUITests
+@end

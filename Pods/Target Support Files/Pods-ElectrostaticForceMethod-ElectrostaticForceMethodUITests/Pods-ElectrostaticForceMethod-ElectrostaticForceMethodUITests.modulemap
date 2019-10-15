@@ -1,0 +1,6 @@
+framework module Pods_ElectrostaticForceMethod_ElectrostaticForceMethodUITests {
+  umbrella header "Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

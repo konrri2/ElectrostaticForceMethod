@@ -9,13 +9,22 @@
 import Foundation
 
 
-struct Feedback {
+struct Feedback: CustomStringConvertible {
    
     var isPositive = true
     var timestamp: Date = Date.init(timeIntervalSince1970: 0)
     ///price in polish grosze
     var price = 0
     var category = "unknown"
+    
+    var priceInPln: Double {
+        return Double(price) / 100.0
+    }
+    
+    ///Creates default feedback
+    init() {
+        
+    }
     
     /**
      Please don't confuse with fullData csv format
@@ -55,4 +64,7 @@ struct Feedback {
         self.category = columns[3]
     }
     
+    public var description: String {
+        return "feedback's price=\(price)  category=\(category)"
+    }
 }

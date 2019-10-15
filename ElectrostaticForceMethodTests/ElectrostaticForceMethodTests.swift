@@ -20,11 +20,11 @@ class ElectrostaticForceMethodTests: XCTestCase {
     }
 
     func testCsvReader() {
-        let feedbacksHistory  = FeedbacksHistory()
-        let res = feedbacksHistory.readHistoryRows(forUser: "u1")
+        let feedbacksHistory  = FeedbacksHistory(for: "u1")
+        let res = feedbacksHistory.readHistoryRows()
         XCTAssertEqual(res.count, 167, "number of rows in user 1 history")
         
-        let feeds = feedbacksHistory.readFeedabcksHistory(for: "u1")
+        let feeds = feedbacksHistory.readFeedabcksHistory()
         XCTAssertEqual(feeds.count, 166, "number of rows in user 1 history") //minus header row
         XCTAssertEqual(feeds[0].price, 48900, "first feedback price")
         XCTAssertEqual(feeds[0].category, "komputery", "first feedback category")

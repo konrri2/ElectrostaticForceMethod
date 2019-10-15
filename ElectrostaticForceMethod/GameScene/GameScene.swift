@@ -8,6 +8,8 @@
 
 import SpriteKit
 import GameplayKit
+import RxSwift
+import RxCocoa
 
 class GameScene: SKScene {
  
@@ -15,8 +17,53 @@ class GameScene: SKScene {
     var previousCameraScale = CGFloat()
     private var grid = GridViewModel()
     let cameraNode = SKCameraNode()
+    let disposeBag = DisposeBag()
     
     override func didMove(to view: SKView) {
+        demoTestDebug()
+        prepareGrid()
+        prepareCamera()
+        setupGestures()
+        
+        getFeetbacksRx()
+    }
+    
+    func getFeetbacksRx() {
+        let feedHistory = FeedbacksHistory(for: "u1")
+        feedHistory.feedbackRelay
+            .subscribe { event in
+                log("event = \(event)")
+                if let f = event.element {
+                    self.drawFeedback(f)
+                }
+        }.disposed(by: disposeBag)
+        
+        feedHistory.downloadFeedbacks1by1()
+    }
+    
+    func getFeetbacks_normalMEthods() {
+        let feedHistory = FeedbacksHistory(for: "u2")
+        let feeds = feedHistory.readFeedabcksHistory()
+        
+        for f in feeds {
+            drawFeedback(f)
+        }
+    }
+    
+    func drawFeedback(_ f: Feedback) {
+        let pricePosition = log2(f.priceInPln)
+
+        let position = CGPoint(x: 10, y: pricePosition*40.0)
+        let circle = SKShapeNode(circleOfRadius: 10)
+        circle.position = position
+        circle.fillColor = .green
+        circle.strokeColor = .red
+        
+        logVerbose("adding node at \(position)")
+        self.addChild(circle)
+    }
+    
+    fileprivate func demoTestDebug() {
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
         self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
@@ -29,28 +76,29 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
-        
-        
+    }
+    
+    fileprivate func prepareGrid() {
         for l in grid.pricesLabels {
             self.addChild(l)
         }
-        
-        
-        addChild(cameraNode)
-        self.camera = cameraNode
-        
-        let pinchGesture = UIPinchGestureRecognizer()
-        pinchGesture.addTarget(self, action: #selector(pinchGestureAction(_:)))
-        view.addGestureRecognizer(pinchGesture)
-
-//        let swipeGesture = UISwipeGestureRecognizer()
-//        swipeGesture.addTarget(self, action: #selector(swipeGestureAction(_:)))
-//        view.addGestureRecognizer(swipeGesture)
     }
     
+    fileprivate func prepareCamera() {
+        addChild(cameraNode)
+        self.camera = cameraNode
+    }
     
+    fileprivate func setupGestures() {
+        let pinchGesture = UIPinchGestureRecognizer()
+        pinchGesture.addTarget(self, action: #selector(pinchGestureAction(_:)))
+        view?.addGestureRecognizer(pinchGesture)
+    }
+}
     
-    
+
+//MARK: - touches and gesture handling
+extension GameScene {
     @objc func pinchGestureAction(_ sender: UIPinchGestureRecognizer) {
         guard let camera = self.camera else {
             return

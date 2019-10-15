@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,7 @@
 		765A373723192797006A9C94 /* FeedbacksHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373623192797006A9C94 /* FeedbacksHistory.swift */; };
 		765A373923193ED5006A9C94 /* u1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A373823193ED5006A9C94 /* u1.csv */; };
 		765A373C23195112006A9C94 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373B23195112006A9C94 /* Logger.swift */; };
+		76EB33D52356239E0008CAF2 /* u2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76EB33D42356239E0008CAF2 /* u2.csv */; };
 		BF189B199C7BE1BD4272D4B3 /* Pods_ElectrostaticForceMethodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5533A854744807A44925FFE /* Pods_ElectrostaticForceMethodTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		765A373623192797006A9C94 /* FeedbacksHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbacksHistory.swift; sourceTree = "<group>"; };
 		765A373823193ED5006A9C94 /* u1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u1.csv; sourceTree = "<group>"; };
 		765A373B23195112006A9C94 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		76EB33D42356239E0008CAF2 /* u2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u2.csv; sourceTree = "<group>"; };
 		8BD5068E3D13DE7972A0C21E /* Pods-ElectrostaticForceMethodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethodTests.debug.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethodTests/Pods-ElectrostaticForceMethodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9B6B4C55D1E5D4E57321FF68 /* Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5533A854744807A44925FFE /* Pods_ElectrostaticForceMethodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ElectrostaticForceMethodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,7 +123,6 @@
 				8BD5068E3D13DE7972A0C21E /* Pods-ElectrostaticForceMethodTests.debug.xcconfig */,
 				EDF08809B9E4804D0AC0F87D /* Pods-ElectrostaticForceMethodTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -212,6 +213,7 @@
 		765A372B231920E7006A9C94 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				76EB33D42356239E0008CAF2 /* u2.csv */,
 				765A373823193ED5006A9C94 /* u1.csv */,
 				765A372D2319214C006A9C94 /* u1_fullData.csv */,
 				765A372E2319214C006A9C94 /* u2_fullData.csv */,
@@ -361,6 +363,7 @@
 				7637F3F32316D4EE00D8B5F1 /* Assets.xcassets in Resources */,
 				765A373923193ED5006A9C94 /* u1.csv in Resources */,
 				7637F3F62316D4EE00D8B5F1 /* LaunchScreen.storyboard in Resources */,
+				76EB33D52356239E0008CAF2 /* u2.csv in Resources */,
 				765A37302319214C006A9C94 /* u1_fullData.csv in Resources */,
 				765A372F2319214C006A9C94 /* u3_fullData.csv in Resources */,
 				7637F3EA2316D4E800D8B5F1 /* Actions.sks in Resources */,

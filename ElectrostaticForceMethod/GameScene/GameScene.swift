@@ -53,14 +53,21 @@ class GameScene: SKScene {
     func drawFeedback(_ f: Feedback) {
         let pricePosition = log2(f.priceInPln)
 
-        let position = CGPoint(x: 10, y: pricePosition*40.0)
-        let circle = SKShapeNode(circleOfRadius: 10)
-        circle.position = position
-        circle.fillColor = .green
-        circle.strokeColor = .red
+        let position = CGPoint(x: 10, y: pricePosition * priceAxisScale) 
+//        let circle = SKShapeNode(circleOfRadius: 10)
+//        circle.position = position
+//        circle.fillColor = .green
+//        circle.strokeColor = .red
+//
+//        logVerbose("adding node at \(position)")
+//        self.addChild(circle)
         
-        logVerbose("adding node at \(position)")
-        self.addChild(circle)
+        
+        let emitterNode = SKEmitterNode(fileNamed: "Particle.sks")
+        if let emitter = emitterNode {
+            emitter.position = position
+            self.addChild(emitter)
+        }
     }
     
     fileprivate func demoTestDebug() {

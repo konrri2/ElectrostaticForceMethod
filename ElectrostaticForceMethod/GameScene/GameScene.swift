@@ -13,78 +13,46 @@ import RxCocoa
 
 class GameScene: SKScene {
  
-    private var spinnyNode : SKShapeNode?
     var previousCameraScale = CGFloat()
     private var grid = GridViewModel()
     let cameraNode = SKCameraNode()
     let disposeBag = DisposeBag()
     
     override func didMove(to view: SKView) {
-        demoTestDebug()
         prepareGrid()
         prepareCamera()
         setupGestures()
         
         getFeetbacksRx()
+        
+        centerCamera(on: CGPoint(x: 100, y: 100))
     }
     
     func getFeetbacksRx() {
-        let feedHistory = FeedbacksHistory(for: "u1")
+        let feedHistory = FeedbacksHistory(for: "u2")
         feedHistory.feedbackRelay
             .subscribe { event in
                 log("event = \(event)")
                 if let f = event.element {
-                    self.drawFeedback(f)
+                    let fVM = FeedbackViewModel(f)
+                    fVM.draw(on: self)
                 }
         }.disposed(by: disposeBag)
         
         feedHistory.downloadFeedbacks1by1()
     }
     
-    func getFeetbacks_normalMEthods() {
-        let feedHistory = FeedbacksHistory(for: "u2")
-        let feeds = feedHistory.readFeedabcksHistory()
-        
-        for f in feeds {
-            drawFeedback(f)
-        }
+    func centerCamera(on point: CGPoint) {
+        let moveAction = SKAction.move(to: point, duration: 2.0)
+        cameraNode.run(moveAction)
     }
     
-    func drawFeedback(_ f: Feedback) {
-        let pricePosition = log2(f.priceInPln)
+    func centerOnNode(node: SKNode) {
+        let cameraPositionInScene: CGPoint = node.scene!.convert(node.position, from: self)
+        node.parent!.run(SKAction.move(to: CGPoint(x:node.parent!.position.x - cameraPositionInScene.x, y:node.parent!.position.y - cameraPositionInScene.y), duration: 2.0))
+        
+    }
 
-        let position = CGPoint(x: 10, y: pricePosition * priceAxisScale) 
-//        let circle = SKShapeNode(circleOfRadius: 10)
-//        circle.position = position
-//        circle.fillColor = .green
-//        circle.strokeColor = .red
-//
-//        logVerbose("adding node at \(position)")
-//        self.addChild(circle)
-        
-        
-        let emitterNode = SKEmitterNode(fileNamed: "Particle.sks")
-        if let emitter = emitterNode {
-            emitter.position = position
-            self.addChild(emitter)
-        }
-    }
-    
-    fileprivate func demoTestDebug() {
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-        
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
-    }
-    
     fileprivate func prepareGrid() {
         for l in grid.pricesLabels {
             self.addChild(l)
@@ -101,6 +69,10 @@ class GameScene: SKScene {
         pinchGesture.addTarget(self, action: #selector(pinchGestureAction(_:)))
         view?.addGestureRecognizer(pinchGesture)
     }
+    
+    override func update(_ currentTime: TimeInterval) {
+        // Called before each frame is rendered
+    }
 }
     
 
@@ -116,40 +88,7 @@ extension GameScene {
         camera.setScale(previousCameraScale * 1 / sender.scale)
     }
     
-    
-    func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-        
-        
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { 
         guard let touch = touches.first else {
             return
         }
@@ -160,17 +99,5 @@ extension GameScene {
         camera?.position.x += previousLocation.x - location.x
         camera?.position.y += previousLocation.y - location.y
     }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-    }
+
 }

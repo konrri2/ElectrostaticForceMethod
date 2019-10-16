@@ -12,4 +12,12 @@ import SpriteKit
 
 
 ///number of points to multiply on price axis
-let priceAxisScale = 200.0
+let priceAxisScale = 50.0
+
+///z positions
+struct Layers {
+    static let background = CGFloat(0)
+    
+    static let positiveFeedbacks = CGFloat(10)
+    static let negativeFeedbacks = CGFloat(20) //show negative above
+}

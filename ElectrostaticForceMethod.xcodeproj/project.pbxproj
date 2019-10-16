@@ -33,6 +33,7 @@
 		76EB341023572C5A0008CAF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76EB340E23572C5A0008CAF2 /* Assets.xcassets */; };
 		76EB3412235731EC0008CAF2 /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB3411235731EC0008CAF2 /* FeedbackViewModel.swift */; };
 		76EB3414235731F80008CAF2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB3413235731F80008CAF2 /* Constants.swift */; };
+		76EB3416235791480008CAF2 /* test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76EB3415235791480008CAF2 /* test.csv */; };
 		BF189B199C7BE1BD4272D4B3 /* Pods_ElectrostaticForceMethodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5533A854744807A44925FFE /* Pods_ElectrostaticForceMethodTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		76EB340E23572C5A0008CAF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76EB3411235731EC0008CAF2 /* FeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
 		76EB3413235731F80008CAF2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		76EB3415235791480008CAF2 /* test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.csv; sourceTree = "<group>"; };
 		8BD5068E3D13DE7972A0C21E /* Pods-ElectrostaticForceMethodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethodTests.debug.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethodTests/Pods-ElectrostaticForceMethodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9B6B4C55D1E5D4E57321FF68 /* Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5533A854744807A44925FFE /* Pods_ElectrostaticForceMethodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ElectrostaticForceMethodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				76EB33D42356239E0008CAF2 /* u2.csv */,
+				76EB3415235791480008CAF2 /* test.csv */,
 				765A373823193ED5006A9C94 /* u1.csv */,
 				765A372D2319214C006A9C94 /* u1_fullData.csv */,
 				765A372E2319214C006A9C94 /* u2_fullData.csv */,
@@ -401,6 +404,7 @@
 				765A37302319214C006A9C94 /* u1_fullData.csv in Resources */,
 				765A372F2319214C006A9C94 /* u3_fullData.csv in Resources */,
 				7637F3EA2316D4E800D8B5F1 /* Actions.sks in Resources */,
+				76EB3416235791480008CAF2 /* test.csv in Resources */,
 				765A37312319214C006A9C94 /* u2_fullData.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

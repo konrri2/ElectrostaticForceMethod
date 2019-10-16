@@ -23,12 +23,17 @@ struct FeedbackViewModel {
             
             let emitterNode = SKEmitterNode(fileNamed: "Particle.sks")
             if let emitter = emitterNode {
+                //setPositiveColor(emitter)
+                
                 if f.isPositive {
                     setPositiveColor(emitter)
-                    emitter.zPosition = Layers.positiveFeedbacks
+                    logVerbose("is positive for \(f)")
+                    //emitter.zPosition = Layers.positiveFeedbacks
                 }
                 else {
-                    emitter.zPosition = Layers.negativeFeedbacks
+                    setNegativeColor(emitter)
+                    logVerbose("neg \(f)")
+                   // emitter.zPosition = Layers.negativeFeedbacks
                 }
                 emitter.position = position
                 bgNode.addChild(emitter)
@@ -38,11 +43,27 @@ struct FeedbackViewModel {
         }
     }
     
-    private func setPositiveColor(_ emitter: SKEmitterNode) {
-        let colors = [SKColor.red, SKColor.green, SKColor.blue]
+    private func setPositiveColor_sequence(_ emitter: SKEmitterNode) {
+        let colorSequence = SKKeyframeSequence(keyframeValues: [SKColor.green,
+                                                                SKColor.purple,
+                                                                //SKColor.red,
+                                                                SKColor.blue],
+                                               times: [0, 0.5, 1])
+        colorSequence.interpolationMode = .linear
+        stride(from: 0, to: 1, by: 0.001).forEach {
+            let color = colorSequence.sample(atTime: CGFloat($0)) as! SKColor
+        }
         
-        emitter.particleColorSequence = nil;
-        emitter.particleColorBlendFactor = 1.0;
+        emitter.particleColorSequence = colorSequence
+    }
+    
+    private func setPositiveColor(_ emitter: SKEmitterNode) {
+        emitter.particleColorSequence = nil
         emitter.particleColor = .green
+    }
+        
+    private func setNegativeColor(_ emitter: SKEmitterNode) {
+        emitter.particleColorSequence = nil
+        emitter.particleColor = .red
     }
 }

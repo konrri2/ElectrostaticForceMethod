@@ -18,7 +18,7 @@ class GridViewModel {
     var pricesLabels = [SKLabelNode]()
     
     let zeroPoint = CGPoint(x: 0, y: 0)
-    let distanceBetweenPriceLabels = CGFloat(40.0)
+    let distanceBetweenPriceLabels = CGFloat(priceAxisScale)
     
     init() {
         for i in 0...12 {

@@ -45,6 +45,25 @@ class ElectrostaticForceMethodTests: XCTestCase {
         XCTAssertEqual(gvm.pricesText[4], "16 PLN", "prices text on grid")
     }
     
+    func testParser() {
+        let feedbacksHistory  = FeedbacksHistory(for: "test")
+        let feeds = feedbacksHistory.readFeedabcksHistory()
+        
+        assertFeed(feeds[0], false, 1)
+        assertFeed(feeds[1], true, 2)
+        assertFeed(feeds[2], false, 5)
+        assertFeed(feeds[3], true, 10)
+        assertFeed(feeds[4], false, 20)
+        assertFeed(feeds[5], true, 50)
+        assertFeed(feeds[6], false, 100)
+        assertFeed(feeds[7], true, 200)
+    }
+    
+    private func assertFeed(_ feed: Feedback, _ isPositive: Bool, _ pricePln: Double) {
+        XCTAssertEqual(feed.isPositive, isPositive, "Wrong rating for \(feed)")
+        XCTAssertEqual(feed.priceInPln, pricePln, "Wrong price for \(feed)")
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

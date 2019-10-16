@@ -39,7 +39,7 @@ struct Feedback: CustomStringConvertible {
         guard columns.count == 4 else {
             return nil
         }
-        if columns[0].starts(with: "Pos") {
+        if columns[0].starts(with: "Po") {   // "Pos" string didn't work because in polish we write Pozytyw with "z"
             self.isPositive = true
         }
         else {

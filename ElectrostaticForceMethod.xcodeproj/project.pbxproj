@@ -27,6 +27,7 @@
 		765A373723192797006A9C94 /* FeedbacksHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373623192797006A9C94 /* FeedbacksHistory.swift */; };
 		765A373923193ED5006A9C94 /* u1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A373823193ED5006A9C94 /* u1.csv */; };
 		765A373C23195112006A9C94 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373B23195112006A9C94 /* Logger.swift */; };
+		76CD8B5823579935002D6FBD /* test2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76CD8B5723579935002D6FBD /* test2.csv */; };
 		76EB33D52356239E0008CAF2 /* u2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76EB33D42356239E0008CAF2 /* u2.csv */; };
 		76EB33D7235639930008CAF2 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76EB33D6235639930008CAF2 /* TODO.txt */; };
 		76EB340F23572C5A0008CAF2 /* Particle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76EB340D23572C5A0008CAF2 /* Particle.sks */; };
@@ -82,6 +83,7 @@
 		765A373623192797006A9C94 /* FeedbacksHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbacksHistory.swift; sourceTree = "<group>"; };
 		765A373823193ED5006A9C94 /* u1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u1.csv; sourceTree = "<group>"; };
 		765A373B23195112006A9C94 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		76CD8B5723579935002D6FBD /* test2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test2.csv; sourceTree = "<group>"; };
 		76EB33D42356239E0008CAF2 /* u2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u2.csv; sourceTree = "<group>"; };
 		76EB33D6235639930008CAF2 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		76EB340D23572C5A0008CAF2 /* Particle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Particle.sks; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				76EB33D42356239E0008CAF2 /* u2.csv */,
 				76EB3415235791480008CAF2 /* test.csv */,
+				76CD8B5723579935002D6FBD /* test2.csv */,
 				765A373823193ED5006A9C94 /* u1.csv */,
 				765A372D2319214C006A9C94 /* u1_fullData.csv */,
 				765A372E2319214C006A9C94 /* u2_fullData.csv */,
@@ -397,6 +400,7 @@
 				7637F3F32316D4EE00D8B5F1 /* Assets.xcassets in Resources */,
 				765A373923193ED5006A9C94 /* u1.csv in Resources */,
 				7637F3F62316D4EE00D8B5F1 /* LaunchScreen.storyboard in Resources */,
+				76CD8B5823579935002D6FBD /* test2.csv in Resources */,
 				76EB33D7235639930008CAF2 /* TODO.txt in Resources */,
 				76EB341023572C5A0008CAF2 /* Assets.xcassets in Resources */,
 				76EB33D52356239E0008CAF2 /* u2.csv in Resources */,

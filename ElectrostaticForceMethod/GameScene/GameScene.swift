@@ -29,7 +29,7 @@ class GameScene: SKScene {
     }
     
     func getFeetbacksRx() {
-        let feedHistory = FeedbacksHistory(for: "u2")
+        let feedHistory = FeedbacksHistory(for: "u1")
         feedHistory.feedbackRelay
             .subscribe { event in
                 log("event = \(event)")

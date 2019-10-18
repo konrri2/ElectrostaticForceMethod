@@ -14,38 +14,51 @@ import RxCocoa
 class GameScene: SKScene {
  
     var previousCameraScale = CGFloat()
-    private var grid = GridViewModel()
-    let cameraNode = SKCameraNode()
+    private var gridVM = GridViewModel()
+
     let disposeBag = DisposeBag()
     
+    ///Nodes
+    let cameraNode = SKCameraNode()
+    let backgroundNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 1000, height: 1000))
+    let pricesXAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 1000, height: 60))
+    
     override func didMove(to view: SKView) {
+        prepareBackground()
         prepareGrid()
-        prepareCamera()
+        //prepareCamera()
         setupGestures()
         
         getFeetbacksRx()
         
-        centerCamera(on: CGPoint(x: 100, y: 100))
+        //centerCamera(on: CGPoint(x: 100, y: 100))
+    }
+    
+    func prepareBackground() {
+        backgroundNode.fillColor = .gray
+        self.addChild(backgroundNode)
+    }
+    
+    fileprivate func prepareGrid() {
+        pricesXAxisNode.fillColor = .darkGray
+        self.addChild(pricesXAxisNode)
+        gridVM.drawPriceLabels(on: pricesXAxisNode)
     }
     
     func getFeetbacksRx() {
         let feedHistory = FeedbacksHistory(for: "u1")
         feedHistory.feedbackRelay
             .subscribe { event in
-                log("event = \(event)")
                 if let f = event.element {
                     let fVM = FeedbackViewModel(f)
-                    fVM.draw(on: self)
+                    fVM.draw(on: self.backgroundNode)
                 }
         }.disposed(by: disposeBag)
         
         feedHistory.downloadFeedbacks1by1()
     }
     
-    func centerCamera(on point: CGPoint) {
-        let moveAction = SKAction.move(to: point, duration: 2.0)
-        cameraNode.run(moveAction)
-    }
+   
     
     func centerOnNode(node: SKNode) {
         let cameraPositionInScene: CGPoint = node.scene!.convert(node.position, from: self)
@@ -53,15 +66,16 @@ class GameScene: SKScene {
         
     }
 
-    fileprivate func prepareGrid() {
-        for l in grid.pricesLabels {
-            self.addChild(l)
-        }
-    }
+
     
     fileprivate func prepareCamera() {
-        addChild(cameraNode)
+        backgroundNode.addChild(cameraNode)
         self.camera = cameraNode
+    }
+    
+    func centerCamera(on point: CGPoint) {
+           let moveAction = SKAction.move(to: point, duration: 2.0)
+           cameraNode.run(moveAction)
     }
     
     fileprivate func setupGestures() {
@@ -87,17 +101,23 @@ extension GameScene {
         }
         camera.setScale(previousCameraScale * 1 / sender.scale)
     }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { 
-        guard let touch = touches.first else {
-            return
-        }
+   
+    private func panForTranslation(_ translation: CGPoint) {
+        let position = backgroundNode.position
+        let newX = position.x + translation.x
+        let newY = position.y + translation.y
+        let aNewPosition = CGPoint(x: newX, y: newY)
+        backgroundNode.position = aNewPosition //self.boundLayerPos(aNewPosition)
         
-        let location = touch.location(in: self)
-        let previousLocation = touch.previousLocation(in: self)
-        
-        camera?.position.x += previousLocation.x - location.x
-        camera?.position.y += previousLocation.y - location.y
+        self.pricesXAxisNode.position =  CGPoint(x: newX, y: 0)
     }
 
+   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+       guard let touch = touches.first else { return }
+       let positionInScene = touch.location(in: self)
+       let previousPosition = touch.previousLocation(in: self)
+       let translation = CGPoint(x: positionInScene.x - previousPosition.x, y: positionInScene.y - previousPosition.y)
+       
+       panForTranslation(translation)
+   }
 }

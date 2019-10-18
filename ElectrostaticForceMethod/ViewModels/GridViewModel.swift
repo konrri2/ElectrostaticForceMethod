@@ -22,23 +22,23 @@ class GridViewModel {
     
     init() {
         for i in 0...12 {
-            let text = "\(1 << i) PLN"  //1,2,4,8.....
+            let text = "\(1 << i) \nPLN"  //1,2,4,8.....
             pricesText.append(text)
         }
-        
-        setupLabels()
     }
     
-    private func setupLabels() {
-        var yPosition = zeroPoint.y
-        let xPosition = zeroPoint.x
+    ///horizontal x axis
+    public func drawPriceLabels(on bgNode: SKNode) {
+        let yPosition = zeroPoint.y
+        var xPosition = zeroPoint.x
         for t in pricesText {
             let labelNode = SKLabelNode(text: t)
             labelNode.position.x = xPosition
             labelNode.position.y = yPosition
-            pricesLabels.append(labelNode)
-            
-            yPosition += distanceBetweenPriceLabels
+            labelNode.numberOfLines = 2
+            labelNode.fontSize = 20
+            bgNode.addChild(labelNode)
+            xPosition += distanceBetweenPriceLabels
         }
     }
 }

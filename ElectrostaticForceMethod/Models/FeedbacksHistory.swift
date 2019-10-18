@@ -31,8 +31,6 @@ class FeedbacksHistory {
              let rowsAsStrings = self.readHistoryRows()
              for r in rowsAsStrings {
                  if let t = Feedback(fromCsvRowString: r) {  //first row is a header, last is an empty line - so better check
-                    logVerbose("downloaded \(t)")
-                    //sleep(1)  //!!! debug test
                     self.feedbackRelay.accept(t)
                  }
              }

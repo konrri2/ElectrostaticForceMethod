@@ -46,7 +46,7 @@ class GameScene: SKScene {
     }
     
     func getFeetbacksRx() {
-        let feedHistory = FeedbacksHistory(for: "u1")
+        let feedHistory = FeedbacksHistory(for: "test2")
         feedHistory.feedbackRelay
             .subscribe { event in
                 if let f = event.element {
@@ -93,13 +93,29 @@ class GameScene: SKScene {
 //MARK: - touches and gesture handling
 extension GameScene {
     @objc func pinchGestureAction(_ sender: UIPinchGestureRecognizer) {
-        guard let camera = self.camera else {
-            return
-        }
-        if sender.state == .began {
-            previousCameraScale = camera.xScale
-        }
-        camera.setScale(previousCameraScale * 1 / sender.scale)
+//        guard let camera = self.camera else {
+//            return
+//        }
+//        if sender.state == .began {
+//            previousCameraScale = camera.xScale
+//        }
+//        camera.setScale(previousCameraScale * 1 / sender.scale)
+//
+//
+//        log("sender.scale=\(sender.scale)")
+//        
+//        let pinch = SKAction.scale(by: sender.scale, duration: 0.0)
+//        backgroundNode.run(pinch)
+        
+        backgroundNode.xScale = backgroundNode.xScale * sender.scale
+        backgroundNode.yScale = backgroundNode.yScale * sender.scale
+        
+        pricesXAxisNode.xScale = pricesXAxisNode.xScale * sender.scale
+        
+//        let pinchX = SKAction.scaleX(to: sender.scale, duration: 0.0)
+//        pricesXAxisNode.run(pinchX)
+        
+        sender.scale = 1.0
     }
    
     private func panForTranslation(_ translation: CGPoint) {

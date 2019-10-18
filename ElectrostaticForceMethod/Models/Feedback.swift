@@ -15,7 +15,7 @@ struct Feedback: CustomStringConvertible {
     var timestamp: Date = Date.init(timeIntervalSince1970: 0)
     ///price in polish grosze
     var price = 0
-    var category = "unknown"
+    var category = Category("unknown")
     
     var priceInPln: Double {
         return Double(price) / 100.0
@@ -60,8 +60,8 @@ struct Feedback: CustomStringConvertible {
             log("cannot parse price for row '\(strRow)' ")
             return nil
         }
-        
-        self.category = columns[3]
+
+        self.category = Category(columns[3])
     }
     
     public var description: String {

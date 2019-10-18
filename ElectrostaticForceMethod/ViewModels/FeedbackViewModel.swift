@@ -27,8 +27,9 @@ struct FeedbackViewModel {
     public func draw(on bgNode: SKNode) {
         if let f = theFeedback {
             let pricePosition = log2(f.priceInPln)
-
-            let position = CGPoint(x: 60, y: pricePosition * priceAxisScale)
+            let catPos = Double(f.category.position)
+            
+            let position = CGPoint(x: pricePosition * priceAxisScale, y: catPos * priceAxisScale)
             
             let emitterNode = SKEmitterNode(fileNamed: "Particle.sks")
             if let emitter = emitterNode {

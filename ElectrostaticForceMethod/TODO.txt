@@ -1,12 +1,5 @@
-emiter to simulate electric charge
-
-landscape only
 
 miejsce startowe - wysrodkuj na tym co kupujesz a początek w lewym dolnym rogu
 
-FeedbackViewmModel, zeby umiał się rysować
-
-rozmiar siatki 40 - do stałych
-zahardcodowac liste kategorii 
 
 menu - (przyciski)

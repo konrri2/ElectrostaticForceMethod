@@ -28,6 +28,8 @@
 		765A373723192797006A9C94 /* FeedbacksHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373623192797006A9C94 /* FeedbacksHistory.swift */; };
 		765A373923193ED5006A9C94 /* u1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A373823193ED5006A9C94 /* u1.csv */; };
 		765A373C23195112006A9C94 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373B23195112006A9C94 /* Logger.swift */; };
+		7675D4E6235CAAEC005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 7675D4E5235CAAEB005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html */; };
+		7675D4E8235CC2BE005725B4 /* dataLayer.json in Resources */ = {isa = PBXBuildFile; fileRef = 7675D4E7235CC2BE005725B4 /* dataLayer.json */; };
 		76AD525F2359C68C00558B89 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AD525E2359C68C00558B89 /* Categories.swift */; };
 		76AD52612359E09900558B89 /* test3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76AD52602359E09900558B89 /* test3.csv */; };
 		76CD8B5823579935002D6FBD /* test2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76CD8B5723579935002D6FBD /* test2.csv */; };
@@ -39,6 +41,8 @@
 		76EB3414235731F80008CAF2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB3413235731F80008CAF2 /* Constants.swift */; };
 		76EB3416235791480008CAF2 /* test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76EB3415235791480008CAF2 /* test.csv */; };
 		76EF749C235C3760008FBA75 /* InteresitngSellers in Resources */ = {isa = PBXBuildFile; fileRef = 76EF749B235C3760008FBA75 /* InteresitngSellers */; };
+		76EF749F235C4A3F008FBA75 /* AllegroCrawler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF749E235C4A3F008FBA75 /* AllegroCrawler.swift */; };
+		76EF74A1235C517F008FBA75 /* TestCharge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF74A0235C517F008FBA75 /* TestCharge.swift */; };
 		BF189B199C7BE1BD4272D4B3 /* Pods_ElectrostaticForceMethodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5533A854744807A44925FFE /* Pods_ElectrostaticForceMethodTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +92,8 @@
 		765A373623192797006A9C94 /* FeedbacksHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbacksHistory.swift; sourceTree = "<group>"; };
 		765A373823193ED5006A9C94 /* u1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u1.csv; sourceTree = "<group>"; };
 		765A373B23195112006A9C94 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		7675D4E5235CAAEB005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html"; sourceTree = "<group>"; };
+		7675D4E7235CC2BE005725B4 /* dataLayer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dataLayer.json; sourceTree = "<group>"; };
 		76AD525E2359C68C00558B89 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		76AD52602359E09900558B89 /* test3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test3.csv; sourceTree = "<group>"; };
 		76CD8B5723579935002D6FBD /* test2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test2.csv; sourceTree = "<group>"; };
@@ -99,6 +105,8 @@
 		76EB3413235731F80008CAF2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		76EB3415235791480008CAF2 /* test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.csv; sourceTree = "<group>"; };
 		76EF749B235C3760008FBA75 /* InteresitngSellers */ = {isa = PBXFileReference; lastKnownFileType = text; path = InteresitngSellers; sourceTree = "<group>"; };
+		76EF749E235C4A3F008FBA75 /* AllegroCrawler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllegroCrawler.swift; sourceTree = "<group>"; };
+		76EF74A0235C517F008FBA75 /* TestCharge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCharge.swift; sourceTree = "<group>"; };
 		8BD5068E3D13DE7972A0C21E /* Pods-ElectrostaticForceMethodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethodTests.debug.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethodTests/Pods-ElectrostaticForceMethodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9B6B4C55D1E5D4E57321FF68 /* Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5533A854744807A44925FFE /* Pods_ElectrostaticForceMethodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ElectrostaticForceMethodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +189,7 @@
 				765A372B231920E7006A9C94 /* TestData */,
 				76EB33D8235652320008CAF2 /* View */,
 				7637F42A231AC24C00D8B5F1 /* ViewModels */,
+				76EF749D235C484B008FBA75 /* WebCrawler */,
 				7637F3E52316D4E800D8B5F1 /* AppDelegate.swift */,
 				7637F3F22316D4EE00D8B5F1 /* Assets.xcassets */,
 				7637F3F72316D4EE00D8B5F1 /* Info.plist */,
@@ -237,6 +246,7 @@
 		765A372B231920E7006A9C94 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				7675D4E5235CAAEB005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html */,
 				76EB33D42356239E0008CAF2 /* u2.csv */,
 				76EB3415235791480008CAF2 /* test.csv */,
 				76CD8B5723579935002D6FBD /* test2.csv */,
@@ -247,6 +257,7 @@
 				765A372E2319214C006A9C94 /* u2_fullData.csv */,
 				765A372C2319214C006A9C94 /* u3_fullData.csv */,
 				76EF749B235C3760008FBA75 /* InteresitngSellers */,
+				7675D4E7235CC2BE005725B4 /* dataLayer.json */,
 			);
 			path = TestData;
 			sourceTree = "<group>";
@@ -257,6 +268,7 @@
 				765A373423192770006A9C94 /* Feedback.swift */,
 				765A373623192797006A9C94 /* FeedbacksHistory.swift */,
 				76AD525E2359C68C00558B89 /* Categories.swift */,
+				76EF74A0235C517F008FBA75 /* TestCharge.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,6 +298,14 @@
 				76EB340E23572C5A0008CAF2 /* Assets.xcassets */,
 			);
 			path = Effects;
+			sourceTree = "<group>";
+		};
+		76EF749D235C484B008FBA75 /* WebCrawler */ = {
+			isa = PBXGroup;
+			children = (
+				76EF749E235C4A3F008FBA75 /* AllegroCrawler.swift */,
+			);
+			path = WebCrawler;
 			sourceTree = "<group>";
 		};
 		7BC6F053A4FEC58C0752B72F /* Frameworks */ = {
@@ -328,6 +348,7 @@
 				7637F3F82316D4EE00D8B5F1 /* Sources */,
 				7637F3F92316D4EE00D8B5F1 /* Frameworks */,
 				7637F3FA2316D4EE00D8B5F1 /* Resources */,
+				9731380C805C0D34612CAB98 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -409,6 +430,7 @@
 			files = (
 				76EF749C235C3760008FBA75 /* InteresitngSellers in Resources */,
 				7637F3F12316D4E800D8B5F1 /* Main.storyboard in Resources */,
+				7675D4E6235CAAEC005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html in Resources */,
 				7637F3E82316D4E800D8B5F1 /* GameScene.sks in Resources */,
 				7637F3F32316D4EE00D8B5F1 /* Assets.xcassets in Resources */,
 				765A373923193ED5006A9C94 /* u1.csv in Resources */,
@@ -423,6 +445,7 @@
 				765A37302319214C006A9C94 /* u1_fullData.csv in Resources */,
 				765A372F2319214C006A9C94 /* u3_fullData.csv in Resources */,
 				7637F3EA2316D4E800D8B5F1 /* Actions.sks in Resources */,
+				7675D4E8235CC2BE005725B4 /* dataLayer.json in Resources */,
 				76EB3416235791480008CAF2 /* test.csv in Resources */,
 				765A37312319214C006A9C94 /* u2_fullData.csv in Resources */,
 			);
@@ -465,6 +488,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9731380C805C0D34612CAB98 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ElectrostaticForceMethodTests/Pods-ElectrostaticForceMethodTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ElectrostaticForceMethodTests/Pods-ElectrostaticForceMethodTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ElectrostaticForceMethodTests/Pods-ElectrostaticForceMethodTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BCA6B88C72BE40663F26B3AC /* [CP] Embed Pods Frameworks */ = {
@@ -553,9 +593,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7637F3EC2316D4E800D8B5F1 /* GameScene.swift in Sources */,
+				76EF749F235C4A3F008FBA75 /* AllegroCrawler.swift in Sources */,
 				765A373C23195112006A9C94 /* Logger.swift in Sources */,
 				7637F42C231AC27400D8B5F1 /* GridViewModel.swift in Sources */,
 				76EB3412235731EC0008CAF2 /* FeedbackViewModel.swift in Sources */,
+				76EF74A1235C517F008FBA75 /* TestCharge.swift in Sources */,
 				7637F3EE2316D4E800D8B5F1 /* GameViewController.swift in Sources */,
 				765A373523192770006A9C94 /* Feedback.swift in Sources */,
 				765A373723192797006A9C94 /* FeedbacksHistory.swift in Sources */,

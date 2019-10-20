@@ -7,12 +7,16 @@
 //
 
 import XCTest
+import RxSwift
+import RxBlocking
 @testable import ElectrostaticForceMethod
 
 class ElectrostaticForceMethodTests: XCTestCase {
 
+    var disposeBag: DisposeBag!
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+       disposeBag = DisposeBag()
     }
 
     override func tearDown() {
@@ -27,8 +31,8 @@ class ElectrostaticForceMethodTests: XCTestCase {
         let feeds = feedbacksHistory.readFeedabcksHistory()
         XCTAssertEqual(feeds.count, 166, "number of rows in user 1 history") //minus header row
         XCTAssertEqual(feeds[0].price, 48900, "first feedback price")
-        XCTAssertEqual(feeds[0].category, "komputery", "first feedback category")
-        
+        XCTAssertEqual(feeds[0].category.type, Category("komputery").type, "first feedback category")
+            
         let calendar = Calendar.current
         let year = calendar.component(.year, from: feeds[0].timestamp)
         let month = calendar.component(.month, from: feeds[0].timestamp)
@@ -42,7 +46,7 @@ class ElectrostaticForceMethodTests: XCTestCase {
 
     func testGridViewModel() {
         let gvm = GridViewModel()
-        XCTAssertEqual(gvm.pricesText[4], "16 PLN", "prices text on grid")
+        XCTAssertEqual(gvm.pricesText[4], "32 \nPLN", "prices text on grid")
     }
     
     func testParser() {
@@ -64,11 +68,27 @@ class ElectrostaticForceMethodTests: XCTestCase {
         XCTAssertEqual(feed.priceInPln, pricePln, "Wrong price for \(feed)")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testAllegroCrawler() {
+        let sut = AllegroCrawler(itemPage: "https://allegro.pl/oferta/kross-esker-2-0-wisniowy-srebrny-m-20-8445656508")
+        //this bike cost 2 789,00 zł
+        do {
+            let blockinObservable = sut.getItemPage()
+                .toBlocking()
+                //.first()
+            
+            let qt = try blockinObservable.first()
+            XCTAssertNotNil(qt?.price)
+            XCTAssertGreaterThan(qt!.price, 0.0, "error - negative price")
+        } catch {
+            logError("sut.getItemPage()")
         }
     }
+//    
+//    func testPerformanceExample() {
+//        // This is an example of a performance test case.
+//        self.measure {
+//            // Put the code you want to measure the time of here.
+//        }
+//    }
 
 }

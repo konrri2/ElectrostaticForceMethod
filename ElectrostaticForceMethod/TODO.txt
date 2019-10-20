@@ -1,3 +1,5 @@
+if ipad change scale
+
 
 miejsce startowe - wysrodkuj na tym co kupujesz a początek w lewym dolnym rogu
 

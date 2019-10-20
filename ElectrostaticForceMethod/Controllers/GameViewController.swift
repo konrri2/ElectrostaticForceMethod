@@ -12,28 +12,44 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
-    }
+    override func viewWillLayoutSubviews() {
+         super.viewWillLayoutSubviews()
+         if #available(iOS 11.0, *), let view = self.view {
+            view.frame = self.view.safeAreaLayoutGuide.layoutFrame
+         }
+         guard let view = self.view as! SKView? else { return }
+         view.ignoresSiblingOrder = true
+         view.showsFPS = true
+         view.showsNodeCount = true
+         view.showsPhysics = true
+         view.showsDrawCount = true
+         let scene = GameScene(size:view.bounds.size)
+         scene.scaleMode = .aspectFill
+         view.presentScene(scene)
+     }
+    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        if let view = self.view as! SKView? {
+//            // Load the SKScene from 'GameScene.sks'
+//            if let scene = SKScene(fileNamed: "GameScene") {
+//                // Set the scale mode to scale to fit the window
+//                scene.scaleMode = .aspectFill
+//
+//                // Present the scene
+//                view.presentScene(scene)
+//            }
+//
+//            view.ignoresSiblingOrder = true
+//
+//            view.showsFPS = true
+//            view.showsNodeCount = true
+//        }
+//    }
 
     override var shouldAutorotate: Bool {
-        return true
+        return false
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

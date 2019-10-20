@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A24E36060F15D3EF94D882A /* Pods_ElectrostaticForceMethod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5013A3408BFC09CAA8199B80 /* Pods_ElectrostaticForceMethod.framework */; };
 		42C568A7D78572D60EBD8FAD /* Pods_ElectrostaticForceMethod_ElectrostaticForceMethodUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9AC480FF73BC82ADA155544 /* Pods_ElectrostaticForceMethod_ElectrostaticForceMethodUITests.framework */; };
+		762677E2235A168A0079F2F3 /* u3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 762677E1235A16890079F2F3 /* u3.csv */; };
 		7637F3E62316D4E800D8B5F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F3E52316D4E800D8B5F1 /* AppDelegate.swift */; };
 		7637F3E82316D4E800D8B5F1 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7637F3E72316D4E800D8B5F1 /* GameScene.sks */; };
 		7637F3EA2316D4E800D8B5F1 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7637F3E92316D4E800D8B5F1 /* Actions.sks */; };
@@ -37,6 +38,7 @@
 		76EB3412235731EC0008CAF2 /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB3411235731EC0008CAF2 /* FeedbackViewModel.swift */; };
 		76EB3414235731F80008CAF2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB3413235731F80008CAF2 /* Constants.swift */; };
 		76EB3416235791480008CAF2 /* test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76EB3415235791480008CAF2 /* test.csv */; };
+		76EF749C235C3760008FBA75 /* InteresitngSellers in Resources */ = {isa = PBXBuildFile; fileRef = 76EF749B235C3760008FBA75 /* InteresitngSellers */; };
 		BF189B199C7BE1BD4272D4B3 /* Pods_ElectrostaticForceMethodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5533A854744807A44925FFE /* Pods_ElectrostaticForceMethodTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,7 @@
 		0F086042CDDC84498796494D /* Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.release.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.release.xcconfig"; sourceTree = "<group>"; };
 		43E78ECA9DCD0CB8BC7BDC13 /* Pods-ElectrostaticForceMethod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethod.release.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethod/Pods-ElectrostaticForceMethod.release.xcconfig"; sourceTree = "<group>"; };
 		5013A3408BFC09CAA8199B80 /* Pods_ElectrostaticForceMethod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ElectrostaticForceMethod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		762677E1235A16890079F2F3 /* u3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u3.csv; sourceTree = "<group>"; };
 		7637F3E22316D4E800D8B5F1 /* ElectrostaticForceMethod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElectrostaticForceMethod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7637F3E52316D4E800D8B5F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7637F3E72316D4E800D8B5F1 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 		76EB3411235731EC0008CAF2 /* FeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
 		76EB3413235731F80008CAF2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		76EB3415235791480008CAF2 /* test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.csv; sourceTree = "<group>"; };
+		76EF749B235C3760008FBA75 /* InteresitngSellers */ = {isa = PBXFileReference; lastKnownFileType = text; path = InteresitngSellers; sourceTree = "<group>"; };
 		8BD5068E3D13DE7972A0C21E /* Pods-ElectrostaticForceMethodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethodTests.debug.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethodTests/Pods-ElectrostaticForceMethodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9B6B4C55D1E5D4E57321FF68 /* Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5533A854744807A44925FFE /* Pods_ElectrostaticForceMethodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ElectrostaticForceMethodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,9 +242,11 @@
 				76CD8B5723579935002D6FBD /* test2.csv */,
 				76AD52602359E09900558B89 /* test3.csv */,
 				765A373823193ED5006A9C94 /* u1.csv */,
+				762677E1235A16890079F2F3 /* u3.csv */,
 				765A372D2319214C006A9C94 /* u1_fullData.csv */,
 				765A372E2319214C006A9C94 /* u2_fullData.csv */,
 				765A372C2319214C006A9C94 /* u3_fullData.csv */,
+				76EF749B235C3760008FBA75 /* InteresitngSellers */,
 			);
 			path = TestData;
 			sourceTree = "<group>";
@@ -401,6 +407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76EF749C235C3760008FBA75 /* InteresitngSellers in Resources */,
 				7637F3F12316D4E800D8B5F1 /* Main.storyboard in Resources */,
 				7637F3E82316D4E800D8B5F1 /* GameScene.sks in Resources */,
 				7637F3F32316D4EE00D8B5F1 /* Assets.xcassets in Resources */,
@@ -410,6 +417,7 @@
 				76AD52612359E09900558B89 /* test3.csv in Resources */,
 				76EB33D7235639930008CAF2 /* TODO.txt in Resources */,
 				76EB341023572C5A0008CAF2 /* Assets.xcassets in Resources */,
+				762677E2235A168A0079F2F3 /* u3.csv in Resources */,
 				76EB33D52356239E0008CAF2 /* u2.csv in Resources */,
 				76EB340F23572C5A0008CAF2 /* Particle.sks in Resources */,
 				765A37302319214C006A9C94 /* u1_fullData.csv in Resources */,

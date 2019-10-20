@@ -11,11 +11,10 @@ import SpriteKit
 struct FeedbackViewModel {
     var theFeedback: Feedback?
     
-    let positiveColorSequence = SKKeyframeSequence(keyframeValues: [SKColor.green,
-                     SKColor.yellow,
-                     SKColor.green,
-                     SKColor.blue],
-    times: [0, 0.25, 0.5, 1])
+    //emeral greenish rgb(46, 204, 113)
+    let positiveColorSequence = SKKeyframeSequence(
+        keyframeValues: [SKColor.green, SKColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1.0)],
+                                    times: [0, 1])
     let negativeColorSequence = SKKeyframeSequence(
                                     keyframeValues: [SKColor.yellow, SKColor.red, SKColor.orange],
                                     times: [0, 0.1, 1])

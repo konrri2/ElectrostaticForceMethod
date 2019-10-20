@@ -21,7 +21,7 @@ class GameScene: SKScene {
     static let yAxisWidth = 90
     
     ///Nodes
-    let backgroundNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize - yAxisWidth, height: rectSize - xAxisHeight))
+    let backgroundNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: rectSize))
     let pricesXAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: xAxisHeight))
     let categoriesYAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: yAxisWidth, height: rectSize))
 
@@ -57,7 +57,7 @@ class GameScene: SKScene {
     }
     
     func getFeetbacksRx() {
-        let feedHistory = FeedbacksHistory(for: "u1")
+        let feedHistory = FeedbacksHistory(for: "u3")
         feedHistory.feedbackRelay
             .subscribe { event in
                 if let f = event.element {

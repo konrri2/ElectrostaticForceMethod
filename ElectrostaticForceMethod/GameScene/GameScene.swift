@@ -14,21 +14,47 @@ import RxCocoa
 class GameScene: SKScene {
  
     private var gridVM = GridViewModel()
+    private var menuVM = MenuViewModel()
     let disposeBag = DisposeBag()
     
-    static let rectSize = 1500
-    static let xAxisHeight = 50
-    static let yAxisWidth = 90
+    ///Dimensions
+    let rectSize = 1500
+    let xAxisHeight = 50
+    let yAxisWidth = 90
+    let rightEdge: CGFloat
+    let upperEdge: CGFloat
     
     ///Nodes
-    let backgroundNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: rectSize))
-    let pricesXAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: xAxisHeight))
-    let categoriesYAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: yAxisWidth, height: rectSize))
-
+    let backgroundNode: SKShapeNode
+    let pricesXAxisNode: SKShapeNode
+    let categoriesYAxisNode: SKShapeNode
+   // let menuNode: SKShapeNode //???
+    let menuBacgroundNode: SKSpriteNode
+    
+    override init(size: CGSize) {
+        rightEdge = size.width
+        upperEdge = size.height
+        backgroundNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: rectSize))
+        pricesXAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: xAxisHeight))
+        categoriesYAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: yAxisWidth, height: rectSize))
+       // menuNode = SKShapeNode(rect: CGRect(x: rightEdge-50, y: 0, width: yAxisWidth, height: rectSize))
+        menuBacgroundNode = SKSpriteNode(color: .green, size: CGSize(width: yAxisWidth, height: 200))
+        menuBacgroundNode.position.x = rightEdge - 20  //TODO not hardcoded
+        menuBacgroundNode.position.y = upperEdge - 20
+        
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func didMove(to view: SKView) {
         prepareBackground()
         prepareGrid()
+        prepareMenu()
         setupGestures()
+
         
         getFeetbacksRx()
         animateMove()
@@ -36,22 +62,25 @@ class GameScene: SKScene {
     
     func animateMove() {
         //TODO start point - center on test charge
-        let startPoint = CGPoint(x: GameScene.yAxisWidth, y: GameScene.xAxisHeight)
+        let startPoint = CGPoint(x: yAxisWidth, y: xAxisHeight)
         self.animatePan(to: startPoint)
         //self.panForTranslation(CGPoint(x: GameScene.yAxisWidth, y: GameScene.xAxisHeight))
     }
     
     func prepareBackground() {
         backgroundNode.fillColor = .gray
+        backgroundNode.name = "backgroundNode"
         self.addChild(backgroundNode)
     }
     
     fileprivate func prepareGrid() {
         pricesXAxisNode.fillColor = .darkGray
+        pricesXAxisNode.name = "pricesXAxisNode"
         self.addChild(pricesXAxisNode)
         gridVM.drawPriceLabels(on: pricesXAxisNode)
         
         categoriesYAxisNode.fillColor = .darkGray
+        categoriesYAxisNode.name = "categoriesYAxisNode"
         self.addChild(categoriesYAxisNode)
         gridVM.drawCategoriesLabels(on: categoriesYAxisNode)
     }
@@ -94,26 +123,11 @@ class GameScene: SKScene {
 //MARK: - touches and gesture handling
 extension GameScene {
     @objc func pinchGestureAction(_ sender: UIPinchGestureRecognizer) {
-//        guard let camera = self.camera else {
-//            return
-//        }
-//        if sender.state == .began {
-//            previousCameraScale = camera.xScale
-//        }
-//        camera.setScale(previousCameraScale * 1 / sender.scale)
-
-        
-//        
-//        let pinch = SKAction.scale(by: sender.scale, duration: 0.0)
-//        backgroundNode.run(pinch)
-        
         backgroundNode.xScale = backgroundNode.xScale * sender.scale
         backgroundNode.yScale = backgroundNode.yScale * sender.scale
         
         pricesXAxisNode.xScale = pricesXAxisNode.xScale * sender.scale
-        
         categoriesYAxisNode.yScale = categoriesYAxisNode.yScale * sender.scale
-
         
         sender.scale = 1.0
     }
@@ -137,4 +151,32 @@ extension GameScene {
        
        panForTranslation(translation)
    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            let touchedNode = atPoint(location)
+            logVerbose("touchedNode.name = \(touchedNode.name ?? "[nil]")")
+            if touchedNode.name == MenuViewModel.OpenMenuButtonName {
+                openMenu()
+            }
+        }
+    }
+}
+
+//MARK: - Menus
+extension GameScene {
+    func prepareMenu() {
+        menuBacgroundNode.name = "menuNode"
+        menuBacgroundNode.zPosition = 10
+        
+        menuVM.drawMenu(on: menuBacgroundNode)
+        self.addChild(menuBacgroundNode)
+    }
+    
+    func openMenu() {
+        log("opennig menu")
+        let moveAction = SKAction.moveBy(x: -80, y: -80, duration: 2.0)
+        menuBacgroundNode.run(moveAction)
+    }
 }

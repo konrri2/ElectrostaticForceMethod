@@ -30,6 +30,7 @@
 		765A373C23195112006A9C94 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373B23195112006A9C94 /* Logger.swift */; };
 		7675D4E6235CAAEC005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 7675D4E5235CAAEB005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html */; };
 		7675D4E8235CC2BE005725B4 /* dataLayer.json in Resources */ = {isa = PBXBuildFile; fileRef = 7675D4E7235CC2BE005725B4 /* dataLayer.json */; };
+		76A5908623688529002987FB /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A5908523688529002987FB /* MenuViewModel.swift */; };
 		76AD525F2359C68C00558B89 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AD525E2359C68C00558B89 /* Categories.swift */; };
 		76AD52612359E09900558B89 /* test3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76AD52602359E09900558B89 /* test3.csv */; };
 		76CD8B5823579935002D6FBD /* test2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76CD8B5723579935002D6FBD /* test2.csv */; };
@@ -94,6 +95,7 @@
 		765A373B23195112006A9C94 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7675D4E5235CAAEB005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html"; sourceTree = "<group>"; };
 		7675D4E7235CC2BE005725B4 /* dataLayer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dataLayer.json; sourceTree = "<group>"; };
+		76A5908523688529002987FB /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		76AD525E2359C68C00558B89 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		76AD52602359E09900558B89 /* test3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test3.csv; sourceTree = "<group>"; };
 		76CD8B5723579935002D6FBD /* test2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test2.csv; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				7637F42B231AC27400D8B5F1 /* GridViewModel.swift */,
 				76EB3411235731EC0008CAF2 /* FeedbackViewModel.swift */,
+				76A5908523688529002987FB /* MenuViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				76EB3412235731EC0008CAF2 /* FeedbackViewModel.swift in Sources */,
 				76EF74A1235C517F008FBA75 /* TestCharge.swift in Sources */,
 				7637F3EE2316D4E800D8B5F1 /* GameViewController.swift in Sources */,
+				76A5908623688529002987FB /* MenuViewModel.swift in Sources */,
 				765A373523192770006A9C94 /* Feedback.swift in Sources */,
 				765A373723192797006A9C94 /* FeedbacksHistory.swift in Sources */,
 				76AD525F2359C68C00558B89 /* Categories.swift in Sources */,

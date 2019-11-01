@@ -14,7 +14,7 @@ import RxCocoa
 class GameScene: SKScene {
  
     private var gridVM = GridViewModel()
-    private var menuVM = MenuViewModel()
+    private var menuVM: MenuViewModel
     let disposeBag = DisposeBag()
     
     ///Dimensions
@@ -28,8 +28,7 @@ class GameScene: SKScene {
     let backgroundNode: SKShapeNode
     let pricesXAxisNode: SKShapeNode
     let categoriesYAxisNode: SKShapeNode
-   // let menuNode: SKShapeNode //???
-    let menuBacgroundNode: SKSpriteNode
+   // weak var menuBacgroundNode: SKSpriteNode?
     
     override init(size: CGSize) {
         rightEdge = size.width
@@ -37,11 +36,8 @@ class GameScene: SKScene {
         backgroundNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: rectSize))
         pricesXAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: xAxisHeight))
         categoriesYAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: yAxisWidth, height: rectSize))
-       // menuNode = SKShapeNode(rect: CGRect(x: rightEdge-50, y: 0, width: yAxisWidth, height: rectSize))
-        menuBacgroundNode = SKSpriteNode(color: .green, size: CGSize(width: yAxisWidth, height: 200))
-        menuBacgroundNode.position.x = rightEdge - 20  //TODO not hardcoded
-        menuBacgroundNode.position.y = upperEdge - 20
         
+        menuVM = MenuViewModel(corner: CGPoint(x: rightEdge, y: upperEdge))
         super.init(size: size)
     }
     
@@ -158,7 +154,7 @@ extension GameScene {
             let touchedNode = atPoint(location)
             logVerbose("touchedNode.name = \(touchedNode.name ?? "[nil]")")
             if touchedNode.name == MenuViewModel.OpenMenuButtonName {
-                openMenu()
+                menuVM.openMenu()
             }
         }
     }
@@ -167,16 +163,11 @@ extension GameScene {
 //MARK: - Menus
 extension GameScene {
     func prepareMenu() {
-        menuBacgroundNode.name = "menuNode"
-        menuBacgroundNode.zPosition = 10
+        if let menuNode = menuVM.drawMenu() {
+            menuNode.name = "menuNode"
+            menuNode.zPosition = 10
         
-        menuVM.drawMenu(on: menuBacgroundNode)
-        self.addChild(menuBacgroundNode)
-    }
-    
-    func openMenu() {
-        log("opennig menu")
-        let moveAction = SKAction.moveBy(x: -80, y: -80, duration: 2.0)
-        menuBacgroundNode.run(moveAction)
+            self.addChild(menuNode)
+        }
     }
 }

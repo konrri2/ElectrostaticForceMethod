@@ -152,9 +152,9 @@ extension GameScene {
         for touch in touches {
             let location = touch.location(in: self)
             let touchedNode = atPoint(location)
-            logVerbose("touchedNode.name = \(touchedNode.name ?? "[nil]")")
-            if touchedNode.name == MenuViewModel.OpenMenuButtonName {
-                menuVM.openMenu()
+            if let buttonName = touchedNode.name {
+                logVerbose("touchedNode.name buttonName= \(buttonName)")
+                menuVM.handleClick(buttonName: buttonName)
             }
         }
     }

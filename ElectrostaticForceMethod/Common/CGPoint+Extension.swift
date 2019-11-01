@@ -1,0 +1,32 @@
+//
+//  CGPoint+Extension.swift
+//  ElectrostaticForceMethod
+//
+//  Created by Konrad Leszczyński on 01/11/2019.
+//  Copyright © 2019 konrri. All rights reserved.
+//
+
+import CoreGraphics
+import SpriteKit
+
+public extension CGPoint {
+    static func + (left: CGPoint, right: CGPoint) -> CGPoint {
+      return CGPoint(x: left.x + right.x, y: left.y + right.y)
+    }
+
+    static func += (left: inout CGPoint, right: CGPoint) {
+      left = left + right
+    }
+
+    static func - (left: CGPoint, right: CGPoint) -> CGPoint {
+      return CGPoint(x: left.x - right.x, y: left.y - right.y)
+    }
+    
+    static func * (point: CGPoint, scalar: CGFloat) -> CGPoint {
+      return CGPoint(x: point.x * scalar, y: point.y * scalar)
+    }
+    
+    static func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
+      return CGPoint(x: point.x / scalar, y: point.y / scalar)
+    }
+}

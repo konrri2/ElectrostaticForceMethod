@@ -11,12 +11,16 @@ import SpriteKit
 struct ButtonNames {
     static let unfoldMenu = "openMenuButton"
     static let foldMenu = "hideMenuButton"
-    static let testUser1 = "testUser1"
+    static let testUser1 = "u1"
+    static let testUser2 = "u2"
+    static let testUser3 = "u3"
     
     static let text4button: [String:String] = [
         unfoldMenu: "Menu",
         foldMenu: "Hide menu",
-        testUser1: "u1"
+        testUser1: "u1",
+        testUser2: "u2",
+        testUser3: "u3",
     ]
 }
 
@@ -40,7 +44,9 @@ class MenuViewModel {
     let dictionaryOfFunctions = [
         ButtonNames.unfoldMenu: openMenu,
         ButtonNames.foldMenu: closeMenu,
-        ButtonNames.testUser1: loadTestUser1
+        ButtonNames.testUser1: loadTestUser,
+        ButtonNames.testUser2: loadTestUser,
+        ButtonNames.testUser3: loadTestUser
     ]
 
     
@@ -52,8 +58,8 @@ class MenuViewModel {
         self.hideMenuButton = MenuViewModel.makeButton(name: ButtonNames.foldMenu, position: CGPoint(x:75, y:25), size: CGSize(width:150, height:50))
         
         self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser1, position: CGPoint(x:25, y:125), size: CGSize(width:50, height:50)))
-        self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser1, position: CGPoint(x:75, y:125), size: CGSize(width:50, height:50)))
-        self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser1, position: CGPoint(x:125, y:125), size: CGSize(width:50, height:50)))
+        self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser2, position: CGPoint(x:75, y:125), size: CGSize(width:50, height:50)))
+        self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser3, position: CGPoint(x:125, y:125), size: CGSize(width:50, height:50)))
     }
     
     deinit {
@@ -78,7 +84,7 @@ class MenuViewModel {
     
     public func handleClick(buttonName: String) {
         if let function = dictionaryOfFunctions[buttonName] {
-            function(self)()
+            function(self)(buttonName)
         }
     }
     
@@ -108,7 +114,7 @@ class MenuViewModel {
     
     //MARK: - buttons' actions
     
-    private func openMenu() {
+    private func openMenu(buttonName: String) {
         guard let bgNode = self.backgroundSprite else {
             return
         }
@@ -127,7 +133,7 @@ class MenuViewModel {
         }
     }
     
-    private func closeMenu() {
+    private func closeMenu(buttonName: String) {
         guard let bgNode = self.backgroundSprite else {
             return
         }
@@ -146,10 +152,10 @@ class MenuViewModel {
         }
     }
     
-    private func loadTestUser1() {
-        log("-------  loading user 1")
+    private func loadTestUser(buttonName: String) {
+        log("-------  loading feedbacks for \(buttonName)")
         
-        gameSceneDelegate?.getFeetbacksRx(forUser: "u1")
+        gameSceneDelegate?.getFeetbacksRx(forUser: buttonName)
     }
 
 }

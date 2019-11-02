@@ -42,15 +42,17 @@ class MenuViewModel {
     
     init(corner: CGPoint) {
         self.corner = corner
-        self.backgroundSprite = SKSpriteNode(color: .green, size: fullMenuSize)
+        self.backgroundSprite = SKSpriteNode(color: .clear, size: fullMenuSize)
     
         self.foldMenuButton = SKSpriteNode(imageNamed: "Button")
         foldMenuButton.size = buttonSize
         foldMenuButton.name = ButtonNames.OpenMenuButtonName
+        foldMenuButton.zPosition = Layers.menu
         
         menuLabel = SKLabelNode(fontNamed: "Arial")
         menuLabel.name = ButtonNames.OpenMenuButtonName //both needs the same name because user may fit button or text
         menuLabel.text = "Menu"
+        menuLabel.zPosition = Layers.menuLabels
     }
     
     public func drawMenu() -> SKSpriteNode? {
@@ -60,14 +62,16 @@ class MenuViewModel {
         bgNode.anchorPoint = CGPoint.zero
         bgNode.position = corner - buttonSize
 
-        menuLabel.horizontalAlignmentMode = .left
-       menuLabel.verticalAlignmentMode = .bottom
+        menuLabel.horizontalAlignmentMode = .center
+        menuLabel.verticalAlignmentMode = .center
 //        bgNode.addChild(menuLabel)
         
         
         foldMenuButton.addChild(menuLabel)
+        foldMenuButton.position = buttonSize / 2
         bgNode.addChild(foldMenuButton)
-        foldMenuButton.anchorPoint = CGPoint.zero
+        
+       // foldMenuButton.anchorPoint = CGPoint.zero
         return bgNode
     }
     
@@ -90,7 +94,7 @@ class MenuViewModel {
             let moveAction = SKAction.moveBy(x: distance.x, y: distance.y, duration: 1.0)
             bgNode.run(moveAction)
             isFolded = false
-            menuLabel.text = "Hide menu"
+            menuLabel.text = "Hide"
         }
         else {
             log("hiding menu")

@@ -48,4 +48,12 @@ public extension CGSize {
       return CGPoint(x: left.width - right.width, y: left.height - right.height)
     }
     
+    static func * (point: CGSize, scalar: CGFloat) -> CGPoint {
+      return CGPoint(x: point.width * scalar, y: point.height * scalar)
+    }
+    
+    static func / (point: CGSize, scalar: CGFloat) -> CGPoint {
+      return CGPoint(x: point.width / scalar, y: point.height / scalar)
+    }
+    
 }

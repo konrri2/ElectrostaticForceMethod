@@ -45,6 +45,10 @@ class GameScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        log("deinit GameScene")
+    }
+    
     override func didMove(to view: SKView) {
         prepareBackground()
         prepareGrid()
@@ -52,7 +56,7 @@ class GameScene: SKScene {
         setupGestures()
 
         
-        getFeetbacksRx()
+        getFeetbacksRx(forUser: "u2")
         animateMove()
     }
     
@@ -81,8 +85,9 @@ class GameScene: SKScene {
         gridVM.drawCategoriesLabels(on: categoriesYAxisNode)
     }
     
-    func getFeetbacksRx() {
-        let feedHistory = FeedbacksHistory(for: "u3")
+    func getFeetbacksRx(forUser: String) {
+        backgroundNode.removeAllChildren()
+        let feedHistory = FeedbacksHistory(for: forUser)
         feedHistory.feedbackRelay
             .subscribe { event in
                 if let f = event.element {
@@ -163,9 +168,10 @@ extension GameScene {
 //MARK: - Menus
 extension GameScene {
     func prepareMenu() {
+        menuVM.gameSceneDelegate = self
         if let menuNode = menuVM.drawMenu() {
             menuNode.name = "menuNode"
-            menuNode.zPosition = 10
+            menuNode.zPosition = Layers.menuBacground
         
             self.addChild(menuNode)
         }

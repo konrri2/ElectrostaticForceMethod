@@ -9,7 +9,15 @@
 import SpriteKit
 
 struct ButtonNames {
-    static let OpenMenuButtonName = "openMenuButton"
+    static let unfoldMenu = "openMenuButton"
+    static let foldMenu = "hideMenuButton"
+    static let testUser1 = "testUser1"
+    
+    static let text4button: [String:String] = [
+        unfoldMenu: "Menu",
+        foldMenu: "Hide menu",
+        testUser1: "u1"
+    ]
 }
 
 class MenuViewModel {
@@ -17,42 +25,39 @@ class MenuViewModel {
     var backgroundSprite: SKSpriteNode?
     
     ///buttons
-    var menuLabel: SKLabelNode
-    var foldMenuButton: SKSpriteNode
+    var showMenuButton: SKSpriteNode
+    var hideMenuButton: SKSpriteNode
+    var loadTestUsersButtons = [SKSpriteNode]()
     
     ///the upper right corner where the menu is located
     let corner: CGPoint
-    let buttonSize = CGSize(width:100, height:50)
     let fullMenuSize = CGSize(width:150, height:250)
     
     var isFolded: Bool = true
     
+    public weak var gameSceneDelegate: GameScene?
+    
     let dictionaryOfFunctions = [
-        ButtonNames.OpenMenuButtonName: openMenu,
-        "function2": function2
+        ButtonNames.unfoldMenu: openMenu,
+        ButtonNames.foldMenu: closeMenu,
+        ButtonNames.testUser1: loadTestUser1
     ]
 
-    func function1() {
-        NSLog("function1")
-    }
-
-    func function2() {
-        NSLog("function2")
-    }
     
     init(corner: CGPoint) {
         self.corner = corner
         self.backgroundSprite = SKSpriteNode(color: .clear, size: fullMenuSize)
     
-        self.foldMenuButton = SKSpriteNode(imageNamed: "Button")
-        foldMenuButton.size = buttonSize
-        foldMenuButton.name = ButtonNames.OpenMenuButtonName
-        foldMenuButton.zPosition = Layers.menu
+        self.showMenuButton = MenuViewModel.makeButton(name: ButtonNames.unfoldMenu, position: CGPoint(x:50, y:25), size: CGSize(width:100, height:50))
+        self.hideMenuButton = MenuViewModel.makeButton(name: ButtonNames.foldMenu, position: CGPoint(x:75, y:25), size: CGSize(width:150, height:50))
         
-        menuLabel = SKLabelNode(fontNamed: "Arial")
-        menuLabel.name = ButtonNames.OpenMenuButtonName //both needs the same name because user may fit button or text
-        menuLabel.text = "Menu"
-        menuLabel.zPosition = Layers.menuLabels
+        self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser1, position: CGPoint(x:25, y:125), size: CGSize(width:50, height:50)))
+        self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser1, position: CGPoint(x:75, y:125), size: CGSize(width:50, height:50)))
+        self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser1, position: CGPoint(x:125, y:125), size: CGSize(width:50, height:50)))
+    }
+    
+    deinit {
+        log("deinit MenuViewModel")
     }
     
     public func drawMenu() -> SKSpriteNode? {
@@ -60,18 +65,14 @@ class MenuViewModel {
             return nil
         }
         bgNode.anchorPoint = CGPoint.zero
-        bgNode.position = corner - buttonSize
+        bgNode.position = corner - showMenuButton.size
 
-        menuLabel.horizontalAlignmentMode = .center
-        menuLabel.verticalAlignmentMode = .center
-//        bgNode.addChild(menuLabel)
+        bgNode.addChild(showMenuButton)
         
+        for b in loadTestUsersButtons {
+            bgNode.addChild(b)
+        }
         
-        foldMenuButton.addChild(menuLabel)
-        foldMenuButton.position = buttonSize / 2
-        bgNode.addChild(foldMenuButton)
-        
-       // foldMenuButton.anchorPoint = CGPoint.zero
         return bgNode
     }
     
@@ -80,6 +81,30 @@ class MenuViewModel {
             function(self)()
         }
     }
+    
+    
+    static func makeButton(name: String, position: CGPoint, size: CGSize) -> SKSpriteNode {
+        var label: SKLabelNode
+        
+        let button = SKSpriteNode(imageNamed: "Button")
+        button.size = size
+        button.name = name
+        button.zPosition = Layers.menu
+        
+        label = SKLabelNode(fontNamed: "Arial")
+        label.fontSize = 20
+        label.name = name //both needs the same name because user may fit button or text
+        label.text = ButtonNames.text4button[name]
+        label.zPosition = Layers.menuLabels
+        label.horizontalAlignmentMode = .center
+        label.verticalAlignmentMode = .center
+        
+        button.addChild(label)
+        button.position = position
+        
+        return button
+    }
+    
     
     //MARK: - buttons' actions
     
@@ -90,19 +115,41 @@ class MenuViewModel {
         
         if isFolded {
             log("opennig menu")
-            let distance = CGPoint.zero - (fullMenuSize - buttonSize)  //one button is already visible
+            let distance = CGPoint.zero - (fullMenuSize - showMenuButton.size)  //one button is already visible
             let moveAction = SKAction.moveBy(x: distance.x, y: distance.y, duration: 1.0)
             bgNode.run(moveAction)
             isFolded = false
-            menuLabel.text = "Hide"
+            bgNode.addChild(hideMenuButton)
+            showMenuButton.removeFromParent()
+        }
+        else {
+            logError("openning unfolded menu again")
+        }
+    }
+    
+    private func closeMenu() {
+        guard let bgNode = self.backgroundSprite else {
+            return
+        }
+        
+        if isFolded {
+            logError("closing folded menu again")
         }
         else {
             log("hiding menu")
-            let distance = (fullMenuSize - buttonSize)  //one button remains visible
+            let distance = (fullMenuSize - showMenuButton.size)  //one button remains visible
             let moveAction = SKAction.moveBy(x: distance.x, y: distance.y, duration: 1.0)
             bgNode.run(moveAction)
             isFolded = true
-            menuLabel.text = "Menu"
+            bgNode.addChild(showMenuButton)
+            hideMenuButton.removeFromParent()
         }
     }
+    
+    private func loadTestUser1() {
+        log("-------  loading user 1")
+        
+        gameSceneDelegate?.getFeetbacksRx(forUser: "u1")
+    }
+
 }

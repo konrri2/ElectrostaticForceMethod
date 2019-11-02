@@ -32,6 +32,7 @@ struct FeedbackViewModel {
             
             let emitterNode = SKEmitterNode(fileNamed: "Particle.sks")
             if let emitter = emitterNode {
+                emitter.name = "emitter"
                 if f.isPositive {
                     emitter.particleAlphaSequence = nil
                     emitter.particleColorSequence = positiveColorSequence

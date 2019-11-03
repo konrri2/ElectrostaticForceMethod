@@ -55,7 +55,25 @@ class GameScene: SKScene {
         prepareMenu()
         setupGestures()
         
-        getFeetbacksRx(forUser: "u2")
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let efmUrl = appDelegate.sharedUrl {
+            let urlStr = efmUrl.absoluteString.replacingOccurrences(of: "efm://", with: "")
+            
+            if urlStr.hasPrefix("https://allegro.pl/") {
+                //TODO parse allegro
+                logError("!!!   allegro parser not fully implemented !!!")
+            }
+            else if urlStr.hasPrefix("ebay") {
+                //TODO parse ebay
+                logError("!!!   ebay parser not fully implemented !!!")
+            }
+            else { //load saved user data
+                getFeetbacksRx(forUser: urlStr)
+            }
+        }
+        else {  //load test/demo data
+            getFeetbacksRx(forUser: "u2")
+        }
         animateMove()
     }
     

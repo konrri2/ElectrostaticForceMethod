@@ -60,19 +60,18 @@ class GameScene: SKScene {
             let urlStr = efmUrl.absoluteString.replacingOccurrences(of: "efm://", with: "")
             
             if urlStr.hasPrefix("https://allegro.pl/") {
-                //TODO parse allegro
-                logError("!!!   allegro parser not fully implemented !!!")
+                getFeedbackForPage(pageUrl: urlStr)
             }
             else if urlStr.hasPrefix("ebay") {
                 //TODO parse ebay
                 logError("!!!   ebay parser not fully implemented !!!")
             }
             else { //load saved user data
-                getFeetbacksRx(forUser: urlStr)
+                getFeedbacks(forUser: urlStr)
             }
         }
         else {  //load test/demo data
-            getFeetbacksRx(forUser: "u2")
+            getFeedbacks(forUser: "u2")
         }
         animateMove()
     }
@@ -102,7 +101,7 @@ class GameScene: SKScene {
         gridVM.drawCategoriesLabels(on: categoriesYAxisNode)
     }
     
-    func getFeetbacksRx(forUser: String) {
+    func getFeedbacks(forUser: String) {
         backgroundNode.removeAllChildren()
         let feedHistory = FeedbacksHistory(for: forUser)
         feedHistory.feedbackRelay
@@ -114,6 +113,18 @@ class GameScene: SKScene {
         }.disposed(by: disposeBag)
         
         feedHistory.downloadFeedbacks1by1()
+    }
+    
+    func getFeedbackForPage(pageUrl: String) {
+        let allCrawler = AllegroCrawler(itemPage: pageUrl)
+        allCrawler.getItemPage()
+            .subscribe { event in
+                    if let f = event.element {
+                        let fVM = FeedbackViewModel(f.convertToFeedback())
+                        fVM.draw(on: self.backgroundNode)
+                    }
+            }.disposed(by: disposeBag)
+        
     }
     
     fileprivate func setupGestures() {

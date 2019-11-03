@@ -161,7 +161,7 @@ class MenuViewModel {
     private func loadTestUser(buttonName: String) {
         logVerbose("-------  loading feedbacks for \(buttonName)")
         
-        gameSceneDelegate?.getFeetbacksRx(forUser: buttonName)
+        gameSceneDelegate?.getFeedbacks(forUser: buttonName)
     }
     
     

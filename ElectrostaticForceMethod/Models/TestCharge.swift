@@ -9,8 +9,20 @@
 import Foundation
 
 struct TestCharge {
+    
+    
     var price: Double = 0
     var category: String = ""
     
     var problem: String = ""
+    
+    public func convertToFeedback() -> Feedback {
+        var f = Feedback()
+        
+        f.isPositive = false
+        f.price = Int(self.price*100)
+        f.category = Category(category)
+        
+        return f
+    }
 }

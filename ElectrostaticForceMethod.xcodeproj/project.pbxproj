@@ -32,6 +32,9 @@
 		7675D4E8235CC2BE005725B4 /* dataLayer.json in Resources */ = {isa = PBXBuildFile; fileRef = 7675D4E7235CC2BE005725B4 /* dataLayer.json */; };
 		76A5908623688529002987FB /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A5908523688529002987FB /* MenuViewModel.swift */; };
 		76A59088236C8EFD002987FB /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A59087236C8EFC002987FB /* CGPoint+Extension.swift */; };
+		76A59092236DD1D2002987FB /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A59091236DD1D2002987FB /* ShareViewController.swift */; };
+		76A59095236DD1D2002987FB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76A59093236DD1D2002987FB /* MainInterface.storyboard */; };
+		76A59099236DD1D2002987FB /* EFMShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 76A5908F236DD1D2002987FB /* EFMShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		76AD525F2359C68C00558B89 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AD525E2359C68C00558B89 /* Categories.swift */; };
 		76AD52612359E09900558B89 /* test3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76AD52602359E09900558B89 /* test3.csv */; };
 		76CD8B5823579935002D6FBD /* test2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 76CD8B5723579935002D6FBD /* test2.csv */; };
@@ -63,7 +66,28 @@
 			remoteGlobalIDString = 7637F3E12316D4E800D8B5F1;
 			remoteInfo = ElectrostaticForceMethod;
 		};
+		76A59097236DD1D2002987FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7637F3DA2316D4E800D8B5F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76A5908E236DD1D2002987FB;
+			remoteInfo = EFMShareExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		76A5909A236DD1D2002987FB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				76A59099236DD1D2002987FB /* EFMShareExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0F086042CDDC84498796494D /* Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.release.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +122,12 @@
 		7675D4E7235CC2BE005725B4 /* dataLayer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dataLayer.json; sourceTree = "<group>"; };
 		76A5908523688529002987FB /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		76A59087236C8EFC002987FB /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
+		76A5908F236DD1D2002987FB /* EFMShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EFMShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		76A59091236DD1D2002987FB /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		76A59094236DD1D2002987FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		76A59096236DD1D2002987FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76A5909E236DD64C002987FB /* ElectrostaticForceMethod.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ElectrostaticForceMethod.entitlements; sourceTree = "<group>"; };
+		76A5909F236DD683002987FB /* EFMShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EFMShareExtension.entitlements; sourceTree = "<group>"; };
 		76AD525E2359C68C00558B89 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		76AD52602359E09900558B89 /* test3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test3.csv; sourceTree = "<group>"; };
 		76CD8B5723579935002D6FBD /* test2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test2.csv; sourceTree = "<group>"; };
@@ -144,6 +174,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		76A5908C236DD1D2002987FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -166,6 +203,7 @@
 				7637F3E42316D4E800D8B5F1 /* ElectrostaticForceMethod */,
 				7637F3FF2316D4EE00D8B5F1 /* ElectrostaticForceMethodTests */,
 				7637F40A2316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests */,
+				76A59090236DD1D2002987FB /* EFMShareExtension */,
 				7637F3E32316D4E800D8B5F1 /* Products */,
 				18A315F260E05D045D0151B2 /* Pods */,
 				7BC6F053A4FEC58C0752B72F /* Frameworks */,
@@ -178,6 +216,7 @@
 				7637F3E22316D4E800D8B5F1 /* ElectrostaticForceMethod.app */,
 				7637F3FC2316D4EE00D8B5F1 /* ElectrostaticForceMethodTests.xctest */,
 				7637F4072316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.xctest */,
+				76A5908F236DD1D2002987FB /* EFMShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,6 +224,7 @@
 		7637F3E42316D4E800D8B5F1 /* ElectrostaticForceMethod */ = {
 			isa = PBXGroup;
 			children = (
+				76A5909E236DD64C002987FB /* ElectrostaticForceMethod.entitlements */,
 				76EB33D92356524C0008CAF2 /* Effects */,
 				765A373A231950C4006A9C94 /* Common */,
 				7637F428231AB9FC00D8B5F1 /* Controllers */,
@@ -288,6 +328,17 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		76A59090236DD1D2002987FB /* EFMShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				76A5909F236DD683002987FB /* EFMShareExtension.entitlements */,
+				76A59091236DD1D2002987FB /* ShareViewController.swift */,
+				76A59093236DD1D2002987FB /* MainInterface.storyboard */,
+				76A59096236DD1D2002987FB /* Info.plist */,
+			);
+			path = EFMShareExtension;
+			sourceTree = "<group>";
+		};
 		76EB33D8235652320008CAF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,10 +387,12 @@
 				7637F3DF2316D4E800D8B5F1 /* Frameworks */,
 				7637F3E02316D4E800D8B5F1 /* Resources */,
 				BCA6B88C72BE40663F26B3AC /* [CP] Embed Pods Frameworks */,
+				76A5909A236DD1D2002987FB /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				76A59098236DD1D2002987FB /* PBXTargetDependency */,
 			);
 			name = ElectrostaticForceMethod;
 			productName = ElectrostaticForceMethod;
@@ -386,13 +439,30 @@
 			productReference = 7637F4072316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		76A5908E236DD1D2002987FB /* EFMShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76A5909D236DD1D2002987FB /* Build configuration list for PBXNativeTarget "EFMShareExtension" */;
+			buildPhases = (
+				76A5908B236DD1D2002987FB /* Sources */,
+				76A5908C236DD1D2002987FB /* Frameworks */,
+				76A5908D236DD1D2002987FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EFMShareExtension;
+			productName = EFMShareExtension;
+			productReference = 76A5908F236DD1D2002987FB /* EFMShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		7637F3DA2316D4E800D8B5F1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = konrri;
 				TargetAttributes = {
@@ -406,6 +476,9 @@
 					7637F4062316D4EE00D8B5F1 = {
 						CreatedOnToolsVersion = 10.2.1;
 						TestTargetID = 7637F3E12316D4E800D8B5F1;
+					};
+					76A5908E236DD1D2002987FB = {
+						CreatedOnToolsVersion = 11.1;
 					};
 				};
 			};
@@ -425,6 +498,7 @@
 				7637F3E12316D4E800D8B5F1 /* ElectrostaticForceMethod */,
 				7637F3FB2316D4EE00D8B5F1 /* ElectrostaticForceMethodTests */,
 				7637F4062316D4EE00D8B5F1 /* ElectrostaticForceMethodUITests */,
+				76A5908E236DD1D2002987FB /* EFMShareExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -468,6 +542,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76A5908D236DD1D2002987FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76A59095236DD1D2002987FB /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +713,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		76A5908B236DD1D2002987FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76A59092236DD1D2002987FB /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -643,6 +733,11 @@
 			isa = PBXTargetDependency;
 			target = 7637F3E12316D4E800D8B5F1 /* ElectrostaticForceMethod */;
 			targetProxy = 7637F4082316D4EE00D8B5F1 /* PBXContainerItemProxy */;
+		};
+		76A59098236DD1D2002987FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76A5908E236DD1D2002987FB /* EFMShareExtension */;
+			targetProxy = 76A59097236DD1D2002987FB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -661,6 +756,14 @@
 				7637F3F52316D4EE00D8B5F1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		76A59093236DD1D2002987FB /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76A59094236DD1D2002987FB /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -786,7 +889,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BFE721D6B85C1156CE450DD2 /* Pods-ElectrostaticForceMethod.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ElectrostaticForceMethod/ElectrostaticForceMethod.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UVJCW2277W;
 				INFOPLIST_FILE = ElectrostaticForceMethod/Info.plist;
@@ -805,7 +910,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 43E78ECA9DCD0CB8BC7BDC13 /* Pods-ElectrostaticForceMethod.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ElectrostaticForceMethod/ElectrostaticForceMethod.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UVJCW2277W;
 				INFOPLIST_FILE = ElectrostaticForceMethod/Info.plist;
@@ -906,6 +1013,48 @@
 			};
 			name = Release;
 		};
+		76A5909B236DD1D2002987FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EFMShareExtension/EFMShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UVJCW2277W;
+				INFOPLIST_FILE = EFMShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.leszczynski.ElectrostaticForceMethod.EFMShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		76A5909C236DD1D2002987FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EFMShareExtension/EFMShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UVJCW2277W;
+				INFOPLIST_FILE = EFMShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.leszczynski.ElectrostaticForceMethod.EFMShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -941,6 +1090,15 @@
 			buildConfigurations = (
 				7637F4172316D4EE00D8B5F1 /* Debug */,
 				7637F4182316D4EE00D8B5F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76A5909D236DD1D2002987FB /* Build configuration list for PBXNativeTarget "EFMShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76A5909B236DD1D2002987FB /* Debug */,
+				76A5909C236DD1D2002987FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -13,20 +13,21 @@ import GameplayKit
 class GameViewController: UIViewController {
 
     override func viewWillLayoutSubviews() {
-         super.viewWillLayoutSubviews()
-         if #available(iOS 11.0, *), let view = self.view {
-            view.frame = self.view.safeAreaLayoutGuide.layoutFrame
-         }
-         guard let view = self.view as! SKView? else { return }
-         view.ignoresSiblingOrder = true
-         view.showsFPS = true
-         view.showsNodeCount = true
-         view.showsPhysics = true
-         view.showsDrawCount = true
-         let scene = GameScene(size:view.bounds.size)
-         scene.scaleMode = .aspectFill
-         view.presentScene(scene)
-     }
+        super.viewWillLayoutSubviews()
+        if #available(iOS 11.0, *), let view = self.view {
+            view.frame = self.view.safeAreaLayoutGuide.layoutFrame  //safe area is important for iPhones with the notch
+        }
+        guard let view = self.view as! SKView? else { return }
+        view.ignoresSiblingOrder = true
+        view.showsFPS = true
+        view.showsNodeCount = true
+        view.showsPhysics = true
+        view.showsDrawCount = true
+        let scene = GameScene(size:view.bounds.size)
+        scene.scaleMode = .aspectFill
+        
+        view.presentScene(scene)
+    }
     
 //    override func viewDidLoad() {
 //        super.viewDidLoad()

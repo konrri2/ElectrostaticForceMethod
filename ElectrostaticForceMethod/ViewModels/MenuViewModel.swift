@@ -14,6 +14,7 @@ struct ButtonNames {
     static let testUser1 = "u1"
     static let testUser2 = "u2"
     static let testUser3 = "u3"
+    static let linkFromClipboard = "linkFromClipboard"
     
     static let text4button: [String:String] = [
         unfoldMenu: "Menu",
@@ -21,6 +22,7 @@ struct ButtonNames {
         testUser1: "u1",
         testUser2: "u2",
         testUser3: "u3",
+        linkFromClipboard: "Link from clipboard"
     ]
 }
 
@@ -32,6 +34,7 @@ class MenuViewModel {
     var showMenuButton: SKSpriteNode
     var hideMenuButton: SKSpriteNode
     var loadTestUsersButtons = [SKSpriteNode]()
+    var linkFromClipboardButton: SKSpriteNode
     
     ///the upper right corner where the menu is located
     let corner: CGPoint
@@ -46,7 +49,8 @@ class MenuViewModel {
         ButtonNames.foldMenu: closeMenu,
         ButtonNames.testUser1: loadTestUser,
         ButtonNames.testUser2: loadTestUser,
-        ButtonNames.testUser3: loadTestUser
+        ButtonNames.testUser3: loadTestUser,
+        ButtonNames.linkFromClipboard: loadFromLinkFromClipboard
     ]
 
     
@@ -55,11 +59,13 @@ class MenuViewModel {
         self.backgroundSprite = SKSpriteNode(color: .clear, size: fullMenuSize)
     
         self.showMenuButton = MenuViewModel.makeButton(name: ButtonNames.unfoldMenu, position: CGPoint(x:50, y:25), size: CGSize(width:100, height:50))
-        self.hideMenuButton = MenuViewModel.makeButton(name: ButtonNames.foldMenu, position: CGPoint(x:75, y:25), size: CGSize(width:150, height:50))
+        self.hideMenuButton = MenuViewModel.makeButton(name: ButtonNames.foldMenu, position: CGPoint(x:75, y:25), size: CGSize(width:120, height:50))
         
         self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser1, position: CGPoint(x:25, y:125), size: CGSize(width:50, height:50)))
         self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser2, position: CGPoint(x:75, y:125), size: CGSize(width:50, height:50)))
         self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser3, position: CGPoint(x:125, y:125), size: CGSize(width:50, height:50)))
+        
+        linkFromClipboardButton = MenuViewModel.makeButton(name: ButtonNames.linkFromClipboard, position: CGPoint(x:75, y:75), size: CGSize(width:200, height:50))
     }
     
     deinit {
@@ -74,7 +80,7 @@ class MenuViewModel {
         bgNode.position = corner - showMenuButton.size
 
         bgNode.addChild(showMenuButton)
-        
+        bgNode.addChild(linkFromClipboardButton)
         for b in loadTestUsersButtons {
             bgNode.addChild(b)
         }
@@ -122,7 +128,7 @@ class MenuViewModel {
         if isFolded {
             log("opennig menu")
             let distance = CGPoint.zero - (fullMenuSize - showMenuButton.size)  //one button is already visible
-            let moveAction = SKAction.moveBy(x: distance.x, y: distance.y, duration: 1.0)
+            let moveAction = SKAction.moveBy(x: distance.x, y: distance.y, duration: 0.5)
             bgNode.run(moveAction)
             isFolded = false
             bgNode.addChild(hideMenuButton)
@@ -144,7 +150,7 @@ class MenuViewModel {
         else {
             log("hiding menu")
             let distance = (fullMenuSize - showMenuButton.size)  //one button remains visible
-            let moveAction = SKAction.moveBy(x: distance.x, y: distance.y, duration: 1.0)
+            let moveAction = SKAction.moveBy(x: distance.x, y: distance.y, duration: 0.5)
             bgNode.run(moveAction)
             isFolded = true
             bgNode.addChild(showMenuButton)
@@ -153,9 +159,40 @@ class MenuViewModel {
     }
     
     private func loadTestUser(buttonName: String) {
-        log("-------  loading feedbacks for \(buttonName)")
+        logVerbose("-------  loading feedbacks for \(buttonName)")
         
         gameSceneDelegate?.getFeetbacksRx(forUser: buttonName)
+    }
+    
+    
+    let suiteName = "group.pl.edu.leszczynski.ElectrostaticForceMethod"
+    let urlKey = "urlKey"
+    
+    
+    private func loadFromLinkFromClipboard(buttonName: String) {
+        logVerbose("loadFromLinkFromClipboard")
+        
+        let pasteboardString: String? = UIPasteboard.general.string
+        if let theString = pasteboardString {
+            print("String is \(theString)")
+        }
+        
+        
+//        if let prefs = UserDefaults(suiteName: suiteName) {
+//            if let urlLink = prefs.object(forKey: urlKey) as? URL {
+//                log("=======urlLink = \(urlLink)")
+//            }
+//        }
+        
+//        let defaults = UserDefaults.standard
+//        if let urlString = defaults.string(forKey: urlKey) {
+//            log("=======urlString = \(urlString)")
+//        }
+        
+        let group = UserDefaults(suiteName: suiteName)!
+        if let object = group.object(forKey: urlKey) {
+             log("=======urlString object= \(object)")
+        }
     }
 
 }

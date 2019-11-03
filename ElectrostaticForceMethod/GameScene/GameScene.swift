@@ -54,7 +54,6 @@ class GameScene: SKScene {
         prepareGrid()
         prepareMenu()
         setupGestures()
-
         
         getFeetbacksRx(forUser: "u2")
         animateMove()

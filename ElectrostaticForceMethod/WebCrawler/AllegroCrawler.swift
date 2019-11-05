@@ -91,11 +91,10 @@ class AllegroCrawler {
                     logVerbose(json)
                     
                 }
-
             }
             
         } catch Exception.Error(let type, let message) {
-            logError("readPage error = \(message)")
+            logError("readPage error of type \(type) = \(message)")
             qt.problem = message
         } catch {
             logError("readPage error = \(error)")

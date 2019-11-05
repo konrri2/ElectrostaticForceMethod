@@ -69,8 +69,7 @@ class ElectrostaticForceMethodTests: XCTestCase {
     }
     
     func testAllegroCrawler() {
-        let sut = AllegroCrawler(itemPage: "https://allegro.pl/oferta/kross-esker-2-0-wisniowy-srebrny-m-20-8445656508")
-        //this bike cost 2 789,00 zł
+        let sut = AllegroCrawler(itemPage: "https://allegro.pl/oferta/rower-kellys-soot-70-l-2019-grawel-8427614771")
         do {
             let blockinObservable = sut.getItemPage()
                 .toBlocking()

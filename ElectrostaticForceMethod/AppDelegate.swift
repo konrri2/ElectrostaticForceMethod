@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var sharedUrl: URL?
+    let urlRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -46,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         log("==========opening url from URLSchema(efm) = \(url)")
         self.sharedUrl = url
+        urlRelay.accept(url.absoluteString)
         return true
     }
     

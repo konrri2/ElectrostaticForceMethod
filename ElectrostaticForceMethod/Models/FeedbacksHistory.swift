@@ -24,7 +24,7 @@ class FeedbacksHistory {
     
 
     public func downloadFeedbacks1by1()  {
-        logVerbose("downloading feedbacks //TODO: from interent")
+        logVerbose("downloading feedbacks from .csv file")
 
         DispatchQueue.global(qos: .background).async {
              
@@ -73,6 +73,7 @@ class FeedbacksHistory {
         }
     }
     
+    //only for tests
     internal func readFeedabcksHistory() -> [Feedback] {
        // DispatchQueue.global(qos: .background).async {
             

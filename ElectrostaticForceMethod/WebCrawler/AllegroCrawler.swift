@@ -41,7 +41,7 @@ class AllegroCrawler {
     
     func getItemPage() -> Observable<TestCharge> {
         let url = self.startItemUrl
-        
+        log("getItemPage")
         return Observable.just(url)
             .flatMap { url -> Observable<Data> in
                 let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)  //it is important not to cache - because it thiks API is a static file. I check isUpToDate() when navigating and changing every second
@@ -58,7 +58,7 @@ class AllegroCrawler {
     
     private func readPage(_ htmlString: String) -> TestCharge {
         var qt = TestCharge(price: -42.0, category: "error", problem: "could not parse page")
-        
+        log("readPage")
         do {
             let doc: Document = try SwiftSoup.parse(htmlString)
 
@@ -80,18 +80,25 @@ class AllegroCrawler {
             
             let linksWithCommands = try doc.getElementsByClass(StaticAllegroStrings.commentsClass).array()
             logVerbose("linksWithCommands.count = \(linksWithCommands.count)")
-            
-            
-            for item in try doc.select("script") {
-                let script = try item.html()
-                if script.hasPrefix(StaticAllegroStrings.jsonPrefix) {
-                    logVerbose("---script with dataLayer  Json----")
-                    let json = script.deletingPrefix(StaticAllegroStrings.jsonPrefix)
-                    
-                    logVerbose(json)
-                    
-                }
+            if linksWithCommands.count >= 3 {
+                let str0 = try linksWithCommands[0].attr("href")
+                let str1 = try linksWithCommands[1].attr("href")
+                let str2 = try linksWithCommands[2].attr("href")
+                let link = str0.commonPrefix(with: str1)
+                log("link for feedbacks page = \(link)")
             }
+            
+            
+//            for item in try doc.select("script") {
+//                let script = try item.html()
+//                if script.hasPrefix(StaticAllegroStrings.jsonPrefix) {
+//                    logVerbose("---script with dataLayer  Json----")
+//                    let json = script.deletingPrefix(StaticAllegroStrings.jsonPrefix)
+//
+//                    logVerbose(json)
+//
+//                }
+//            }
             
         } catch Exception.Error(let type, let message) {
             logError("readPage error of type \(type) = \(message)")

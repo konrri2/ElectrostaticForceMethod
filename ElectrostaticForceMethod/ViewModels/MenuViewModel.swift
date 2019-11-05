@@ -120,7 +120,7 @@ class MenuViewModel {
     
     //MARK: - buttons' actions
     
-    private func openMenu(buttonName: String) {
+    func openMenu(buttonName: String) {
         guard let bgNode = self.backgroundSprite else {
             return
         }

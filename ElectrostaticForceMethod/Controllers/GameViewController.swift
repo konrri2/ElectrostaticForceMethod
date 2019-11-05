@@ -12,10 +12,18 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+
+    
+ /*
+    //TODO - viewWillLayoutSubviews happen twice, adn mess up the view whan starting from shared extension
+//    var scene:GameScene?
+//    override func viewWillAppear(_ animated: Bool) {
+//        log("viewWillAppear")
     override func viewWillLayoutSubviews() {
+        log("viewWillLayoutSubviews")
         super.viewWillLayoutSubviews()
         if #available(iOS 11.0, *), let view = self.view {
-            view.frame = self.view.safeAreaLayoutGuide.layoutFrame  //safe area is important for iPhones with the notch
+            view.frame = self.view.safeAreaLayoutGuide.layoutFrame  //safe area is important for iPhones with the notch -> therfore i need to move it to viewWillLayoutSubviews
         }
         guard let view = self.view as! SKView? else { return }
         view.ignoresSiblingOrder = true
@@ -23,32 +31,32 @@ class GameViewController: UIViewController {
         view.showsNodeCount = true
         view.showsPhysics = true
         view.showsDrawCount = true
+        
         let scene = GameScene(size:view.bounds.size)
         scene.scaleMode = .aspectFill
-        
         view.presentScene(scene)
     }
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        if let view = self.view as! SKView? {
-//            // Load the SKScene from 'GameScene.sks'
-//            if let scene = SKScene(fileNamed: "GameScene") {
-//                // Set the scale mode to scale to fit the window
-//                scene.scaleMode = .aspectFill
-//
-//                // Present the scene
-//                view.presentScene(scene)
-//            }
-//
-//            view.ignoresSiblingOrder = true
-//
-//            view.showsFPS = true
-//            view.showsNodeCount = true
-//        }
-//    }
+*/
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
+        if #available(iOS 11.0, *), let view = self.view {
+            view.frame = self.view.safeAreaLayoutGuide.layoutFrame  //safe area is important for iPhones with the notch -> therfore i need to move it to viewWillLayoutSubviews
+        }
+        guard let view = self.view as! SKView? else { return }
+        view.ignoresSiblingOrder = true
+        view.showsFPS = true
+        view.showsNodeCount = true
+        view.showsPhysics = true
+        view.showsDrawCount = true
+        
+
+        let scene = GameScene(size:view.bounds.size)
+        scene.scaleMode = .aspectFill
+        view.presentScene(scene)
+    }
+
+ 
     override var shouldAutorotate: Bool {
         return false
     }

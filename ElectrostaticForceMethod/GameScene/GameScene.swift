@@ -50,30 +50,50 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
+        log("didMove")
         prepareBackground()
         prepareGrid()
         prepareMenu()
         setupGestures()
         
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-            let efmUrl = appDelegate.sharedUrl {
-            let urlStr = efmUrl.absoluteString.replacingOccurrences(of: "efm://", with: "")
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.urlRelay
+                .subscribe { event in
+                    if let urlStr = event.element {
+                        self.loadData(urlStr)
+                    }
+            }.disposed(by: disposeBag)
             
-            if urlStr.hasPrefix("https://allegro.pl/") {
-                getFeedbackForPage(pageUrl: urlStr)
-            }
-            else if urlStr.hasPrefix("ebay") {
-                //TODO parse ebay
-                logError("!!!   ebay parser not fully implemented !!!")
-            }
-            else { //load saved user data
-                getFeedbacks(forUser: urlStr)
+            if let efmUrl = appDelegate.sharedUrl {
+                loadData(efmUrl.absoluteString)
             }
         }
-        else {  //load test/demo data
-            getFeedbacks(forUser: "u2")
+        else {
+            //loadData("u2")  //test user
         }
         animateMove()
+    }
+    
+    func loadData(_ feedbacksUrl: String) {
+        if feedbacksUrl.isEmpty {
+            //show user the menu - so she/he can choose
+            menuVM.openMenu(buttonName: "")
+            return
+        }
+        
+        let urlStr = feedbacksUrl.replacingOccurrences(of: "efm://", with: "")
+        log("==will show data from \(urlStr)")
+        if urlStr.hasPrefix("https://allegro.pl/") {
+            log("getFeedbackForPage for allegro")
+            getFeedbackFromAllegroPage(pageUrl: urlStr)
+        }
+        else if urlStr.hasPrefix("ebay") {
+            //TODO parse ebay
+            logError("!!!   ebay parser not fully implemented !!!")
+        }
+        else { //load saved user data from .csv
+            getFeedbacks(forUser: urlStr)
+        }
     }
     
     func animateMove() {
@@ -115,7 +135,8 @@ class GameScene: SKScene {
         feedHistory.downloadFeedbacks1by1()
     }
     
-    func getFeedbackForPage(pageUrl: String) {
+    func getFeedbackFromAllegroPage(pageUrl: String) {
+        backgroundNode.removeAllChildren()
         let allCrawler = AllegroCrawler(itemPage: pageUrl)
         allCrawler.getItemPage()
             .subscribe { event in

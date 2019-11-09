@@ -1,3 +1,9 @@
+categories - tree ?? move to left to show
+
+
+if has notch   animate/move/unfold menu further
+
+
 if ipad change scale
 
 

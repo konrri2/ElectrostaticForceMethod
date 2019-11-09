@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum FeedbackType {
+    case normal
+    case testCharge
+}
 
 struct Feedback: CustomStringConvertible {
    
@@ -16,6 +20,7 @@ struct Feedback: CustomStringConvertible {
     ///price in polish grosze
     var price = 0
     var category = Category("unknown")
+    var type = FeedbackType.normal
     
     var priceInPln: Double {
         return Double(price) / 100.0
@@ -66,5 +71,19 @@ struct Feedback: CustomStringConvertible {
     
     public var description: String {
         return "feedback's price=\(price)  category=\(category)"
+    }
+    
+    static func makeRandomFeedback() -> Feedback {
+        log("DEBUG - making random feedback")
+        var f = Feedback()
+        f.timestamp = Date()
+        f.price = Int.random(in: 10 ... 4000)
+        if Int.random(in: 0 ... 4) == 0 {
+            f.isPositive = false
+        }
+        else {
+            f.isPositive = true
+        }
+        return f
     }
 }

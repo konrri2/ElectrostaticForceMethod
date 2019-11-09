@@ -19,6 +19,10 @@ struct FeedbackViewModel {
                                     keyframeValues: [SKColor.yellow, SKColor.red, SKColor.orange],
                                     times: [0, 0.1, 1])
     
+    let testChargeColorSequence = SKKeyframeSequence(
+                                    keyframeValues: [SKColor.purple, SKColor.white, SKColor.orange],
+                                    times: [0, 0.1, 1])
+    
     init(_ f: Feedback) {
         self.theFeedback = f
     }
@@ -39,8 +43,14 @@ struct FeedbackViewModel {
                     emitter.zPosition = Layers.positiveFeedbacks
                 }
                 else {
-                    emitter.particleColorSequence = negativeColorSequence
-                    emitter.zPosition = Layers.negativeFeedbacks
+                    if f.type == .testCharge {
+                        emitter.particleColorSequence = testChargeColorSequence
+                        emitter.zPosition = Layers.testChargeFeedbacks
+                    }
+                    else {
+                        emitter.particleColorSequence = negativeColorSequence
+                        emitter.zPosition = Layers.negativeFeedbacks
+                    }
                 }
                 emitter.position = position
                 bgNode.addChild(emitter)

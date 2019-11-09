@@ -20,6 +20,7 @@ struct Layers {
     
     static let positiveFeedbacks = CGFloat(10)
     static let negativeFeedbacks = CGFloat(20) //show negative above
+    static let testChargeFeedbacks = CGFloat(40)
     
     static let menuBacground = CGFloat(28)
     static let menu = CGFloat(30)

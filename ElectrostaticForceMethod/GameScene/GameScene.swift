@@ -138,10 +138,18 @@ class GameScene: SKScene {
     func getFeedbackFromAllegroPage(pageUrl: String) {
         backgroundNode.removeAllChildren()
         let allCrawler = AllegroCrawler(itemPage: pageUrl)
+        allCrawler.feedbackRelay
+            .subscribe { event in
+                if let f = event.element {
+                    let fVM = FeedbackViewModel(f)
+                    fVM.draw(on: self.backgroundNode)
+                }
+        }.disposed(by: disposeBag)
+        
         allCrawler.getItemPage()
             .subscribe { event in
                     if let f = event.element {
-                        let fVM = FeedbackViewModel(f.convertToFeedback())
+                        let fVM = FeedbackViewModel(f)
                         fVM.draw(on: self.backgroundNode)
                     }
             }.disposed(by: disposeBag)

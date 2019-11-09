@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct TestCharge {
+
+//test charge is just another feedback
+struct Deprecated__TestCharge {
     
     
     var price: Double = 0

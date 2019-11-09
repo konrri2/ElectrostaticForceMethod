@@ -15,6 +15,7 @@ struct ButtonNames {
     static let testUser2 = "u2"
     static let testUser3 = "u3"
     static let linkFromClipboard = "linkFromClipboard"
+    static let testLink = "testLink"
     
     static let text4button: [String:String] = [
         unfoldMenu: "Menu",
@@ -22,7 +23,8 @@ struct ButtonNames {
         testUser1: "u1",
         testUser2: "u2",
         testUser3: "u3",
-        linkFromClipboard: "Link from clipboard"
+        linkFromClipboard: "Link from clipboard",
+        testLink: "test link"
     ]
 }
 
@@ -35,6 +37,7 @@ class MenuViewModel {
     var hideMenuButton: SKSpriteNode
     var loadTestUsersButtons = [SKSpriteNode]()
     var linkFromClipboardButton: SKSpriteNode
+    var testLinkButton: SKSpriteNode
     
     ///the upper right corner where the menu is located
     let corner: CGPoint
@@ -50,7 +53,8 @@ class MenuViewModel {
         ButtonNames.testUser1: loadTestUser,
         ButtonNames.testUser2: loadTestUser,
         ButtonNames.testUser3: loadTestUser,
-        ButtonNames.linkFromClipboard: loadFromLinkFromClipboard
+        ButtonNames.linkFromClipboard: loadFromLinkFromClipboard,
+        ButtonNames.testLink: loadFromTestLink
     ]
 
     
@@ -66,6 +70,8 @@ class MenuViewModel {
         self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser3, position: CGPoint(x:125, y:125), size: CGSize(width:50, height:50)))
         
         linkFromClipboardButton = MenuViewModel.makeButton(name: ButtonNames.linkFromClipboard, position: CGPoint(x:75, y:75), size: CGSize(width:200, height:50))
+        
+        testLinkButton = MenuViewModel.makeButton(name: ButtonNames.testLink, position: CGPoint(x:50, y:175), size: CGSize(width:200, height:50))
     }
     
     deinit {
@@ -81,6 +87,7 @@ class MenuViewModel {
 
         bgNode.addChild(showMenuButton)
         bgNode.addChild(linkFromClipboardButton)
+        bgNode.addChild(testLinkButton)
         for b in loadTestUsersButtons {
             bgNode.addChild(b)
         }
@@ -164,9 +171,15 @@ class MenuViewModel {
         gameSceneDelegate?.getFeedbacks(forUser: buttonName)
     }
     
+    private func loadFromTestLink(buttonName: String) {
+        logVerbose("-------  loading feedbacks for \(buttonName)")
+        
+        gameSceneDelegate?.loadData("efm://https://allegro.pl/oferta/kross-esker-2-0-wisniowy-srebrny-m-20-8445656508")
+    }
     
-    let suiteName = "group.pl.edu.leszczynski.ElectrostaticForceMethod"
-    let urlKey = "urlKey"
+    
+    //let suiteName = "group.pl.edu.leszczynski.ElectrostaticForceMethod"
+    //let urlKey = "urlKey"
     
     
     private func loadFromLinkFromClipboard(buttonName: String) {
@@ -177,22 +190,10 @@ class MenuViewModel {
             print("String is \(theString)")
         }
         
-        
-//        if let prefs = UserDefaults(suiteName: suiteName) {
-//            if let urlLink = prefs.object(forKey: urlKey) as? URL {
-//                log("=======urlLink = \(urlLink)")
-//            }
+//        let group = UserDefaults(suiteName: suiteName)!
+//        if let object = group.object(forKey: urlKey) {
+//             log("=======urlString object= \(object)")
 //        }
-        
-//        let defaults = UserDefaults.standard
-//        if let urlString = defaults.string(forKey: urlKey) {
-//            log("=======urlString = \(urlString)")
-//        }
-        
-        let group = UserDefaults(suiteName: suiteName)!
-        if let object = group.object(forKey: urlKey) {
-             log("=======urlString object= \(object)")
-        }
     }
 
 }

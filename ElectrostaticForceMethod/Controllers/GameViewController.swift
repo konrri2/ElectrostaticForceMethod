@@ -12,37 +12,40 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+/*
+    var oldSize = CGSize(width: -1, height: -1)
 
-    
- /*
     //TODO - viewWillLayoutSubviews happen twice, adn mess up the view whan starting from shared extension
 //    var scene:GameScene?
-//    override func viewWillAppear(_ animated: Bool) {
-//        log("viewWillAppear")
-    override func viewWillLayoutSubviews() {
-        log("viewWillLayoutSubviews")
+    override func viewWillAppear(_ animated: Bool) {
+        log("viewWillAppear")
+//    override func viewWillLayoutSubviews() {
+//        log("viewWillLayoutSubviews")
         super.viewWillLayoutSubviews()
-        if #available(iOS 11.0, *), let view = self.view {
-            view.frame = self.view.safeAreaLayoutGuide.layoutFrame  //safe area is important for iPhones with the notch -> therfore i need to move it to viewWillLayoutSubviews
+        if view.bounds.size != oldSize {
+            oldSize = view.bounds.size
+            prepareGameScene()
         }
-        guard let view = self.view as! SKView? else { return }
-        view.ignoresSiblingOrder = true
-        view.showsFPS = true
-        view.showsNodeCount = true
-        view.showsPhysics = true
-        view.showsDrawCount = true
-        
-        let scene = GameScene(size:view.bounds.size)
-        scene.scaleMode = .aspectFill
-        view.presentScene(scene)
     }
 */
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //oldSize = view.bounds.size
+        prepareGameScene()
+    }
+
+    
+    private func prepareGameScene() {
         if #available(iOS 11.0, *), let view = self.view {
             view.frame = self.view.safeAreaLayoutGuide.layoutFrame  //safe area is important for iPhones with the notch -> therfore i need to move it to viewWillLayoutSubviews
         }
+        
+        if #available(macCatalyst 10.15, *), let view = self.view {
+            //TODO   view.frame = CGRect(x: 0, y: 0, width: 1000, height: 1000)
+        }
+        
         guard let view = self.view as! SKView? else { return }
         view.ignoresSiblingOrder = true
         view.showsFPS = true
@@ -50,12 +53,10 @@ class GameViewController: UIViewController {
         view.showsPhysics = true
         view.showsDrawCount = true
         
-
         let scene = GameScene(size:view.bounds.size)
         scene.scaleMode = .aspectFill
         view.presentScene(scene)
     }
-
  
     override var shouldAutorotate: Bool {
         return false

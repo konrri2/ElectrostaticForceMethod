@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+///This history feedback are read from saved files
 class FeedbacksHistory {
     
     var feedbacks: [Feedback]
@@ -23,7 +24,7 @@ class FeedbacksHistory {
     }
     
 
-    public func downloadFeedbacks1by1()  {
+    public func readCsvFeedbacks1by1()  {
         logVerbose("downloading feedbacks from .csv file")
 
         DispatchQueue.global(qos: .background).async {
@@ -39,6 +40,7 @@ class FeedbacksHistory {
     }
 
     
+
     private func readDataFromCSV(fileName:String, fileType: String = "csv")-> String!{
         guard let filepath = Bundle.main.path(forResource: fileName, ofType: fileType)
             else {
@@ -60,9 +62,7 @@ class FeedbacksHistory {
         cleanFile = cleanFile.replacingOccurrences(of: "\n\n", with: "\n")
         return cleanFile
     }
-    
-    
-    //MARK: - internal method for tests
+
     internal func readHistoryRows() -> [String] {
         if let data = readDataFromCSV(fileName: userName) {
             let csvRows = data.components(separatedBy: "\n")
@@ -73,7 +73,8 @@ class FeedbacksHistory {
         }
     }
     
-    //only for tests
+    //MARK: - internal method for tests  /////////////////////////////       for test  /////////////////////////////
+/*
     internal func readFeedabcksHistory() -> [Feedback] {
        // DispatchQueue.global(qos: .background).async {
             
@@ -88,5 +89,5 @@ class FeedbacksHistory {
         //}
         return self.feedbacks
     }
-    
+    */
 }

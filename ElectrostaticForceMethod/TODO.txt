@@ -1,5 +1,7 @@
 categories - tree ?? move to left to show
 
+common protocol of FeedbacksHistory - CsvReader and AllegroCrowler
+
 
 if has notch   animate/move/unfold menu further
 

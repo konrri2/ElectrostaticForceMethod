@@ -45,7 +45,7 @@ class MenuViewModel {
     
     var isFolded: Bool = true
     
-    public weak var gameSceneDelegate: GameScene?
+    public unowned var gameSceneDelegate: GameScene
     
     let dictionaryOfFunctions = [
         ButtonNames.unfoldMenu: openMenu,
@@ -58,8 +58,9 @@ class MenuViewModel {
     ]
 
     
-    init(corner: CGPoint) {
-        self.corner = corner
+    init(corner: CGPoint, gameSceneDelegate: GameScene) {
+        self.gameSceneDelegate = gameSceneDelegate
+        self.corner = corner - CGPoint(x: 45, y: 0)  //just move in case of notch
         self.backgroundSprite = SKSpriteNode(color: .clear, size: fullMenuSize)
     
         self.showMenuButton = MenuViewModel.makeButton(name: ButtonNames.unfoldMenu, position: CGPoint(x:50, y:25), size: CGSize(width:100, height:50))
@@ -99,6 +100,9 @@ class MenuViewModel {
         if let function = dictionaryOfFunctions[buttonName] {
             function(self)(buttonName)
         }
+        if buttonName != ButtonNames.unfoldMenu {  //just hide after choosing an option
+            closeMenu(buttonName: "")
+        }
     }
     
     
@@ -126,7 +130,6 @@ class MenuViewModel {
     
     
     //MARK: - buttons' actions
-    
     func openMenu(buttonName: String) {
         guard let bgNode = self.backgroundSprite else {
             return
@@ -168,13 +171,13 @@ class MenuViewModel {
     private func loadTestUser(buttonName: String) {
         logVerbose("-------  loading feedbacks for \(buttonName)")
         
-        gameSceneDelegate?.getFeedbacks(forUser: buttonName)
+        gameSceneDelegate.getFeedbacksFromCsv(forUser: buttonName)
     }
     
     private func loadFromTestLink(buttonName: String) {
         logVerbose("-------  loading feedbacks for \(buttonName)")
         
-        gameSceneDelegate?.loadData("efm://https://allegro.pl/oferta/kross-esker-2-0-wisniowy-srebrny-m-20-8445656508")
+        gameSceneDelegate.loadData("efm://https://allegro.pl/oferta/kross-esker-2-0-wisniowy-srebrny-m-20-8445656508")
     }
     
     

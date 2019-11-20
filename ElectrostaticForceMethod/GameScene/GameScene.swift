@@ -14,30 +14,25 @@ import RxCocoa
 class GameScene: SKScene {
  
     private var gridVM = GridViewModel()
-    private var menuVM: MenuViewModel
+    private var menuVM: MenuViewModel?
+    private var calculatorVM: EfmCalculatorViewModel?
     let disposeBag = DisposeBag()
     
     ///Dimensions
     let rectSize = 1500
     let xAxisHeight = 50
     let yAxisWidth = 90
-    let rightEdge: CGFloat
-    let upperEdge: CGFloat
     
     ///Nodes
     let backgroundNode: SKShapeNode
     let pricesXAxisNode: SKShapeNode
     let categoriesYAxisNode: SKShapeNode
-   // weak var menuBacgroundNode: SKSpriteNode?
     
     override init(size: CGSize) {
-        rightEdge = size.width
-        upperEdge = size.height
         backgroundNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: rectSize))
         pricesXAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: xAxisHeight))
         categoriesYAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: yAxisWidth, height: rectSize))
         
-        menuVM = MenuViewModel(corner: CGPoint(x: rightEdge, y: upperEdge))
         super.init(size: size)
     }
     
@@ -53,7 +48,7 @@ class GameScene: SKScene {
         log("didMove")
         prepareBackground()
         prepareGrid()
-        prepareMenu()
+
         setupGestures()
         
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -71,13 +66,14 @@ class GameScene: SKScene {
         else {
             //loadData("u2")  //test user
         }
-        animateMove()
+        animateCoordinatePlaneAtStart()
     }
     
+    //MARK: - loading data
     func loadData(_ feedbacksUrl: String) {
         if feedbacksUrl.isEmpty {
             //show user the menu - so she/he can choose
-            menuVM.openMenu(buttonName: "")
+            menuVM?.openMenu(buttonName: "")
             return
         }
         
@@ -89,21 +85,75 @@ class GameScene: SKScene {
         }
         else if urlStr.hasPrefix("ebay") {
             //TODO parse ebay
-            logError("!!!   ebay parser not fully implemented !!!")
+            logError("!!!   ebay parser not implemented !!!")
         }
         else { //load saved user data from .csv
-            getFeedbacks(forUser: urlStr)
+            getFeedbacksFromCsv(forUser: urlStr)
         }
     }
     
-    func animateMove() {
+    func getFeedbacksFromCsv(forUser: String) {
+        backgroundNode.removeAllChildren()
+        let feedHistory = FeedbacksHistory(for: forUser)
+        feedHistory.feedbackRelay
+            .subscribe { event in
+                if let f = event.element {
+                    let fVM = FeedbackViewModel(f)
+                    fVM.draw(on: self.backgroundNode)
+                }
+        }.disposed(by: disposeBag)
+        
+        self.calculatorVM = EfmCalculatorViewModel(relay: feedHistory.feedbackRelay)
+        
+        feedHistory.readCsvFeedbacks1by1()
+    }
+    
+    func getFeedbackFromAllegroPage(pageUrl: String) {
+        backgroundNode.removeAllChildren()
+        let allCrawler = AllegroCrawler(itemPage: pageUrl)
+        allCrawler.feedbackRelay
+            .subscribe { event in
+                if let f = event.element {
+                    let fVM = FeedbackViewModel(f)
+                    fVM.draw(on: self.backgroundNode)
+                }
+        }.disposed(by: disposeBag)
+        
+        //TODO subscribe(relay: allCrawler.feedbackRelay)
+        
+        allCrawler.getItemPage()
+            .subscribe { event in
+                    if let f = event.element {
+                        let fVM = FeedbackViewModel(f)
+                        fVM.draw(on: self.backgroundNode)
+                    }
+            }.disposed(by: disposeBag)
+        
+    }
+    
+
+}
+    
+//MARK: - prepare layot
+extension GameScene {
+    fileprivate func animateCoordinatePlaneAtStart() {
         //TODO start point - center on test charge
         let startPoint = CGPoint(x: yAxisWidth, y: xAxisHeight)
         self.animatePan(to: startPoint)
-        //self.panForTranslation(CGPoint(x: GameScene.yAxisWidth, y: GameScene.xAxisHeight))
     }
     
-    func prepareBackground() {
+    
+    fileprivate func animatePan(to p: CGPoint, time: Double = 2.0) {
+        let bgMove = SKAction.move(to: p, duration: time)
+        let xAxisMove = SKAction.moveTo(x: p.x, duration: time)
+        let yAxisMove = SKAction.moveTo(y: p.y, duration: time)
+        
+        backgroundNode.run(bgMove)
+        pricesXAxisNode.run(xAxisMove)
+        categoriesYAxisNode.run(yAxisMove)
+    }
+    
+    fileprivate func prepareBackground() {
         backgroundNode.fillColor = .gray
         backgroundNode.name = "backgroundNode"
         self.addChild(backgroundNode)
@@ -120,66 +170,17 @@ class GameScene: SKScene {
         self.addChild(categoriesYAxisNode)
         gridVM.drawCategoriesLabels(on: categoriesYAxisNode)
     }
-    
-    func getFeedbacks(forUser: String) {
-        backgroundNode.removeAllChildren()
-        let feedHistory = FeedbacksHistory(for: forUser)
-        feedHistory.feedbackRelay
-            .subscribe { event in
-                if let f = event.element {
-                    let fVM = FeedbackViewModel(f)
-                    fVM.draw(on: self.backgroundNode)
-                }
-        }.disposed(by: disposeBag)
-        
-        feedHistory.downloadFeedbacks1by1()
-    }
-    
-    func getFeedbackFromAllegroPage(pageUrl: String) {
-        backgroundNode.removeAllChildren()
-        let allCrawler = AllegroCrawler(itemPage: pageUrl)
-        allCrawler.feedbackRelay
-            .subscribe { event in
-                if let f = event.element {
-                    let fVM = FeedbackViewModel(f)
-                    fVM.draw(on: self.backgroundNode)
-                }
-        }.disposed(by: disposeBag)
-        
-        allCrawler.getItemPage()
-            .subscribe { event in
-                    if let f = event.element {
-                        let fVM = FeedbackViewModel(f)
-                        fVM.draw(on: self.backgroundNode)
-                    }
-            }.disposed(by: disposeBag)
-        
-    }
-    
+}
+
+
+//MARK: - touches and gesture handling
+extension GameScene {
     fileprivate func setupGestures() {
         let pinchGesture = UIPinchGestureRecognizer()
         pinchGesture.addTarget(self, action: #selector(pinchGestureAction(_:)))
         view?.addGestureRecognizer(pinchGesture)
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-    }
-    
-    func animatePan(to p: CGPoint, time: Double = 2.0) {
-        let bgMove = SKAction.move(to: p, duration: time)
-        let xAxisMove = SKAction.moveTo(x: p.x, duration: time)
-        let yAxisMove = SKAction.moveTo(y: p.y, duration: time)
-        
-        backgroundNode.run(bgMove)
-        pricesXAxisNode.run(xAxisMove)
-        categoriesYAxisNode.run(yAxisMove)
-    }
-}
-    
-
-//MARK: - touches and gesture handling
-extension GameScene {
     @objc func pinchGestureAction(_ sender: UIPinchGestureRecognizer) {
         backgroundNode.xScale = backgroundNode.xScale * sender.scale
         backgroundNode.yScale = backgroundNode.yScale * sender.scale
@@ -201,7 +202,7 @@ extension GameScene {
         self.categoriesYAxisNode.position = CGPoint(x: 0, y: newY)
     }
 
-   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
        guard let touch = touches.first else { return }
        let positionInScene = touch.location(in: self)
        let previousPosition = touch.previousLocation(in: self)
@@ -216,7 +217,7 @@ extension GameScene {
             let touchedNode = atPoint(location)
             if let buttonName = touchedNode.name {
                 logVerbose("touchedNode.name buttonName= \(buttonName)")
-                menuVM.handleClick(buttonName: buttonName)
+                menuVM?.handleClick(buttonName: buttonName)
             }
         }
     }
@@ -224,9 +225,19 @@ extension GameScene {
 
 //MARK: - Menus
 extension GameScene {
-    func prepareMenu() {
-        menuVM.gameSceneDelegate = self
-        if let menuNode = menuVM.drawMenu() {
+    public func setupMenu(size: CGSize) {
+        let rightEdge = size.width
+        let upperEdge = size.height
+        menuVM = MenuViewModel(corner: CGPoint(x: rightEdge, y: upperEdge), gameSceneDelegate: self)
+        redrawMenu()
+    }
+    
+    fileprivate func redrawMenu() {
+        if let oldMenu = self.childNode(withName: "menuNode") {
+            oldMenu.removeFromParent()
+        }
+        
+        if let menuNode = menuVM?.drawMenu() {
             menuNode.name = "menuNode"
             menuNode.zPosition = Layers.menuBacground
         

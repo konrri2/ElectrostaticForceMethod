@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3A24E36060F15D3EF94D882A /* Pods_ElectrostaticForceMethod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5013A3408BFC09CAA8199B80 /* Pods_ElectrostaticForceMethod.framework */; };
 		42C568A7D78572D60EBD8FAD /* Pods_ElectrostaticForceMethod_ElectrostaticForceMethodUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9AC480FF73BC82ADA155544 /* Pods_ElectrostaticForceMethod_ElectrostaticForceMethodUITests.framework */; };
+		761610E8238572E100F84ECC /* EfmCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761610E7238572E100F84ECC /* EfmCalculator.swift */; };
+		761610EA238572F600F84ECC /* EfmCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761610E9238572F600F84ECC /* EfmCalculatorViewModel.swift */; };
 		762677E2235A168A0079F2F3 /* u3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 762677E1235A16890079F2F3 /* u3.csv */; };
 		7637F3E62316D4E800D8B5F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F3E52316D4E800D8B5F1 /* AppDelegate.swift */; };
 		7637F3E82316D4E800D8B5F1 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7637F3E72316D4E800D8B5F1 /* GameScene.sks */; };
@@ -28,7 +30,6 @@
 		765A373723192797006A9C94 /* FeedbacksHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373623192797006A9C94 /* FeedbacksHistory.swift */; };
 		765A373923193ED5006A9C94 /* u1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A373823193ED5006A9C94 /* u1.csv */; };
 		765A373C23195112006A9C94 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373B23195112006A9C94 /* Logger.swift */; };
-		7675D4E6235CAAEC005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 7675D4E5235CAAEB005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html */; };
 		7675D4E8235CC2BE005725B4 /* dataLayer.json in Resources */ = {isa = PBXBuildFile; fileRef = 7675D4E7235CC2BE005725B4 /* dataLayer.json */; };
 		76A5908623688529002987FB /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A5908523688529002987FB /* MenuViewModel.swift */; };
 		76A59088236C8EFD002987FB /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A59087236C8EFC002987FB /* CGPoint+Extension.swift */; };
@@ -93,6 +94,8 @@
 		0F086042CDDC84498796494D /* Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.release.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests/Pods-ElectrostaticForceMethod-ElectrostaticForceMethodUITests.release.xcconfig"; sourceTree = "<group>"; };
 		43E78ECA9DCD0CB8BC7BDC13 /* Pods-ElectrostaticForceMethod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectrostaticForceMethod.release.xcconfig"; path = "Target Support Files/Pods-ElectrostaticForceMethod/Pods-ElectrostaticForceMethod.release.xcconfig"; sourceTree = "<group>"; };
 		5013A3408BFC09CAA8199B80 /* Pods_ElectrostaticForceMethod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ElectrostaticForceMethod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		761610E7238572E100F84ECC /* EfmCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EfmCalculator.swift; sourceTree = "<group>"; };
+		761610E9238572F600F84ECC /* EfmCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EfmCalculatorViewModel.swift; sourceTree = "<group>"; };
 		762677E1235A16890079F2F3 /* u3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u3.csv; sourceTree = "<group>"; };
 		7637F3E22316D4E800D8B5F1 /* ElectrostaticForceMethod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElectrostaticForceMethod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7637F3E52316D4E800D8B5F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,7 +121,6 @@
 		765A373623192797006A9C94 /* FeedbacksHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbacksHistory.swift; sourceTree = "<group>"; };
 		765A373823193ED5006A9C94 /* u1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u1.csv; sourceTree = "<group>"; };
 		765A373B23195112006A9C94 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		7675D4E5235CAAEB005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html"; sourceTree = "<group>"; };
 		7675D4E7235CC2BE005725B4 /* dataLayer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dataLayer.json; sourceTree = "<group>"; };
 		76A5908523688529002987FB /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		76A59087236C8EFC002987FB /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				7637F42B231AC27400D8B5F1 /* GridViewModel.swift */,
 				76EB3411235731EC0008CAF2 /* FeedbackViewModel.swift */,
 				76A5908523688529002987FB /* MenuViewModel.swift */,
+				761610E9238572F600F84ECC /* EfmCalculatorViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -291,7 +294,6 @@
 		765A372B231920E7006A9C94 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
-				7675D4E5235CAAEB005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html */,
 				76EB33D42356239E0008CAF2 /* u2.csv */,
 				76EB3415235791480008CAF2 /* test.csv */,
 				76CD8B5723579935002D6FBD /* test2.csv */,
@@ -314,6 +316,7 @@
 				765A373623192797006A9C94 /* FeedbacksHistory.swift */,
 				76AD525E2359C68C00558B89 /* Categories.swift */,
 				76EF74A0235C517F008FBA75 /* TestCharge.swift */,
+				761610E7238572E100F84ECC /* EfmCalculator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -510,7 +513,6 @@
 			files = (
 				76EF749C235C3760008FBA75 /* InteresitngSellers in Resources */,
 				7637F3F12316D4E800D8B5F1 /* Main.storyboard in Resources */,
-				7675D4E6235CAAEC005725B4 /* KROSS ESKER 2.0 WIŚNIOWY_SREBRNY M 20'' 8445656508 - Allegro.pl.html in Resources */,
 				7637F3E82316D4E800D8B5F1 /* GameScene.sks in Resources */,
 				7637F3F32316D4EE00D8B5F1 /* Assets.xcassets in Resources */,
 				765A373923193ED5006A9C94 /* u1.csv in Resources */,
@@ -682,8 +684,10 @@
 			files = (
 				7637F3EC2316D4E800D8B5F1 /* GameScene.swift in Sources */,
 				76EF749F235C4A3F008FBA75 /* AllegroCrawler.swift in Sources */,
+				761610E8238572E100F84ECC /* EfmCalculator.swift in Sources */,
 				765A373C23195112006A9C94 /* Logger.swift in Sources */,
 				7637F42C231AC27400D8B5F1 /* GridViewModel.swift in Sources */,
+				761610EA238572F600F84ECC /* EfmCalculatorViewModel.swift in Sources */,
 				76A59088236C8EFD002987FB /* CGPoint+Extension.swift in Sources */,
 				76EB3412235731EC0008CAF2 /* FeedbackViewModel.swift in Sources */,
 				76EF74A1235C517F008FBA75 /* TestCharge.swift in Sources */,

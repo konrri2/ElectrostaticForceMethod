@@ -62,8 +62,12 @@ class EfmCalculator {
     }
     
     private func calculateElectrostaticForce(_ f: Feedback) -> Double {
-        //TODO
-        let d = Double.random(in: 0...2)
-        return d
+        //TODO introduce scaling factors
+        if let f = self.testCharge?.force(q: f) {
+            return f
+        }
+        else {
+            return 0.0
+        }
     }
 }

@@ -84,11 +84,15 @@ extension Feedback {
     }
 }
 
+///Columb's force constat (see section 3.3)
+let k = 32.0
+let qtz = 4.0
+
 //MARK: EFM force formulas (see section 3 of the article)
 extension Feedback {
     public func force(q: Feedback) -> Double {
         let r = distance(to: q)
         let charge = q.isPositive ? 1.0 : -1.0
-        return charge / (r*r*r)
+        return (k * qtz * charge) / (r*r*r)
     }
 }

@@ -61,14 +61,29 @@ struct Feedback: CustomStringConvertible {
 extension Feedback {
     
     ///Distance on x-axis
-    public func priceDistance(to feed2: Feedback) -> Double {
+    internal func priceDistance(to feed2: Feedback) -> Double {
         let dist = self.pricePosition - feed2.pricePosition
         return dist.magnitude
     }
     
     ///Distance on y-axis
-    public func categoryDistance(to feed2: Feedback) -> Double {
+    internal func categoryDistance(to feed2: Feedback) -> Double {
         let d = self.category.distance(to: feed2.category)
         return Double(d)
+    }
+    
+    ///Disntance on z-axis -> this distance is constant (see section4 of the article)
+    internal func verticalDistance(to feed2: Feedback) -> Double {
+        return 4.0
+    }
+    
+    /// "r" in the formulas in the paper
+    public func distance(to feed2: Feedback) -> Double {
+        let dx = priceDistance(to: feed2)
+        let dy = categoryDistance(to: feed2)
+        let dz = verticalDistance(to: feed2)
+        
+        //Piatagoras
+        return (dx*dx + dy*dy + dz*dz).squareRoot()
     }
 }

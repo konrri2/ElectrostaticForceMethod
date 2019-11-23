@@ -10,6 +10,7 @@ import SpriteKit
 
 struct FeedbackViewModel {
     var theFeedback: Feedback?
+    static let nodeName = "emitter"
     
     //emeral greenish rgb(46, 204, 113)
     let positiveColorSequence = SKKeyframeSequence(
@@ -36,7 +37,7 @@ struct FeedbackViewModel {
             
             let emitterNode = SKEmitterNode(fileNamed: "Particle.sks")
             if let emitter = emitterNode {
-                emitter.name = "emitter"
+                emitter.name = FeedbackViewModel.nodeName
                 if f.isPositive {
                     emitter.particleAlphaSequence = nil
                     emitter.particleColorSequence = positiveColorSequence

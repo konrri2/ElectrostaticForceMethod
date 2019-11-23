@@ -11,6 +11,7 @@ import Foundation
 enum FeedbackType {
     case normal
     case testCharge
+    case error
 }
 
 struct Feedback: CustomStringConvertible {

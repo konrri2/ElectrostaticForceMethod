@@ -22,6 +22,7 @@ class GameScene: SKScene {
     let rectSize = 1500
     let xAxisHeight = 50
     let yAxisWidth = 90
+    var rightEdge = CGFloat(400)
     
     ///Nodes
     let backgroundNode: SKShapeNode
@@ -32,7 +33,7 @@ class GameScene: SKScene {
         backgroundNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: rectSize))
         pricesXAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: xAxisHeight))
         categoriesYAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: yAxisWidth, height: rectSize))
-        
+         
         super.init(size: size)
     }
     
@@ -70,68 +71,22 @@ class GameScene: SKScene {
     }
     
     //MARK: - loading data
-    func loadData(_ feedbacksUrl: String) {
-        if feedbacksUrl.isEmpty {
+    func loadData(_ itemUrl: String) {
+        if itemUrl.isEmpty {
             //show user the menu - so she/he can choose
             menuVM?.openMenu(buttonName: "")
             return
         }
         
-        let urlStr = feedbacksUrl.replacingOccurrences(of: "efm://", with: "")
-        log("==will show data from \(urlStr)")
-        if urlStr.hasPrefix("https://allegro.pl/") {
-            log("getFeedbackForPage for allegro")
-            getFeedbackFromAllegroPage(pageUrl: urlStr)
+        if let oldCalVM = calculatorVM {
+            oldCalVM.clear()
         }
-        else if urlStr.hasPrefix("ebay") {
-            //TODO parse ebay
-            logError("!!!   ebay parser not implemented !!!")
-        }
-        else { //load saved user data from .csv
-            getFeedbacksFromCsv(forUser: urlStr)
+        calculatorVM = EfmCalculatorViewModel(itemUrl, backgroundNode: self.backgroundNode)
+        if let resultsNode = calculatorVM?.resultNode {
+            resultsNode.position = CGPoint(x: rightEdge-100, y: 100)
+            self.addChild(resultsNode)
         }
     }
-    
-    func getFeedbacksFromCsv(forUser: String) {
-        backgroundNode.removeAllChildren()
-        let feedHistory = FeedbacksHistory(for: forUser)
-        feedHistory.feedbackRelay
-            .subscribe { event in
-                if let f = event.element {
-                    let fVM = FeedbackViewModel(f)
-                    fVM.draw(on: self.backgroundNode)
-                }
-        }.disposed(by: disposeBag)
-        
-        self.calculatorVM = EfmCalculatorViewModel(relay: feedHistory.feedbackRelay)
-        
-        feedHistory.readCsvFeedbacks1by1()
-    }
-    
-    func getFeedbackFromAllegroPage(pageUrl: String) {
-        backgroundNode.removeAllChildren()
-        let allCrawler = AllegroCrawler(itemPage: pageUrl)
-        allCrawler.feedbackRelay
-            .subscribe { event in
-                if let f = event.element {
-                    let fVM = FeedbackViewModel(f)
-                    fVM.draw(on: self.backgroundNode)
-                }
-        }.disposed(by: disposeBag)
-        
-        //TODO subscribe(relay: allCrawler.feedbackRelay)
-        
-        allCrawler.getItemPage()
-            .subscribe { event in
-                    if let f = event.element {
-                        let fVM = FeedbackViewModel(f)
-                        fVM.draw(on: self.backgroundNode)
-                    }
-            }.disposed(by: disposeBag)
-        
-    }
-    
-
 }
     
 //MARK: - prepare layot
@@ -225,14 +180,15 @@ extension GameScene {
 
 //MARK: - Menus
 extension GameScene {
-    public func setupMenu(size: CGSize) {
-        let rightEdge = size.width
+    public func adjustSize(size: CGSize) {
+        rightEdge = size.width
         let upperEdge = size.height
-        menuVM = MenuViewModel(corner: CGPoint(x: rightEdge, y: upperEdge), gameSceneDelegate: self)
-        redrawMenu()
+        let menuCorner = CGPoint(x: rightEdge, y: upperEdge)
+        redrawMenu(menuCorner)
     }
     
-    fileprivate func redrawMenu() {
+    fileprivate func redrawMenu(_ menuCorner: CGPoint) {
+        menuVM = MenuViewModel(corner: menuCorner, gameSceneDelegate: self)
         if let oldMenu = self.childNode(withName: "menuNode") {
             oldMenu.removeFromParent()
         }

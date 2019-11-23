@@ -53,7 +53,7 @@ class GameViewController: UIViewController {
 ////            view.frame = CGRect(x: 0, y: 0, width: 1000, height: 1000)
 ////        }
 //        logVerbose("prepareMenu view.bounds.size = \(view.bounds.size)")
-        scene?.setupMenu(size: self.view.frame.size)
+        scene?.adjustSize(size: self.view.frame.size)
     }
  
     override var shouldAutorotate: Bool {

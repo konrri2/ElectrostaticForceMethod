@@ -170,8 +170,8 @@ class MenuViewModel {
     
     private func loadTestUser(buttonName: String) {
         logVerbose("-------  loading feedbacks for \(buttonName)")
-        
-        gameSceneDelegate.getFeedbacksFromCsv(forUser: buttonName)
+
+        gameSceneDelegate.loadData(buttonName)
     }
     
     private func loadFromTestLink(buttonName: String) {

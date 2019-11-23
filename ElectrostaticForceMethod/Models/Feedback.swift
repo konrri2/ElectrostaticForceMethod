@@ -70,7 +70,7 @@ extension Feedback {
     
     ///Disntance on z-axis -> this distance is constant (see section4 of the article)
     internal func verticalDistance(to feed2: Feedback) -> Double {
-        return 4.0
+        return qtz //constant set arbitraly in the experiments section 4
     }
     
     /// "r" in the formulas in the paper
@@ -84,8 +84,9 @@ extension Feedback {
     }
 }
 
-///Columb's force constat (see section 3.3)
+///Coulomb force constantt (see section 3.3)
 let k = 32.0
+///constant set arbitraly in the experiments section 4
 let qtz = 4.0
 
 //MARK: EFM force formulas (see section 3 of the article)

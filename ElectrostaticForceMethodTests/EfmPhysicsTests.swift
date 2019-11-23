@@ -43,6 +43,9 @@ class EfmPhysicsTests: XCTestCase {
         
         let f1 = qt.force(q: q1)
         let f2 = qt.force(q: q2)
+        log("f1=\(f1)   f2=\(f2)")
+        let sumForces = f1+f2
+        XCTAssertEqual(sumForces, 1.414, accuracy: 0.001, "in section 4.1 of the article resulting force is 1.414")
         XCTAssertEqual(f1, f2, accuracy: 0.00001, "forces should be equal")
     }
 
@@ -62,6 +65,16 @@ class EfmPhysicsTests: XCTestCase {
         let f1 = qt.force(q: q1)
         let f2 = qt.force(q: q2)
         log("f1=\(f1)   f2=\(f2)")
+        let sumForces = f1+f2
+        XCTAssertEqual(sumForces, 0, accuracy: 0.001, "in section 4.1 of the article resulting force is 0")
         XCTAssertNotEqual(f1, f2, accuracy: 0.00001, "forces cannot be equal")
+    }
+    
+    ///figure 3.a is in section 4.1 of the article
+    func testForFigure3a() {
+        let q1 = Feedback(isPositive: true, price: 1 << 2)
+        let q2 = Feedback(isPositive: true, price: 1 << 10)
+        
+        var qt = Feedback(isPositive: false, price: 1 << 1, type: .testCharge)
     }
 }

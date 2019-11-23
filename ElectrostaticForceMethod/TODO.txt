@@ -1,6 +1,7 @@
+
 categories - tree ?? move to left to show
 
-common protocol of FeedbacksHistory - CsvReader and AllegroCrowler
+after [common protocol of FeedbacksHistory - CsvReader and AllegroCrowler] update tests
 
 
 if has notch   animate/move/unfold menu further

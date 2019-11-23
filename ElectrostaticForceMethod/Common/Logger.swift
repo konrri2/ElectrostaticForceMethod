@@ -8,44 +8,71 @@
 
 import Foundation
 
-public struct GlobalSettings {
-    public static let isDebug: Bool                                        = _isDebugAssertConfiguration()
-    public static let isVerboseLogging: Bool                               = true
+
+public enum LoggingLevelMask: Int {
+    //standard
+    case error   = 0b0000_0001
+    case warning = 0b0000_0010
+    case info    = 0b0000_0100
+    case debug   = 0b0000_1000
+    
+    //specyfic
+    case graphics = 0b0001_0000
+    case touches  = 0b0010_0000
+    case physics  = 0b0100_0000
+    case rx       = 0b1000_0000
+    
 }
 
-public func logVerbose(_ text: String?) {
-    if GlobalSettings.isDebug && GlobalSettings.isVerboseLogging {
-        logText("_L v_ ", text: text)
+let logginLevel = 0b1111_1111//LoggingLevelMask.rx.rawValue | LoggingLevelMask.debug.rawValue
+
+public func isLogginLevelOn(_ level: LoggingLevelMask) -> Bool {
+    return (logginLevel & level.rawValue) > 0
+}
+
+public func log(_ text: String, level: LoggingLevelMask) {
+    if (logginLevel & level.rawValue) > 0 {
+        print(text)
     }
 }
 
-public func log(_ text: String?) {
-    if GlobalSettings.isDebug {
-        logText("_LOG_ ", text: text)
-    }
+func logError(_ text: String) {
+    log("==  __ERROR__ == " + text, level: LoggingLevelMask.error)
 }
 
-public func logTime(_ text: String?) {
-    if let t = text {
-        let d = Date()
-        let df = DateFormatter()
-        df.dateFormat = "Y-MM-dd H:m:ss.SSSS"
-        df.string(from: d)
-        
-        log("[\(df.string(from: d))]   \(t)")
-    }
+func logWarn(_ text: String) {
+    log("__WARN __ " + text, level: LoggingLevelMask.warning)
 }
 
-public func logWarn(_ text: String?) {
-    if GlobalSettings.isDebug {
-        logText("__WARN __ ", text: text)
-    }
+public func log(_ text: String) {
+    log("_LOG_ " + text, level: LoggingLevelMask.info)
 }
 
-public func logError(_ text: String?) {
-    logText("==  __ERROR__ == ", text: text)
+func logDebug(_ text: String) {
+    log("DEBUG: " + text, level: LoggingLevelMask.debug)
+}
+func logVerbose(_ text: String) {
+    log("_L v_ " + text, level: LoggingLevelMask.debug)
 }
 
-private func logText(_ prefix: String, text: String?) {
-    print(prefix + (text ?? ""))
+
+
+
+
+func logGraphicsTest(_ text: String) {
+    log(text, level: LoggingLevelMask.graphics)
 }
+
+func logTouches(_ text: String) {
+    log(text, level: LoggingLevelMask.touches)
+}
+
+func logPhisic(_ text: String) {
+    log(text, level: LoggingLevelMask.physics)
+}
+
+func logRx(_ text: String) {
+    log(text, level: LoggingLevelMask.rx)
+}
+
+

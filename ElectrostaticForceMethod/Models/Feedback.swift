@@ -27,11 +27,15 @@ struct Feedback: CustomStringConvertible {
         return Double(price) / 100.0
     }
     
-    ///Creates default feedback
+    ///position on x-axis   (see section 3.1 of the article)
+    var pricePosition: Double {
+        return log2(priceInPln)
+    }
+    
     init() {
         
     }
-    
+
     /**
      Please don't confuse with fullData csv format
      

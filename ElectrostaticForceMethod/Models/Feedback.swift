@@ -54,10 +54,21 @@ struct Feedback: CustomStringConvertible {
         return f
     }
     
+
+}
+
+//MARK: distances of the electrostatic charges (see section 3 of the article)
+extension Feedback {
+    
+    ///Distance on x-axis
     public func priceDistance(to feed2: Feedback) -> Double {
         let dist = self.pricePosition - feed2.pricePosition
         return dist.magnitude
     }
+    
+    ///Distance on y-axis
+    public func categoryDistance(to feed2: Feedback) -> Double {
+        let d = self.category.distance(to: feed2.category)
+        return Double(d)
+    }
 }
-
-

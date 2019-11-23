@@ -45,7 +45,9 @@ struct Category {
     }
     
     func distance(to c: Category) -> Int {
-        fatalError("TODO  implement dynamic category bulding")
+        let distance = self.position - c.position
+        //TODO make categories dynamic - distance in a tree
+        return abs(distance)
     }
     
     private func tryToGuessCategoryType(strName: String) -> CategoryType {

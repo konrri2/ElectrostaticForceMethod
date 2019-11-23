@@ -21,14 +21,26 @@ class EfmPhysicsTests: XCTestCase {
 
     ///figure 2.a is in section 4.1 of the article
     func testForFigure2a() {
-        let qt = Feedback(isPositive: false, type: .testCharge, price: 6.0)
-        let q1 = Feedback(isPositive: true, price: 2.0)
-        let q2 = Feedback(isPositive: true, price: 10.0)
+        var qt = Feedback(isPositive: false, price: 6, type: .testCharge)
+        var q1 = Feedback(isPositive: true, price: 2)
+        var q2 = Feedback(isPositive: true, price: 10)
         
-        let dist1 = qt.distance(to: q1)
-        let dist2 = qt.distance(to: q2)
-        log("distance 1 = \(dist1);   dist2=\(dist1)")
-        XCTAssertEqual(dist1, dist2, "distances should be equal")
+        var dist1 = qt.distance(to: q1)
+        var dist2 = qt.distance(to: q2)
+        log("distance 1 = \(dist1);   dist2= \(dist2)")
+        XCTAssertNotEqual(dist1, dist2, accuracy: 0.00001, "distances should be for logrithm prices")
+        
+        
+        qt = Feedback(isPositive: false, price: 1 << 6, type: .testCharge)
+        q1 = Feedback(isPositive: true, price: 1 << 2)
+        q2 = Feedback(isPositive: true, price: 1 << 10)
+        
+        dist1 = qt.distance(to: q1)
+        dist2 = qt.distance(to: q2)
+        log("price1 = \(q1.price)    price2 = \(q2.price)")
+        log("distance 1 = \(dist1);   dist2= \(dist2)")
+        XCTAssertEqual(dist1, dist2, accuracy: 0.00001, "distances should be equal")
+
     }
 
 

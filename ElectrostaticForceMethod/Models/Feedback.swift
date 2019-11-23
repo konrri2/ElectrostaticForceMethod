@@ -31,10 +31,6 @@ struct Feedback: CustomStringConvertible {
     var pricePosition: Double {
         return log2(priceInPln)
     }
-    
-    init() {
-        
-    }
 
     public var description: String {
         return "feedback's price=\(price)  category=\(category)"

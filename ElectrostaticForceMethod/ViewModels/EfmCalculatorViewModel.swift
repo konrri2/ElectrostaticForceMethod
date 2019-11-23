@@ -73,7 +73,7 @@ struct EfmCalculatorViewModel {
     func clear() {
         log("EfmCalculatorViewModel  clear")
         backgroundNode.removeAllChildren()
-        countLabelNode.removeFromParent()
+        resultNode.removeAllChildren()
     }
     
 }

@@ -136,7 +136,7 @@ class MenuViewModel {
         }
         
         if isFolded {
-            log("opennig menu")
+            logGraphics("openig menu")
             let distance = CGPoint.zero - (fullMenuSize - showMenuButton.size)  //one button is already visible
             let moveAction = SKAction.moveBy(x: distance.x, y: distance.y, duration: 0.5)
             bgNode.run(moveAction)
@@ -145,7 +145,7 @@ class MenuViewModel {
             showMenuButton.removeFromParent()
         }
         else {
-            logError("openning unfolded menu again")
+            logError("opening unfolded menu again")
         }
     }
     
@@ -158,7 +158,7 @@ class MenuViewModel {
             logError("closing folded menu again")
         }
         else {
-            log("hiding menu")
+            logGraphics("hiding menu")
             let distance = (fullMenuSize - showMenuButton.size)  //one button remains visible
             let moveAction = SKAction.moveBy(x: distance.x, y: distance.y, duration: 0.5)
             bgNode.run(moveAction)

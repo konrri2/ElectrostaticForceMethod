@@ -24,7 +24,7 @@ public enum LoggingLevelMask: Int {
     
 }
 
-let logginLevel = 0b1111_1111//LoggingLevelMask.rx.rawValue | LoggingLevelMask.debug.rawValue
+let logginLevel = 0b1000_1111//LoggingLevelMask.rx.rawValue | LoggingLevelMask.debug.rawValue
 
 public func isLogginLevelOn(_ level: LoggingLevelMask) -> Bool {
     return (logginLevel & level.rawValue) > 0
@@ -59,7 +59,7 @@ func logVerbose(_ text: String) {
 
 
 
-func logGraphicsTest(_ text: String) {
+func logGraphics(_ text: String) {
     log(text, level: LoggingLevelMask.graphics)
 }
 

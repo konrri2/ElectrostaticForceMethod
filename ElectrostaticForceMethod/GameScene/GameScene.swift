@@ -46,7 +46,6 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        log("didMove")
         prepareBackground()
         prepareGrid()
 
@@ -171,7 +170,7 @@ extension GameScene {
             let location = touch.location(in: self)
             let touchedNode = atPoint(location)
             if let buttonName = touchedNode.name {
-                logVerbose("touchedNode.name buttonName= \(buttonName)")
+                logTouches("touchedNode.name buttonName= \(buttonName)")
                 menuVM?.handleClick(buttonName: buttonName)
             }
         }

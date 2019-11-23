@@ -36,6 +36,28 @@ struct Feedback: CustomStringConvertible {
         
     }
 
+    public var description: String {
+        return "feedback's price=\(price)  category=\(category)"
+    }
+    
+    static func makeRandomFeedback() -> Feedback {
+        log("DEBUG - making random feedback")
+        var f = Feedback()
+        f.timestamp = Date()
+        f.price = Int.random(in: 10 ... 4000)
+        if Int.random(in: 0 ... 4) == 0 {
+            f.isPositive = false
+        }
+        else {
+            f.isPositive = true
+        }
+        return f
+    }
+}
+
+
+//MARK: parsing helpers
+extension Feedback {
     /**
      Please don't confuse with fullData csv format
      
@@ -72,23 +94,5 @@ struct Feedback: CustomStringConvertible {
         }
 
         self.category = Category(columns[3])
-    }
-    
-    public var description: String {
-        return "feedback's price=\(price)  category=\(category)"
-    }
-    
-    static func makeRandomFeedback() -> Feedback {
-        log("DEBUG - making random feedback")
-        var f = Feedback()
-        f.timestamp = Date()
-        f.price = Int.random(in: 10 ... 4000)
-        if Int.random(in: 0 ... 4) == 0 {
-            f.isPositive = false
-        }
-        else {
-            f.isPositive = true
-        }
-        return f
     }
 }

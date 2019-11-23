@@ -40,8 +40,28 @@ class EfmPhysicsTests: XCTestCase {
         log("price1 = \(q1.price)    price2 = \(q2.price)")
         log("distance 1 = \(dist1);   dist2= \(dist2)")
         XCTAssertEqual(dist1, dist2, accuracy: 0.00001, "distances should be equal")
-
+        
+        let f1 = qt.force(q: q1)
+        let f2 = qt.force(q: q2)
+        XCTAssertEqual(f1, f2, accuracy: 0.00001, "forces should be equal")
     }
 
+    ///figure 2.a is in section 4.1 of the article
+    func testForFigure2b() {
+        let qt = Feedback(isPositive: false, price: 1 << 6, type: .testCharge)
+        let q1 = Feedback(isPositive: true, price: 1 << 2)
+        let q2 = Feedback(isPositive: false, price: 1 << 10)
+        
+        let dist1 = qt.distance(to: q1)
+        let dist2 = qt.distance(to: q2)
+        
+        log("price1 = \(q1.price)    price2 = \(q2.price)")
+        log("distance 1 = \(dist1);   dist2= \(dist2)")
+        XCTAssertEqual(dist1, dist2, accuracy: 0.00001, "distances should be equal")
 
+        let f1 = qt.force(q: q1)
+        let f2 = qt.force(q: q2)
+        log("f1=\(f1)   f2=\(f2)")
+        XCTAssertNotEqual(f1, f2, accuracy: 0.00001, "forces cannot be equal")
+    }
 }

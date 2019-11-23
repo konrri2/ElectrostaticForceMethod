@@ -83,3 +83,12 @@ extension Feedback {
         return (dx*dx + dy*dy + dz*dz).squareRoot()
     }
 }
+
+//MARK: EFM force formulas (see section 3 of the article)
+extension Feedback {
+    public func force(q: Feedback) -> Double {
+        let r = distance(to: q)
+        let charge = q.isPositive ? 1.0 : -1.0
+        return charge / (r*r*r)
+    }
+}

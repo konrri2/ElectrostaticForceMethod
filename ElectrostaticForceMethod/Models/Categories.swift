@@ -47,6 +47,15 @@ struct Category {
     func distance(to c: Category) -> Int {
         fatalError("TODO  implement dynamic category bulding")
     }
+    
+    private func tryToGuessCategoryType(strName: String) -> CategoryType {
+        if strName.contains("rower") {
+            return .sport
+        }   //TODO add diffrent categories names
+        else {
+            return .unknown
+        }
+    }
 }
 
 struct CategoriesList {

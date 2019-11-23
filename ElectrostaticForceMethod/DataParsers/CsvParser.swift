@@ -24,6 +24,7 @@ struct CsvParser: DataParser {
         //TODO maybe keep it in json
         var f = Feedback.makeRandomFeedback()
         f.type = .testCharge
+        f.isPositive = false
         return Observable.just((f, self.feedsFileName))
     }
     

@@ -32,10 +32,9 @@ struct CsvParser: DataParser {
         DispatchQueue.global(qos: .background).async {
              let rowsAsStrings = self.readHistoryRows()
              for r in rowsAsStrings {
-                 if let t = Feedback(fromCsvRowString: r) {  //first row is a header, last is an empty line - so better check
-                    //sleep(2) debug test
-                    self.outputFeedbacksRelay.accept(t)
-                 }
+                if let f = self.buildFeedback(fromCsvRowString: r) {  //first row is a header, last is an empty line - so better check
+                    self.outputFeedbacksRelay.accept(f)
+                }
              }
          }
     }
@@ -65,7 +64,7 @@ extension CsvParser {
             contents = cleanRows(file: contents)
             return contents
         } catch {
-            print("File Read Error for file \(filepath)")
+            logError("File Read Error for file \(filepath)")
             return nil
         }
     }
@@ -75,5 +74,47 @@ extension CsvParser {
         cleanFile = cleanFile.replacingOccurrences(of: "\r", with: "\n")
         cleanFile = cleanFile.replacingOccurrences(of: "\n\n", with: "\n")
         return cleanFile
+    }
+    
+    /**
+        Please don't confuse with fullData csv format
+        Accepted CSV format:
+        PosNeg;dateTime;price;category
+        Pozytywny;01/03/2011 19:20;48900;komputery
+           */
+    private func buildFeedback(fromCsvRowString strRow: String) -> Feedback? {
+        var feed = Feedback()
+        let columns = strRow.components(separatedBy: ";")
+        guard columns.count == 4 else {
+            return nil
+        }
+        if columns[0] == "PosNeg" { //this is a header
+            return nil
+        }
+        if columns[0].starts(with: "Po") {   // "Pos" string didn't work because in polish we write Pozytyw with "z"
+            feed.isPositive = true
+        }
+        else {
+            feed.isPositive = false
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        if let date = dateFormatter.date(from: columns[1]) {
+            feed.timestamp = date
+        } else {
+            log("cannot parse date for row '\(strRow)' ")
+        }
+        
+        if let priceInt = Int(columns[2]) {
+            feed.price = priceInt
+        } else {
+            log("cannot parse price for row '\(strRow)' ")
+            return nil
+        }
+
+        feed.category = Category(columns[3])
+        
+        return feed
     }
 }

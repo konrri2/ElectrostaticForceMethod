@@ -53,46 +53,11 @@ struct Feedback: CustomStringConvertible {
         }
         return f
     }
-}
-
-
-//MARK: parsing helpers
-extension Feedback {
-    /**
-     Please don't confuse with fullData csv format
-     
-     Accepted CSV format:
-     PosNeg;dateTime;price;category
-     Pozytywny;01/03/2011 19:20;48900;komputery
-     
-        */
-    init?(fromCsvRowString strRow: String)  {
-        let columns = strRow.components(separatedBy: ";")
-        guard columns.count == 4 else {
-            return nil
-        }
-        if columns[0].starts(with: "Po") {   // "Pos" string didn't work because in polish we write Pozytyw with "z"
-            self.isPositive = true
-        }
-        else {
-            self.isPositive = false
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-        if let date = dateFormatter.date(from: columns[1]) {
-            timestamp = date
-        } else {
-            log("cannot parse date for row '\(strRow)' ")
-        }
-        
-        if let priceInt = Int(columns[2]) {
-            self.price = priceInt
-        } else {
-            log("cannot parse price for row '\(strRow)' ")
-            return nil
-        }
-
-        self.category = Category(columns[3])
+    
+    public func priceDistance(to feed2: Feedback) -> Double {
+        let dist = self.pricePosition - feed2.pricePosition
+        return dist.magnitude
     }
 }
+
+

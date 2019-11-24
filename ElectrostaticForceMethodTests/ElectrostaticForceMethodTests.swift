@@ -52,8 +52,9 @@ class ElectrostaticForceMethodTests: XCTestCase {
         let gvm = GridViewModel()
         XCTAssertEqual(gvm.pricesText[4], "32 \nPLN", "prices text on grid")
     }
-    
+*/
     func testParser() {
+        let sut = CsvParser(itemToBuy: "test", outputRelay: outputFeedbacksRelay)
         let feedbacksHistory  = FeedbacksHistory(for: "test")
         let feeds = feedbacksHistory.readFeedabcksHistory()
         
@@ -66,7 +67,7 @@ class ElectrostaticForceMethodTests: XCTestCase {
         assertFeed(feeds[6], false, 100)
         assertFeed(feeds[7], true, 200)
     }
-*/
+
     private func assertFeed(_ feed: Feedback, _ isPositive: Bool, _ pricePln: Double) {
         XCTAssertEqual(feed.isPositive, isPositive, "Wrong rating for \(feed)")
         XCTAssertEqual(feed.priceInPln, pricePln, "Wrong price for \(feed)")

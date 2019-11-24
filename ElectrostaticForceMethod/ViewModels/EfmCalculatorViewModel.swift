@@ -21,7 +21,7 @@ struct EfmCalculatorViewModel {
     
     init(_ itemToBuy: String, backgroundNode: SKNode) {
         self.backgroundNode = backgroundNode
-        self.resultNode = SKSpriteNode(color: UIColor.init(displayP3Red: 200/255, green: 100/255, blue: 200/255, alpha: 0.5), size: CGSize(width: 100, height: 100)) //TODO find .png background with corenr radious and move it to right
+        self.resultNode = SKSpriteNode(color: UIColor.init(displayP3Red: 200/255, green: 100/255, blue: 200/255, alpha: 0.5), size: CGSize(width: 200, height: 100)) //TODO find .png background with corenr radious and move it to right
 
         
         self.theCalculator = EfmCalculator(itemToBuy)

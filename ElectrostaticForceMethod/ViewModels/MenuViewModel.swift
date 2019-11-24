@@ -72,7 +72,7 @@ class MenuViewModel {
         
         linkFromClipboardButton = MenuViewModel.makeButton(name: ButtonNames.linkFromClipboard, position: CGPoint(x:75, y:75), size: CGSize(width:200, height:50))
         
-        testLinkButton = MenuViewModel.makeButton(name: ButtonNames.testLink, position: CGPoint(x:50, y:175), size: CGSize(width:200, height:50))
+        testLinkButton = MenuViewModel.makeButton(name: ButtonNames.testLink, position: CGPoint(x:75, y:175), size: CGSize(width:200, height:50))
     }
     
     deinit {

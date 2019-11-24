@@ -66,33 +66,33 @@ class ElectrostaticForceMethodTests: XCTestCase {
         assertFeed(feeds[6], false, 100)
         assertFeed(feeds[7], true, 200)
     }
-    
+*/
     private func assertFeed(_ feed: Feedback, _ isPositive: Bool, _ pricePln: Double) {
         XCTAssertEqual(feed.isPositive, isPositive, "Wrong rating for \(feed)")
         XCTAssertEqual(feed.priceInPln, pricePln, "Wrong price for \(feed)")
     }
     
     func testAllegroCrawler() {
-        let sut = AllegroCrawler(itemPage: "https://allegro.pl/oferta/kross-esker-2-0-wisniowy-srebrny-m-20-8445656508")
+        let sut = AllegroParser(itemToBuy: "https://allegro.pl/oferta/kross-esker-2-0-wisniowy-srebrny-m-20-8445656508", outputRelay: self.outputFeedbacksRelay)
         //this bike cost 2 789,00 zł
         do {
-            let blockinObservable = sut.getItemPage()
+            let blockinObservable = sut.readItemToBuy()
                 .toBlocking()
                 //.first()
             
-            let qt = try blockinObservable.first()
-            XCTAssertNotNil(qt?.price)
-            XCTAssertGreaterThan(qt!.price, 0.0, "error - negative price")
+            if let (qt, link) = try blockinObservable.first() {
+                XCTAssertNotNil(qt.price)
+                XCTAssertGreaterThan(qt.price, 0, "error - negative price")
+                log("link = \(link)")
+                XCTAssertTrue(link.contains("/oceny"), "link msut contains fragment /oceny ")
+                XCTAssertTrue(link.contains("/uzytkownik/"), "link msut contains fragment /uzytkownik/ ")
+            }
+            else {
+                XCTFail("readItemToBuy was nil")
+            }
         } catch {
             logError("sut.getItemPage()")
         }
     }
-//    
-//    func testPerformanceExample() {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
-*/
+
 }

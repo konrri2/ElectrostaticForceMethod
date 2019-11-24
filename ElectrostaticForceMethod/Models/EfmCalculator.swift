@@ -43,26 +43,24 @@ class EfmCalculator {
             .subscribe(onNext:{
                 var val = self.result.value
                 val.count += 1
-                val.force += self.calculateElectrostaticForce($0)
-                
+                val.force += self.calculateElectrostaticForce($0)                
                 self.result.accept(val)
             }
         ).disposed(by: disposeBag)
     }
     
+    ///Starts parsing and calculation
     public func start() {
         dataParser?.readItemToBuy()
             .subscribe(onNext:{ (testCharge, link) in
                 logVerbose("for test charge \(testCharge) feddbacks are on \(link)")
                 self.testCharge = testCharge
                 self.testChargeRelay.accept(testCharge)
-                //subscirbe calculation
                 self.dataParser?.readFeedbacksList(feedsUrl: link)
             }).disposed(by: disposeBag)
     }
     
     private func calculateElectrostaticForce(_ f: Feedback) -> Double {
-        //TODO introduce scaling factors
         if let f = self.testCharge?.force(q: f) {
             return f
         }

@@ -25,4 +25,8 @@ struct Layers {
     static let menuBacground = CGFloat(28)
     static let menu = CGFloat(30)
     static let menuLabels = CGFloat(32)
+    
+    static let resultsBackground = CGFloat(40)
+    static let resultsLabels = CGFloat(42)
+    
 }

@@ -82,7 +82,7 @@ class GameScene: SKScene {
         }
         calculatorVM = EfmCalculatorViewModel(itemUrl, backgroundNode: self.backgroundNode)
         if let resultsNode = calculatorVM?.resultNode {
-            resultsNode.position = CGPoint(x: rightEdge-100, y: 100)
+            resultsNode.position = CGPoint(x: rightEdge-80, y: 50)
             self.addChild(resultsNode)
         }
     }

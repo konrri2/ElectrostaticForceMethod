@@ -21,13 +21,14 @@ struct EfmCalculatorViewModel {
     
     init(_ itemToBuy: String, backgroundNode: SKNode) {
         self.backgroundNode = backgroundNode
-        self.resultNode = SKSpriteNode(color: .purple, size: CGSize(width: 100, height: 100))
+        self.resultNode = SKSpriteNode(color: .purple, size: CGSize(width: 100, height: 100)) //TODO find .png background with corenr radious and move it to right
         
         self.theCalculator = EfmCalculator(itemToBuy)
         subscribeToDraw(self.theCalculator.testChargeRelay)
         subscribeToDraw(self.theCalculator.feedbacksRelay)
         
-        prepareLabels()
+        prepareResultsLayout()
+
         subscribeToWriteCalculations()
         
         theCalculator.start()
@@ -42,6 +43,12 @@ struct EfmCalculatorViewModel {
         }).disposed(by: disposeBag)
     }
     
+    private func prepareResultsLayout() {
+        resultNode.zPosition = Layers.resultsBackground
+        
+        prepareLabels() 
+    }
+    
     private func prepareLabels() {
         
         countLabelNode.fontColor = .green
@@ -49,13 +56,14 @@ struct EfmCalculatorViewModel {
         countLabelNode.position.x = 0
         countLabelNode.position.y = -20
         countLabelNode.fontSize = 14
-        
+        countLabelNode.zPosition = Layers.resultsLabels
         
         forceValueLabelNode.fontColor = .yellow //TODO change color if positive/negative
         forceValueLabelNode.fontName = "AvenirNext-Bold"
         forceValueLabelNode.position.x = 0
         forceValueLabelNode.position.y = 20
         forceValueLabelNode.fontSize = 18
+        forceValueLabelNode.zPosition = Layers.resultsLabels
         
         self.resultNode.addChild(countLabelNode)
         self.resultNode.addChild(forceValueLabelNode)

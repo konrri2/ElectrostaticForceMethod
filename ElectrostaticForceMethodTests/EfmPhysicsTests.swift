@@ -88,6 +88,25 @@ class EfmPhysicsTests: XCTestCase {
                 XCTAssertEqual(sumForces, force, accuracy: 0.001, "in section 4.1 is in the table 1")
             }
         }
-
+    }
+    
+    ///figure 3.b is in section 4.1 of the article
+    func testForFigure3b() {
+        let q1 = Feedback(isPositive: true, price: 1 << 2)
+        let q2 = Feedback(isPositive: false, price: 1 << 10)
+        
+        // log(price) : force //see table 1
+        let expectetResults: [Int:Double] = [1:1.692, 2:1.821, 4:1.090, 6:0.0, 8:-1.090, 10:-1.821, 11:-1.692]
+        
+        for i in 1...15 {
+            if let force = expectetResults[i] {
+                let qt = Feedback(isPositive: false, price: 1 << i, type: .testCharge)
+                let f1 = qt.force(q: q1)
+                let f2 = qt.force(q: q2)
+                let sumForces = f1+f2
+                log("force for qt_\(i)=\(sumForces)")
+                XCTAssertEqual(sumForces, force, accuracy: 0.001, "in section 4.1 is in the table 1")
+            }
+        }
     }
 }

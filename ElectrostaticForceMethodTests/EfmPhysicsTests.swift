@@ -75,6 +75,19 @@ class EfmPhysicsTests: XCTestCase {
         let q1 = Feedback(isPositive: true, price: 1 << 2)
         let q2 = Feedback(isPositive: true, price: 1 << 10)
         
-        var qt = Feedback(isPositive: false, price: 1 << 1, type: .testCharge)
+        // log(price) : force //see table 1
+        let expectetResults: [Int:Double] = [1:1.960, 2:2.179, 4:1.772, 6:1.414, 8:1.772, 10:2.179, 11:1.960]
+        
+        for i in 1...15 {
+            if let force = expectetResults[i] {
+                let qt = Feedback(isPositive: false, price: 1 << i, type: .testCharge)
+                let f1 = qt.force(q: q1)
+                let f2 = qt.force(q: q2)
+                let sumForces = f1+f2
+                log("force for qt_\(i)=\(sumForces)")
+                XCTAssertEqual(sumForces, force, accuracy: 0.001, "in section 4.1 is in the table 1")
+            }
+        }
+
     }
 }

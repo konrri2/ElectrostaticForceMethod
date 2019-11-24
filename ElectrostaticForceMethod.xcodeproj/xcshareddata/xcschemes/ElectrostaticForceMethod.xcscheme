@@ -37,11 +37,6 @@
                BlueprintName = "ElectrostaticForceMethodTests"
                ReferencedContainer = "container:ElectrostaticForceMethod.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "ElectrostaticForceMethodTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

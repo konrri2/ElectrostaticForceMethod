@@ -53,19 +53,42 @@ class ElectrostaticForceMethodTests: XCTestCase {
         XCTAssertEqual(gvm.pricesText[4], "32 \nPLN", "prices text on grid")
     }
 */
-    func testParser() {
+    func testCsvParser() {
         let sut = CsvParser(itemToBuy: "test", outputRelay: outputFeedbacksRelay)
-        let feedbacksHistory  = FeedbacksHistory(for: "test")
-        let feeds = feedbacksHistory.readFeedabcksHistory()
-        
-        assertFeed(feeds[0], false, 1)
-        assertFeed(feeds[1], true, 2)
-        assertFeed(feeds[2], false, 5)
-        assertFeed(feeds[3], true, 10)
-        assertFeed(feeds[4], false, 20)
-        assertFeed(feeds[5], true, 50)
-        assertFeed(feeds[6], false, 100)
-        assertFeed(feeds[7], true, 200)
+        do {
+                        let feeds = try outputFeedbacksRelay.asObservable().toBlocking(timeout: 5.000).toArray()  //this fill not work, because BehaviourRelay never completes
+            
+            let blockinObservable = sut.readItemToBuy()
+                .toBlocking()
+            
+            if let (qt, link) = try blockinObservable.first() {
+               // XCTAssertNotNil(qt.price)
+                XCTAssertGreaterThan(qt.price, 0, "error - negative price")
+                log("link = \(link)")
+                XCTAssertTrue(link.contains("test"), "link must contain fragment")
+            }
+            else {
+                XCTFail("readItemToBuy was nil")
+            }
+            
+            
+
+            
+            assertFeed(feeds[0], false, 1)
+            assertFeed(feeds[1], true, 2)
+            assertFeed(feeds[2], false, 5)
+            assertFeed(feeds[3], true, 10)
+            assertFeed(feeds[4], false, 20)
+            assertFeed(feeds[5], true, 50)
+            assertFeed(feeds[6], false, 100)
+            assertFeed(feeds[7], true, 200)
+ 
+//            if let feed = try outputFeedbacksRelay.asObservable().toBlocking().first() {
+//                assertFeed(feed, false, 1)
+//            }
+        } catch {
+            logError("RX error")
+        }
     }
 
     private func assertFeed(_ feed: Feedback, _ isPositive: Bool, _ pricePln: Double) {
@@ -73,7 +96,7 @@ class ElectrostaticForceMethodTests: XCTestCase {
         XCTAssertEqual(feed.priceInPln, pricePln, "Wrong price for \(feed)")
     }
     
-    func testAllegroCrawler() {
+    func testAllegroParser() {
         let sut = AllegroParser(itemToBuy: "https://allegro.pl/oferta/kross-esker-2-0-wisniowy-srebrny-m-20-8445656508", outputRelay: self.outputFeedbacksRelay)
         //this bike cost 2 789,00 zł
         do {
@@ -86,7 +109,7 @@ class ElectrostaticForceMethodTests: XCTestCase {
                 XCTAssertGreaterThan(qt.price, 0, "error - negative price")
                 log("link = \(link)")
                 XCTAssertTrue(link.contains("/oceny"), "link msut contains fragment /oceny ")
-                XCTAssertTrue(link.contains("/uzytkownik/"), "link msut contains fragment /uzytkownik/ ")
+                XCTAssertTrue(link.contains("/uzytkownik/"), "link must contain fragment /uzytkownik/ ")
             }
             else {
                 XCTFail("readItemToBuy was nil")

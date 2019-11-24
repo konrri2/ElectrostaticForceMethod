@@ -56,7 +56,7 @@ class ElectrostaticForceMethodTests: XCTestCase {
     func testCsvParser() {
         let sut = CsvParser(itemToBuy: "test", outputRelay: outputFeedbacksRelay)
         do {
-                        let feeds = try outputFeedbacksRelay.asObservable().toBlocking(timeout: 5.000).toArray()  //this fill not work, because BehaviourRelay never completes
+            let feeds = try outputFeedbacksRelay.asObservable().toBlocking(timeout: 5.000).toArray()  //this fill not work, because BehaviourRelay never completes
             
             let blockinObservable = sut.readItemToBuy()
                 .toBlocking()
@@ -83,9 +83,9 @@ class ElectrostaticForceMethodTests: XCTestCase {
             assertFeed(feeds[6], false, 100)
             assertFeed(feeds[7], true, 200)
  
-//            if let feed = try outputFeedbacksRelay.asObservable().toBlocking().first() {
-//                assertFeed(feed, false, 1)
-//            }
+            if let feed = try outputFeedbacksRelay.asObservable().toBlocking().first() {
+                assertFeed(feed, false, 1)
+            }
         } catch {
             logError("RX error")
         }

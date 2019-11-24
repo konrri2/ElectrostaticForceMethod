@@ -32,6 +32,7 @@
 		765A373C23195112006A9C94 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373B23195112006A9C94 /* Logger.swift */; };
 		7675D4E8235CC2BE005725B4 /* dataLayer.json in Resources */ = {isa = PBXBuildFile; fileRef = 7675D4E7235CC2BE005725B4 /* dataLayer.json */; };
 		769064422389C1C10088669A /* EfmPhysicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769064412389C1C10088669A /* EfmPhysicsTests.swift */; };
+		76906444238B28D40088669A /* test.csvqt in Resources */ = {isa = PBXBuildFile; fileRef = 76906443238B28D40088669A /* test.csvqt */; };
 		76A51BDB23869ABA00451114 /* AllegroParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A51BDA23869ABA00451114 /* AllegroParser.swift */; };
 		76A51BDD23869DF500451114 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A51BDC23869DF500451114 /* DataParser.swift */; };
 		76A5908623688529002987FB /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A5908523688529002987FB /* MenuViewModel.swift */; };
@@ -125,6 +126,7 @@
 		765A373B23195112006A9C94 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7675D4E7235CC2BE005725B4 /* dataLayer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dataLayer.json; sourceTree = "<group>"; };
 		769064412389C1C10088669A /* EfmPhysicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EfmPhysicsTests.swift; sourceTree = "<group>"; };
+		76906443238B28D40088669A /* test.csvqt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.csvqt; sourceTree = "<group>"; };
 		76A51BDA23869ABA00451114 /* AllegroParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllegroParser.swift; sourceTree = "<group>"; };
 		76A51BDC23869DF500451114 /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		76A5908523688529002987FB /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				76EB33D42356239E0008CAF2 /* u2.csv */,
+				76906443238B28D40088669A /* test.csvqt */,
 				76EB3415235791480008CAF2 /* test.csv */,
 				76CD8B5723579935002D6FBD /* test2.csv */,
 				76AD52602359E09900558B89 /* test3.csv */,
@@ -527,6 +530,7 @@
 				76AD52612359E09900558B89 /* test3.csv in Resources */,
 				76EB33D7235639930008CAF2 /* TODO.txt in Resources */,
 				76EB341023572C5A0008CAF2 /* Assets.xcassets in Resources */,
+				76906444238B28D40088669A /* test.csvqt in Resources */,
 				762677E2235A168A0079F2F3 /* u3.csv in Resources */,
 				76EB33D52356239E0008CAF2 /* u2.csv in Resources */,
 				76EB340F23572C5A0008CAF2 /* Particle.sks in Resources */,

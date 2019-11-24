@@ -44,6 +44,16 @@ struct CsvParser: DataParser {
 
 //MARK: - private methods
 extension CsvParser {
+    private func readTestCharge() -> String {
+        if let data = readDataFromCSV(fileName: feedsFileName, fileType: "csvqt") {
+            let csvRows = data.components(separatedBy: "\n")
+            return csvRows.first ?? ""
+        }
+        else {
+            return ""
+        }
+    }
+    
     private func readHistoryRows() -> [String] {
         if let data = readDataFromCSV(fileName: feedsFileName) {
             let csvRows = data.components(separatedBy: "\n")

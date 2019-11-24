@@ -22,10 +22,14 @@ struct CsvParser: DataParser {
     
     func readItemToBuy() -> Observable<(Feedback, String)> {
         //TODO maybe keep it in json
-        var f = Feedback.makeRandomFeedback()
-        f.type = .testCharge
-        f.isPositive = false
-        return Observable.just((f, self.feedsFileName))
+        if let f = makeTestChage() {
+            return Observable.just((f, self.feedsFileName))
+        }
+        else {
+            logError("CsvReader: could not make test charge")
+            let f2 = Feedback.makeRandomFeedback()
+            return Observable.just((f2, self.feedsFileName))
+        }
     }
     
     func readFeedbacksList(feedsUrl: String) {
@@ -44,6 +48,13 @@ struct CsvParser: DataParser {
 
 //MARK: - private methods
 extension CsvParser {
+    private func makeTestChage() -> Feedback? {
+        let str = readTestCharge()
+        var qt = buildFeedback(fromCsvRowString: str)
+        qt?.type = .testCharge
+        return qt
+    }
+    
     private func readTestCharge() -> String {
         if let data = readDataFromCSV(fileName: feedsFileName, fileType: "csvqt") {
             let csvRows = data.components(separatedBy: "\n")

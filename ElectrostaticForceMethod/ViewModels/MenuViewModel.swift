@@ -14,6 +14,7 @@ struct ButtonNames {
     static let testUser1 = "u1"
     static let testUser2 = "u2"
     static let testUser3 = "u3"
+    static let testUserTest = "test"
     static let linkFromClipboard = "linkFromClipboard"
     static let testLink = "testLink"
     
@@ -23,6 +24,7 @@ struct ButtonNames {
         testUser1: "u1",
         testUser2: "u2",
         testUser3: "u3",
+        testUserTest: "test",
         linkFromClipboard: "Link from clipboard",
         testLink: "test link"
     ]
@@ -53,6 +55,7 @@ class MenuViewModel {
         ButtonNames.testUser1: loadTestUser,
         ButtonNames.testUser2: loadTestUser,
         ButtonNames.testUser3: loadTestUser,
+        ButtonNames.testUserTest: loadTestUser,
         ButtonNames.linkFromClipboard: loadFromLinkFromClipboard,
         ButtonNames.testLink: loadFromTestLink
     ]
@@ -65,7 +68,8 @@ class MenuViewModel {
     
         self.showMenuButton = MenuViewModel.makeButton(name: ButtonNames.unfoldMenu, position: CGPoint(x:50, y:25), size: CGSize(width:100, height:50))
         self.hideMenuButton = MenuViewModel.makeButton(name: ButtonNames.foldMenu, position: CGPoint(x:75, y:25), size: CGSize(width:120, height:50))
-        
+    
+        self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUserTest, position: CGPoint(x:-25, y:125), size: CGSize(width:50, height:50)))
         self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser1, position: CGPoint(x:25, y:125), size: CGSize(width:50, height:50)))
         self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser2, position: CGPoint(x:75, y:125), size: CGSize(width:50, height:50)))
         self.loadTestUsersButtons.append(MenuViewModel.makeButton(name: ButtonNames.testUser3, position: CGPoint(x:125, y:125), size: CGSize(width:50, height:50)))

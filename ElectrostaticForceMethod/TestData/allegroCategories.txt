@@ -1,0 +1,7 @@
+Allegro   Dom i Ogród   Meble   Salon   Stoły 
+Allegro   Sport i turystyka   Rowery i akcesoria   Rowery   Przełajowe, Gravel 
+Allegro   Elektronika   Telefony i Akcesoria   Smartfony i telefony komórkowe   Apple   iPhone XS 
+Allegro   Elektronika   Komputery   Laptopy   Apple 
+Allegro   Elektronika   RTV i AGD   AGD wolnostojące   Pralko-suszarki 
+Allegro   Elektronika   Fotografia   Aparaty cyfrowe   Lustrzanki 
+     

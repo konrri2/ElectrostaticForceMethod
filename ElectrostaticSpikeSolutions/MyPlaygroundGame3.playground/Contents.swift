@@ -158,7 +158,31 @@ extension TreeNode: CustomStringConvertible {
     }
 }
 
-
+func makeButton(treeNode: TreeNode, rect: CGRect) -> SKSpriteNode {
+    var label: SKLabelNode
+    
+    
+    let zPosition = CGFloat(treeNode.level*2)
+    
+    let button = SKSpriteNode(imageNamed: "Button")
+    button.anchorPoint = CGPoint(x: 1.0, y: 1.0)
+    button.size = rect.size
+    button.name = treeNode.name
+    button.zPosition = zPosition
+    
+    label = SKLabelNode(fontNamed: "Arial")
+    label.fontSize = 20
+    label.name = treeNode.name //both needs the same name because user may fit button or text
+    label.text = treeNode.name
+    label.zPosition = zPosition + 1
+    label.horizontalAlignmentMode = .center
+    label.verticalAlignmentMode = .center
+    
+    button.addChild(label)
+    button.position = rect.origin
+    
+    return button
+}
 
 class GameScene: SKScene {
 
@@ -183,13 +207,9 @@ class GameScene: SKScene {
     
 
     
-    func drawBranch(node: TreeNode, in rect: CGRect) {
-        let label = SKLabelNode(text: node.name)
-        let middle = rect.height / 2
-        label.position = CGPoint(x: 50.0, y: middle)
-        position according to rect ??frame ?bounds ? SKSpriteNode ?
-        print("label.position = \(label.position)")
-        self.addChild(label)
+    func drawBranch(node: TreeNode, in rect: CGRect, parentNode: SKNode) {
+        let button = makeButton(treeNode: node, rect: rect)
+        parentNode.addChild(button)
         
         if node.children.count <= 0  {
             return //leaf
@@ -197,13 +217,14 @@ class GameScene: SKScene {
         else {
             let childCount = CGFloat(node.children.count)
             let segmentHeight = rect.height / childCount
-            var yPosition = CGFloat(0.0)
+            var yPosition = rect.height
             for ch in node.children {
                 let childPos = CGPoint(x: rect.origin.x + 100, y: yPosition)
-                let childSize = CGSize(width: rect.size.width - 50, height: segmentHeight)
+                let childSize = CGSize(width: rect.size.width / 2, height: segmentHeight)
                 let childRect = CGRect(origin: childPos, size: childSize)
-                drawBranch(node: ch, in: childRect)
-                yPosition += segmentHeight
+                print("child rect for \(ch.name) = \(childRect)")
+                drawBranch(node: ch, in: childRect, parentNode: parentNode)
+                yPosition -= segmentHeight
             }
         }
     }
@@ -219,7 +240,7 @@ let sceneView = SKView(frame: frame)
 
     let tree = Tree(initialCategories: categoriesSamples)
     
-    scene.drawBranch(node: tree.root, in: frame)
+    scene.drawBranch(node: tree.root, in: frame, parentNode: scene)
     
     // Present the scene
     sceneView.presentScene(scene)

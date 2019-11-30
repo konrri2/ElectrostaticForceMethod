@@ -31,6 +31,7 @@
 		765A373923193ED5006A9C94 /* u1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 765A373823193ED5006A9C94 /* u1.csv */; };
 		765A373C23195112006A9C94 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A373B23195112006A9C94 /* Logger.swift */; };
 		7675D4E8235CC2BE005725B4 /* dataLayer.json in Resources */ = {isa = PBXBuildFile; fileRef = 7675D4E7235CC2BE005725B4 /* dataLayer.json */; };
+		768E6B3B238D3C6600A0B8F9 /* allegroCategories.txt in Resources */ = {isa = PBXBuildFile; fileRef = 768E6B3A238D3C6500A0B8F9 /* allegroCategories.txt */; };
 		769064422389C1C10088669A /* EfmPhysicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769064412389C1C10088669A /* EfmPhysicsTests.swift */; };
 		76906444238B28D40088669A /* test.csvqt in Resources */ = {isa = PBXBuildFile; fileRef = 76906443238B28D40088669A /* test.csvqt */; };
 		76A51BDB23869ABA00451114 /* AllegroParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A51BDA23869ABA00451114 /* AllegroParser.swift */; };
@@ -125,6 +126,7 @@
 		765A373823193ED5006A9C94 /* u1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u1.csv; sourceTree = "<group>"; };
 		765A373B23195112006A9C94 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7675D4E7235CC2BE005725B4 /* dataLayer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dataLayer.json; sourceTree = "<group>"; };
+		768E6B3A238D3C6500A0B8F9 /* allegroCategories.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = allegroCategories.txt; sourceTree = "<group>"; };
 		769064412389C1C10088669A /* EfmPhysicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EfmPhysicsTests.swift; sourceTree = "<group>"; };
 		76906443238B28D40088669A /* test.csvqt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.csvqt; sourceTree = "<group>"; };
 		76A51BDA23869ABA00451114 /* AllegroParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllegroParser.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 		765A372B231920E7006A9C94 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				768E6B3A238D3C6500A0B8F9 /* allegroCategories.txt */,
 				76EB33D42356239E0008CAF2 /* u2.csv */,
 				76906443238B28D40088669A /* test.csvqt */,
 				76EB3415235791480008CAF2 /* test.csv */,
@@ -540,6 +543,7 @@
 				7675D4E8235CC2BE005725B4 /* dataLayer.json in Resources */,
 				76EB3416235791480008CAF2 /* test.csv in Resources */,
 				765A37312319214C006A9C94 /* u2_fullData.csv in Resources */,
+				768E6B3B238D3C6600A0B8F9 /* allegroCategories.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,11 +29,11 @@ struct StaticAllegroStrings {
     static let thumpUp = "seller-ratings-list__icon--thumb-up"
     static let thumbDown = "seller-ratings-list__icon--thumb-down"
     
-    //<a href="https://allegro.pl/oferta/laptop-dell-latitude-e5430-i5-8gb-240gb-ssd-win7-7383979458?snapshot=MjAxOS0wOC0yN1QxNDowNjozNS4yNThaO2J1eWVyOzIzY2E5ZDI5MTkzOTZmMTM3ODhlMTA2ZmVkYjE4N2Q2ZTQ1ODJiYmEwZWZmNDE5MmQyMjcxZTk3N2JkZWZmMGI%3D" class="seller-ratings-list__link seller-ratings-list__link__nga m-link m-link--non-visited long-word-wrap" data-box-name="ItemSnapshot" target="_blank">Laptop DELL Latitude E5430 i5 8GB 240GB SSD WIN7</a>
+
     static let linkFromFeedbackToItem = "seller-ratings-list__link"
     
-    //<a class="_1liky _f81xy _vhk6j _tvw6d _1fm1y" href="https://allegro.pl/kategoria/komputery-stacjonarne-486" itemprop="item" itemtype="http://schema.org/Thing" data-analytics-click-custom-id="486" data-analytics-clickable=""><span itemprop="name">Komputery stacjonarne</span></a>
     static let category = "_1liky _f81xy _vhk6j _tvw6d _1fm1y"
+    static let categoriesList = "_1jnz0"  //will find a string of categories tree branch 
     
     ///url parts
     static let allegroPrefix = "https://allegro.pl"

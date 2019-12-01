@@ -18,12 +18,19 @@ class GameScene: SKScene {
         }
     }
     
-    func drawNode(on parent: SKNode) {
-        let label = SKLabelNode(text: "test")
-        label.name = "testLabel"
-        parent.addChild(label)
-        logCoordinates(label)
-        logCoordinates(parent)
+    func drawNode(_ position: CGPoint) {
+        if position.x < (scene?.size.width ?? 30000.0)  {  //don't draw oudside the box
+            let label = SKLabelNode(text: "test")
+            label.position = position
+            label.name = "testLabel"
+            scene?.addChild(label)
+            logCoordinates(label)
+//            var y = position.y
+//            for i in 0...2 {
+//                drawNode(CGPoint(x: position.x + 100.0, y: y))
+//                y += 50
+//            }
+        }
     }
 }
 
@@ -37,7 +44,7 @@ if let scene = GameScene(fileNamed: "GameScene") {
     // Set the scale mode to scale to fit the window
     //?? //scene.scaleMode = .aspectFill
     scene.name = "scene node"
-    scene.drawNode(on: scene)
+    scene.drawNode(CGPoint(x:0, y:0))
     
     // Present the scene
     sceneView.presentScene(scene)

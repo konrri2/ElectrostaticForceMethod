@@ -173,20 +173,22 @@ func makeButton(treeNode: TreeNode, rect: CGRect) -> SKSpriteNode {
     
     label = SKLabelNode(fontNamed: "Arial")
     label.fontSize = 20
-    label.name = treeNode.name //both needs the same name because user may fit button or text
+    label.name = "label:\(treeNode.name)" //both needs the same name because user may fit button or text
     label.text = treeNode.name
     label.zPosition = zPosition + 1
-    label.horizontalAlignmentMode = .center
-    label.verticalAlignmentMode = .center
+//    label.position = CGPoint(x: -rect.midX, y: -rect.midY)
+//    label.horizontalAlignmentMode = .right
+//    label.verticalAlignmentMode = .center
     
     button.addChild(label)
     
+    logCoordinates(label)
     logCoordinates(button)
     return button
 }
 
 func logCoordinates(_ node: SKNode) {
-    print("\(String(describing: node.name)) frame = \(node.frame) position=\(node.position)  ")
+    print("\(node.name ?? "nil") frame = \(node.frame) position=\(node.position)  ")
 }
 
 class GameScene: SKScene {

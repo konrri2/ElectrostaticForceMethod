@@ -164,7 +164,7 @@ func makeButton(treeNode: TreeNode, rect: CGRect) -> SKSpriteNode {
     
     let zPosition = CGFloat(treeNode.level*2)
     
-    let button = SKSpriteNode(imageNamed: "HalfTriangle")
+    let button = SKSpriteNode(imageNamed: "TransparentHalfCircle")
     button.position = CGPoint(x: rect.midX, y: rect.midY)
     button.size = rect.size
     button.name = treeNode.name
@@ -173,17 +173,29 @@ func makeButton(treeNode: TreeNode, rect: CGRect) -> SKSpriteNode {
     label = SKLabelNode(fontNamed: "Arial")
     label.fontSize = 12
     label.name = "label:\(treeNode.name)"
-    label.text = treeNode.name
+    
+    if treeNode.name.contains(" ") {// many words in name
+        let text = treeNode.name
+                .replacingOccurrences(of: " i ", with: "\n")
+                .replacingOccurrences(of: ", ", with: "\n")
+        label.text = text
+        label.numberOfLines = 2
+    }
+    else {
+        label.text = treeNode.name
+    }
     label.zPosition = zPosition + 1
+    
     //label.position = CGPoint(x: -(rect.width/3), y: 0)  //force move to the left
 
-    label.zRotation = CGFloat.pi / 3
+    //label.zRotation = CGFloat.pi / 4
     button.addChild(label)
     
     logCoordinates(label)
     logCoordinates(button)
     return button
 }
+
 
 func logCoordinates(_ node: SKNode) {
     print("\(node.name ?? "nil") frame = \(node.frame) position=\(node.position)  ")

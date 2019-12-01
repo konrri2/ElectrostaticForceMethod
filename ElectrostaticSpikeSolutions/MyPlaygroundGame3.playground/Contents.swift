@@ -164,7 +164,7 @@ func makeButton(treeNode: TreeNode, rect: CGRect) -> SKSpriteNode {
     
     let zPosition = CGFloat(treeNode.level*2)
     
-    let button = SKSpriteNode(imageNamed: "Button")
+    let button = SKSpriteNode(imageNamed: "HalfTriangle")
     button.position = CGPoint(x: rect.midX, y: rect.midY)
     button.size = rect.size
     button.name = treeNode.name

@@ -10,10 +10,10 @@ var categoriesSamples = [
   //           "Allegro   Sport i turystyka   Rowery i akcesoria   Rowery   Przełajowe, Gravel",
             "Allegro   Elektronika   Telefony i Akcesoria   Smartfony i telefony komórkowe   Apple   iPhone XS",
             "Allegro   Elektronika   Komputery   Laptopy   Apple",
-  //          "Allegro   Elektronika   Komputery   Laptopy   Dell",
+            "Allegro   Elektronika   Komputery   Laptopy   Dell",
   //          "Allegro   Elektronika   Komputery   Laptopy   HP",
  //           "Allegro   Elektronika   RTV i AGD   AGD wolnostojące   Pralko-suszarki",
- //           "Allegro   Elektronika   Fotografia   Aparaty cyfrowe   Lustrzanki",
+            "Allegro   Elektronika   Fotografia   Aparaty cyfrowe   Lustrzanki",
             "Allegro   Dom i Ogród   Meble   Salon   Stoły" //copy to check if it will not repeat
 ]
 
@@ -166,6 +166,7 @@ func makeButton(treeNode: TreeNode, rect: CGRect) -> SKSpriteNode {
     
     let button = SKSpriteNode(imageNamed: "Button")
     //button.anchorPoint = CGPoint(x: 1.0, y: 1.0)
+    button.position = CGPoint(x: rect.midX, y: rect.midY)
     button.size = rect.size
     button.name = treeNode.name
     button.zPosition = zPosition
@@ -179,9 +180,13 @@ func makeButton(treeNode: TreeNode, rect: CGRect) -> SKSpriteNode {
     label.verticalAlignmentMode = .center
     
     button.addChild(label)
-    button.position = CGPoint(x: rect.midX, y: rect.minY)
     
+    logCoordinates(button)
     return button
+}
+
+func logCoordinates(_ node: SKNode) {
+    print("\(String(describing: node.name)) frame = \(node.frame) position=\(node.position)  ")
 }
 
 class GameScene: SKScene {
@@ -203,12 +208,11 @@ class GameScene: SKScene {
         // Called before each frame is rendered
     }
     
-    func drawBranch(node: TreeNode, parentNode: SKNode) {
-        let rect = parentNode.frame
+    func drawBranch(node: TreeNode, frame: CGRect) {
+        let rect = frame
         let button = makeButton(treeNode: node, rect: rect)
-        parentNode.addChild(button)
-        print(" rect for \(node.name) = \(rect)")
-        if node.level >= 0 {
+        scene?.addChild(button)
+        if node.level >= 2 {
             return  //don't draw to deap
         }
         else if node.children.count <= 0  {
@@ -217,11 +221,13 @@ class GameScene: SKScene {
         else {
             let childCount = CGFloat(node.children.count)
             let segmentHeight = rect.height / childCount
-            var yPosition = rect.height
+            let xOffset = rect.width / 4
+            var y = rect.origin.y
+            let x = rect.origin.x + xOffset
             for ch in node.children {
-                let childOffset = rect.size.width / 4
-                drawBranch(node: ch, parentNode: parentNode)
-                yPosition -= segmentHeight
+                let childRect = CGRect(x: x, y: y, width: rect.width - xOffset, height: segmentHeight)
+                drawBranch(node: ch, frame: childRect)
+                y += segmentHeight
             }
         }
     }
@@ -234,10 +240,11 @@ let sceneView = SKView(frame: frame)
     // Set the scale mode to scale to fit the window
     scene.scaleMode = .aspectFill
     
-
+    logCoordinates(scene)
+    
     let tree = Tree(initialCategories: categoriesSamples)
     
-    scene.drawBranch(node: tree.root, parentNode: scene)
+scene.drawBranch(node: tree.root, frame: scene.frame)
     
     // Present the scene
     sceneView.presentScene(scene)

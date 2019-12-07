@@ -4,4 +4,4 @@ EFM game demontrates the power of reputation managment method https://link.sprin
 
 
 Screen recording<br/>
-![Screenshot thermostats List](/Screenshots/animation.gif)
+![Test data](/Screenshots/animation.gif)

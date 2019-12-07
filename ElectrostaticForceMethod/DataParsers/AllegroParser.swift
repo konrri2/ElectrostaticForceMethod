@@ -22,15 +22,15 @@ struct StaticAllegroStrings {
     static let commentsClass = "d3438b7e"
     
     //on ffedbacks list pages
-    static let feedbackLine = "line"
+    static let feedbackLine = "_1yyhi"//"line"
     
     //fedback up or down <svg class="seller-ratings-list__icon seller-ratings-list__icon--thumb-down"></svg>
-    static let thumbIcon = "seller-ratings-list__icon"
-    static let thumpUp = "seller-ratings-list__icon--thumb-up"
-    static let thumbDown = "seller-ratings-list__icon--thumb-down"
+    static let thumbIcon = "_1bo4a" //"seller-ratings-list__icon"
+    static let thumpUp = "_1urww _2si25 _1kley"//"seller-ratings-list__icon--thumb-up"
+    static let thumbDown = "_1urww _jvpk5 _1kley"//"seller-ratings-list__icon--thumb-down"
     
 
-    static let linkFromFeedbackToItem = "seller-ratings-list__link"
+    static let linkFromFeedbackToItem = "_3kk7b _vnd3k"//"seller-ratings-list__link"
     
     static let category = "_1liky _f81xy _vhk6j _tvw6d _1fm1y"
     static let categoriesList = "_1jnz0"  //will find a string of categories tree branch 
@@ -156,8 +156,9 @@ extension AllegroParser {
         log("readFeedbacksPage")
         do {
             let doc: Document = try SwiftSoup.parse(htmlString)
-            let linksOfComment = try doc.getElementsByClass(StaticAllegroStrings.feedbackLine).array()
-            return linksOfComment
+            let linksOfComments = try doc.getElementsByClass(StaticAllegroStrings.feedbackLine).array()
+            log("number of links to feedbacks = \(linksOfComments.count)")
+            return linksOfComments
         } catch Exception.Error(let type, let message) {
             logError("readFeedbacksPage error of type \(type) = \(message)")
             return nil

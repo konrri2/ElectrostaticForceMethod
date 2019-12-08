@@ -31,7 +31,7 @@ struct StaticAllegroStrings {
     static let thumbDown = "_1urww _jvpk5 _1kley"//"seller-ratings-list__icon--thumb-down"
     
 
-    static let linkFromFeedbackToItem = "_3kk7b _vnd3k"//"seller-ratings-list__link"
+    static let linkFromFeedbackToItem = "_b0a5q _w7z6o _1lqr7"//"seller-ratings-list__link"
     
     static let category = "_1liky _f81xy _vhk6j _tvw6d _1fm1y"
     static let categoriesList = "_1jnz0"  //will find a string of categories tree branch 
@@ -183,7 +183,7 @@ extension AllegroParser {
         logParser("----div=\(div)")
         var feed = Feedback()
         feed.isPositive = false
-        do {            
+        do {
             let thumbSvg = try div.getElementsByClass(StaticAllegroStrings.thumbIcon)
             if thumbSvg.hasClass(StaticAllegroStrings.thumpUp) {
                 feed.isPositive = true
@@ -192,8 +192,9 @@ extension AllegroParser {
                 feed.isPositive = false
             }
             let itemLink = try div.getElementsByClass(StaticAllegroStrings.linkFromFeedbackToItem)
+            logParser("itemLinkDiv= \(itemLink)")
             let itemUrl = try itemLink.attr("href")
-            log("itemUrl = \(itemUrl) isPositeve = \(feed.isPositive)")
+            logParser("itemUrl = \(itemUrl) isPositeve = \(feed.isPositive)")
             if let url = URL(string: itemUrl) {
                 Observable.just(url)
                     .flatMap { url -> Observable<Data> in

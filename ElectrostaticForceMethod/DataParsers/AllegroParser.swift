@@ -25,8 +25,8 @@ struct StaticAllegroStrings {
     //static let feedbackLine = "_1yyhi"//"line"
     static let feedbackDiv = "_mitvy _ko5xb _3rnfh _3kk7b _1xoz8 _ivtk7"
     
-    //fedback up or down <svg class="seller-ratings-list__icon seller-ratings-list__icon--thumb-down"></svg>
-    static let thumbIcon = "_1bo4a" //"seller-ratings-list__icon"
+    //<div class="_mitvy _ko5xb _3rnfh _3kk7b _1xoz8 _ivtk7" size="12"><div class="_1bo4a"><i class="_1urww _jvpk5 _1kley"></i><div class="_kz8jr _dc45b_3lrfC"><time datetime="1569091980917" class="_1h7wt">21&nbsp;wrz&nbsp;2019</time></div></div></div>
+    static let thumbIcon = "_mitvy _ko5xb _3rnfh _3kk7b _1xoz8 _ivtk7" //"_1bo4a" //"seller-ratings-list__icon"
     static let thumpUp = "_1urww _2si25 _1kley"//"seller-ratings-list__icon--thumb-up"
     static let thumbDown = "_1urww _jvpk5 _1kley"//"seller-ratings-list__icon--thumb-down"
     
@@ -180,7 +180,7 @@ extension AllegroParser {
     
     ///long operation - run only in background
     private func parseFeedbackAndAddToRelay(_ div: Element) {
-        logParser("----div=\(div)")
+        //logParser("----div=\(div)")
         var feed = Feedback()
         feed.isPositive = false
         do {

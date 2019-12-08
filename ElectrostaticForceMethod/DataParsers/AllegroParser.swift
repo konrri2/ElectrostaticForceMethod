@@ -174,7 +174,7 @@ extension AllegroParser {
         feed.isPositive = false
         do {
             let txt = try div.text()
-            logVerbose(txt)
+            logParser(txt)
 
             
             let thumbSvg = try div.getElementsByClass(StaticAllegroStrings.thumbIcon)

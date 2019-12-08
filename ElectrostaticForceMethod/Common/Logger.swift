@@ -26,7 +26,7 @@ public enum LoggingLevelMask: Int {
     
 }
 
-let logginLevel = 0b1000_1111//LoggingLevelMask.rx.rawValue | LoggingLevelMask.debug.rawValue
+let logginLevel = LoggingLevelMask.parser.rawValue | LoggingLevelMask.warning.rawValue | LoggingLevelMask.error.rawValue
 
 public func isLogginLevelOn(_ level: LoggingLevelMask) -> Bool {
     return (logginLevel & level.rawValue) > 0
@@ -74,11 +74,11 @@ func logPhisic(_ text: String) {
 }
 
 func logRx(_ text: String) {
-    log(text, level: LoggingLevelMask.rx)
+    log("[rx]" + text, level: LoggingLevelMask.rx)
 }
 
 func logParser(_ text: String) {
-    log(text, level: LoggingLevelMask.parser)
+    log("[parser]" + text, level: LoggingLevelMask.parser)
 }
 
 

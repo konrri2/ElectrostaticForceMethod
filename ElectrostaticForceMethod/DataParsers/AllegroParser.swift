@@ -173,6 +173,10 @@ extension AllegroParser {
         var feed = Feedback()
         feed.isPositive = false
         do {
+            let txt = try div.text()
+            logVerbose(txt)
+
+            
             let thumbSvg = try div.getElementsByClass(StaticAllegroStrings.thumbIcon)
             if thumbSvg.hasClass(StaticAllegroStrings.thumpUp) {
                 feed.isPositive = true

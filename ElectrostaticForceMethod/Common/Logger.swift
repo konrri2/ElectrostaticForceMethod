@@ -22,6 +22,8 @@ public enum LoggingLevelMask: Int {
     case physics  = 0b0100_0000
     case rx       = 0b1000_0000
     
+    case parser   = 0b0001_0000_0000
+    
 }
 
 let logginLevel = 0b1000_1111//LoggingLevelMask.rx.rawValue | LoggingLevelMask.debug.rawValue
@@ -73,6 +75,10 @@ func logPhisic(_ text: String) {
 
 func logRx(_ text: String) {
     log(text, level: LoggingLevelMask.rx)
+}
+
+func logParser(_ text: String) {
+    log(text, level: LoggingLevelMask.parser)
 }
 
 

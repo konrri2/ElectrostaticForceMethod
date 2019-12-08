@@ -22,7 +22,8 @@ struct StaticAllegroStrings {
     static let commentsClass = "d3438b7e"
     
     //on ffedbacks list pages
-    static let feedbackLine = "_1yyhi"//"line"
+    //static let feedbackLine = "_1yyhi"//"line"
+    static let feedbackDiv = "_mitvy _ko5xb _3rnfh _3kk7b _1xoz8 _ivtk7"
     
     //fedback up or down <svg class="seller-ratings-list__icon seller-ratings-list__icon--thumb-down"></svg>
     static let thumbIcon = "_1bo4a" //"seller-ratings-list__icon"
@@ -156,7 +157,16 @@ extension AllegroParser {
         log("readFeedbacksPage")
         do {
             let doc: Document = try SwiftSoup.parse(htmlString)
-            let linksOfComments = try doc.getElementsByClass(StaticAllegroStrings.feedbackLine).array()
+            var linksOfComments = [Element]()
+            let linksOfFeedbacks = try doc.getElementsByClass(StaticAllegroStrings.feedbackDiv).array()
+            for f in linksOfFeedbacks {
+                if let parentDiv = f.parent() {
+                    linksOfComments.append(parentDiv)
+                }
+                else {
+                    logError("didn't find parent div")
+                }
+            }
             log("number of links to feedbacks = \(linksOfComments.count)")
             return linksOfComments
         } catch Exception.Error(let type, let message) {
@@ -170,13 +180,10 @@ extension AllegroParser {
     
     ///long operation - run only in background
     private func parseFeedbackAndAddToRelay(_ div: Element) {
+        logParser("----div=\(div)")
         var feed = Feedback()
         feed.isPositive = false
-        do {
-            let txt = try div.text()
-            logParser(txt)
-
-            
+        do {            
             let thumbSvg = try div.getElementsByClass(StaticAllegroStrings.thumbIcon)
             if thumbSvg.hasClass(StaticAllegroStrings.thumpUp) {
                 feed.isPositive = true

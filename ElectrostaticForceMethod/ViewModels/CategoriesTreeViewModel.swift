@@ -11,10 +11,16 @@ import SpriteKit
 
 class CategoriesTreeViewModel {
     
+    var bgNode: SKNode
+    
+    init(bacground: SKNode) {
+        bgNode = bacground
+    }
+    
     func drawBranch(node: TreeNode, frame: CGRect) {
         let rect = frame
         let button = makeButton(treeNode: node, rect: rect)
-        scene?.addChild(button)
+        bgNode.addChild(button)
         if node.level >= 2 {
             return  //don't draw to deap
         }
@@ -44,7 +50,7 @@ class CategoriesTreeViewModel {
         pathToDraw.addLine(to: CGPoint(x: toX, y: toY))
         yourline.path = pathToDraw
         yourline.strokeColor = SKColor.red
-        addChild(yourline)
+        bgNode.addChild(yourline)
     }
     
     func makeButton(treeNode: TreeNode, rect: CGRect) -> SKSpriteNode {

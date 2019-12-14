@@ -11,6 +11,7 @@
 		42C568A7D78572D60EBD8FAD /* Pods_ElectrostaticForceMethod_ElectrostaticForceMethodUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9AC480FF73BC82ADA155544 /* Pods_ElectrostaticForceMethod_ElectrostaticForceMethodUITests.framework */; };
 		761610E8238572E100F84ECC /* EfmCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761610E7238572E100F84ECC /* EfmCalculator.swift */; };
 		761610EA238572F600F84ECC /* EfmCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761610E9238572F600F84ECC /* EfmCalculatorViewModel.swift */; };
+		76264FB723A4C36100B75035 /* CategoryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76264FB623A4C36100B75035 /* CategoryTree.swift */; };
 		762677E2235A168A0079F2F3 /* u3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 762677E1235A16890079F2F3 /* u3.csv */; };
 		763624052386DC7D00A9C609 /* CsvParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763624042386DC7D00A9C609 /* CsvParser.swift */; };
 		7637F3E62316D4E800D8B5F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637F3E52316D4E800D8B5F1 /* AppDelegate.swift */; };
@@ -100,6 +101,7 @@
 		5013A3408BFC09CAA8199B80 /* Pods_ElectrostaticForceMethod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ElectrostaticForceMethod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		761610E7238572E100F84ECC /* EfmCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EfmCalculator.swift; sourceTree = "<group>"; };
 		761610E9238572F600F84ECC /* EfmCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EfmCalculatorViewModel.swift; sourceTree = "<group>"; };
+		76264FB623A4C36100B75035 /* CategoryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTree.swift; sourceTree = "<group>"; };
 		762677E1235A16890079F2F3 /* u3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = u3.csv; sourceTree = "<group>"; };
 		763624042386DC7D00A9C609 /* CsvParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvParser.swift; sourceTree = "<group>"; };
 		7637F3E22316D4E800D8B5F1 /* ElectrostaticForceMethod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElectrostaticForceMethod.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -327,6 +329,7 @@
 				76AD525E2359C68C00558B89 /* Categories.swift */,
 				76EF74A0235C517F008FBA75 /* TestCharge.swift */,
 				761610E7238572E100F84ECC /* EfmCalculator.swift */,
+				76264FB623A4C36100B75035 /* CategoryTree.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				7637F3EC2316D4E800D8B5F1 /* GameScene.swift in Sources */,
 				76A51BDB23869ABA00451114 /* AllegroParser.swift in Sources */,
 				761610E8238572E100F84ECC /* EfmCalculator.swift in Sources */,
+				76264FB723A4C36100B75035 /* CategoryTree.swift in Sources */,
 				765A373C23195112006A9C94 /* Logger.swift in Sources */,
 				7637F42C231AC27400D8B5F1 /* GridViewModel.swift in Sources */,
 				763624052386DC7D00A9C609 /* CsvParser.swift in Sources */,

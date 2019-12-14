@@ -26,7 +26,7 @@ public enum LoggingLevelMask: Int {
     
 }
 
-let logginLevel = LoggingLevelMask.parser.rawValue | LoggingLevelMask.warning.rawValue | LoggingLevelMask.error.rawValue
+let logginLevel = LoggingLevelMask.graphics.rawValue | LoggingLevelMask.parser.rawValue | LoggingLevelMask.warning.rawValue | LoggingLevelMask.error.rawValue
 
 public func isLogginLevelOn(_ level: LoggingLevelMask) -> Bool {
     return (logginLevel & level.rawValue) > 0

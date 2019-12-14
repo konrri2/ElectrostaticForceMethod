@@ -85,5 +85,7 @@ class CategoriesTreeViewModel {
         return button
     }
 
-
+    func logCoordinates(_ node: SKNode) {
+        logGraphics("\(node.name ?? "nil") frame = \(node.frame) position=\(node.position)  ")
+    }
 }

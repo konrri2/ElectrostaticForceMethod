@@ -103,10 +103,12 @@ extension GameScene {
         let bgMove = SKAction.move(to: p, duration: time)
         let xAxisMove = SKAction.moveTo(x: p.x, duration: time)
         let yAxisMove = SKAction.moveTo(y: p.y, duration: time)
+        let treeMove = SKAction.move(to: CGPoint(x: -100, y: p.y), duration: time)
         
         backgroundNode.run(bgMove)
         pricesXAxisNode.run(xAxisMove)
         categoriesYAxisNode.run(yAxisMove)
+        categoriesTreeNode.run(treeMove)
     }
     
     fileprivate func prepareBackground() {

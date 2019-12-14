@@ -28,12 +28,14 @@ class GameScene: SKScene {
     let backgroundNode: SKShapeNode
     let pricesXAxisNode: SKShapeNode
     let categoriesYAxisNode: SKShapeNode
+    let categoriesTreeNode: SKShapeNode
     
     override init(size: CGSize) {
         backgroundNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: rectSize))
         pricesXAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: xAxisHeight))
         categoriesYAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: yAxisWidth, height: rectSize))
-         
+        categoriesTreeNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 300, height: 300))
+        
         super.init(size: size)
     }
     
@@ -123,6 +125,13 @@ extension GameScene {
         categoriesYAxisNode.name = "categoriesYAxisNode"
         self.addChild(categoriesYAxisNode)
         gridVM.drawCategoriesLabels(on: categoriesYAxisNode)
+        
+        categoriesTreeNode.fillColor = .darkGray
+        categoriesTreeNode.name = "categoriesTreeNode"
+        self.addChild(categoriesTreeNode)
+        
+        let catTreeVM = CategoriesTreeViewModel(bacground: categoriesTreeNode)
+        catTreeVM.drawTree()
     }
 }
 

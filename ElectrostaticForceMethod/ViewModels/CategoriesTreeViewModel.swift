@@ -12,12 +12,18 @@ import SpriteKit
 class CategoriesTreeViewModel {
     
     var bgNode: SKNode
+    var tree: Tree
     
     init(bacground: SKNode) {
         bgNode = bacground
+        tree = Tree(initialCategories: categoriesSamples)
     }
     
-    func drawBranch(node: TreeNode, frame: CGRect) {
+    func drawTree() {
+        drawBranch(node: tree.root, frame: bgNode.frame)
+    }
+    
+    private func drawBranch(node: TreeNode, frame: CGRect) {
         let rect = frame
         let button = makeButton(treeNode: node, rect: rect)
         bgNode.addChild(button)

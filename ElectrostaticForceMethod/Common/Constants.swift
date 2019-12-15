@@ -17,7 +17,7 @@ let priceAxisScale = 50.0
 ///z positions
 struct Layers {
     static let tree = CGFloat(-5)
-    
+    static let xAxis = CGFloat(0)
     static let background = CGFloat(5)
     
     static let positiveFeedbacks = CGFloat(10)

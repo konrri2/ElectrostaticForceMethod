@@ -123,6 +123,7 @@ extension GameScene {
     fileprivate func prepareGrid() {
         pricesXAxisNode.fillColor = .darkGray
         pricesXAxisNode.name = "pricesXAxisNode"
+        pricesXAxisNode.zPosition = Layers.xAxis
         self.addChild(pricesXAxisNode)
         gridVM.drawPriceLabels(on: pricesXAxisNode)
         

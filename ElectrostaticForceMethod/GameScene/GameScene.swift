@@ -22,6 +22,8 @@ class GameScene: SKScene {
     let rectSize = 1500
     let xAxisHeight = 50
     let yAxisWidth = 90
+    let catTreeWidth = 300.0
+    let catTreeHeight = 300.0
     var rightEdge = CGFloat(400)
     
     ///Nodes
@@ -34,7 +36,7 @@ class GameScene: SKScene {
         backgroundNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: rectSize))
         pricesXAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: rectSize, height: xAxisHeight))
         categoriesYAxisNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: yAxisWidth, height: rectSize))
-        categoriesTreeNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 300, height: 300))
+        categoriesTreeNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: catTreeWidth, height: catTreeHeight))
         
         super.init(size: size)
     }
@@ -103,7 +105,8 @@ extension GameScene {
         let bgMove = SKAction.move(to: p, duration: time)
         let xAxisMove = SKAction.moveTo(x: p.x, duration: time)
         let yAxisMove = SKAction.moveTo(y: p.y, duration: time)
-        let treeMove = SKAction.move(to: CGPoint(x: -100, y: p.y), duration: time)
+        let xTree = CGFloat( catTreeWidth*(-0.5))
+        let treeMove = SKAction.move(to: CGPoint(x: xTree, y: p.y), duration: time)
         
         backgroundNode.run(bgMove)
         pricesXAxisNode.run(xAxisMove)
@@ -123,12 +126,13 @@ extension GameScene {
         self.addChild(pricesXAxisNode)
         gridVM.drawPriceLabels(on: pricesXAxisNode)
         
-        categoriesYAxisNode.fillColor = .darkGray
-        categoriesYAxisNode.name = "categoriesYAxisNode"
-        self.addChild(categoriesYAxisNode)
-        gridVM.drawCategoriesLabels(on: categoriesYAxisNode)
+//        categoriesYAxisNode.fillColor = .darkGray
+//        categoriesYAxisNode.name = "categoriesYAxisNode"
+//        self.addChild(categoriesYAxisNode)
+//        gridVM.drawCategoriesLabels(on: categoriesYAxisNode)
         
         categoriesTreeNode.fillColor = .darkGray
+        categoriesTreeNode.zPosition = Layers.tree
         categoriesTreeNode.name = "categoriesTreeNode"
         self.addChild(categoriesTreeNode)
         
